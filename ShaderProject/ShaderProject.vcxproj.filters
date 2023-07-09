@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader">
+      <UniqueIdentifier>{a9755fd2-e8f8-4e2e-854e-68fcfb6a9b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\VertexShader">
+      <UniqueIdentifier>{e4c96e83-672c-4720-aa96-8ee0c9525558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader\Shading">
+      <UniqueIdentifier>{9f5d8094-adb6-4284-85c9-ae3508531552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader\Visual">
+      <UniqueIdentifier>{97f6bcd0-2b86-45a0-aaf6-ede9b828bc50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader\Bumpmap">
+      <UniqueIdentifier>{a909e82b-f6f9-4a04-a3cf-5ed5a7507c85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader\PostProcess">
+      <UniqueIdentifier>{5458150f-a74a-41fb-a885-fbf5427fdc89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader\Effect">
+      <UniqueIdentifier>{4efc8691-b39c-4c65-b1e5-8ca7ac788a47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{c3e0025d-d744-4505-964a-4b8ad1c6d63b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{fe8a2bbd-cadf-4262-a1e1-1128e5d6aa1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{13a0a5a6-8597-4c90-a269-2c5508fabb22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Light">
+      <UniqueIdentifier>{8329c15d-9aed-4e3d-9f5d-a5b16c04590c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Startup">
+      <UniqueIdentifier>{62fd9dcc-d30c-4256-bfb5-7aa87a83f7a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\Base">
+      <UniqueIdentifier>{fa782f64-35a8-47d6-8932-0794be7e44cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VS_Object.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+    <FxCompile Include="VS_GouraudShading.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+    <FxCompile Include="VS_WorldPosition.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_GouraudShading.hlsl">
+      <Filter>リソース ファイル\PixelShader\Shading</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_PhongShading.hlsl">
+      <Filter>リソース ファイル\PixelShader\Shading</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Specular.hlsl">
+      <Filter>リソース ファイル\PixelShader\Shading</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_LimLight.hlsl">
+      <Filter>リソース ファイル\PixelShader\Shading</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_TexColor.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_DistanceFog.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_HeightFog.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_ScreenUV.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="VS_ScreenPosition.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_PolarCoordinate.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Dissolve.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Moss.hlsl">
+      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    </FxCompile>
+    <FxCompile Include="VS_Bumpmap.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Bumpmap.hlsl">
+      <Filter>リソース ファイル\PixelShader\Bumpmap</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_ParallaxMapping.hlsl">
+      <Filter>リソース ファイル\PixelShader\Bumpmap</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_ParallaxOcclusion.hlsl">
+      <Filter>リソース ファイル\PixelShader\Bumpmap</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Monochrome.hlsl">
+      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Sepia.hlsl">
+      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Dot.hlsl">
+      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Posterization.hlsl">
+      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_RGBSplit.hlsl">
+      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_Effect.hlsl">
+      <Filter>リソース ファイル\PixelShader\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="PS_WaterPlane.hlsl">
+      <Filter>リソース ファイル\PixelShader\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="VS_SpriteWorldPosition.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CameraDCC.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraWater.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraWipe.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometory.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="LightBase.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshBuffer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveLight.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Startup.cpp">
+      <Filter>Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraBase.cpp">
+      <Filter>Camera\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneRoot.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CameraDCC.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraWater.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraWipe.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometory.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="LightBase.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshBuffer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.hpp">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraBase.h">
+      <Filter>Camera\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneRoot.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
