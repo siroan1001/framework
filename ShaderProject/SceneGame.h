@@ -9,4 +9,3 @@ public:
 	void Update(float tick);
 	void Draw();
 };
-

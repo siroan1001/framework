@@ -44,6 +44,9 @@
     <Filter Include="Camera\Base">
       <UniqueIdentifier>{fa782f64-35a8-47d6-8932-0794be7e44cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{c80ce99c-8dad-411f-865c-655b66f9fc84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="VS_Object.hlsl">
@@ -186,6 +189,12 @@
     <ClCompile Include="SceneRoot.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraDCC.h">
@@ -244,6 +253,12 @@
     </ClInclude>
     <ClInclude Include="SceneRoot.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

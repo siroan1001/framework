@@ -345,6 +345,8 @@
     <ClCompile Include="MeshBuffer.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="MoveLight.cpp" />
+    <ClCompile Include="ObjectBase.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneRoot.cpp" />
@@ -367,6 +369,8 @@
     <ClInclude Include="MeshBuffer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="MoveLight.h" />
+    <ClInclude Include="ObjectBase.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SceneBase.hpp" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneRoot.h" />

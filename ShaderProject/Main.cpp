@@ -23,9 +23,9 @@ HRESULT Init(HWND hWnd, UINT width, UINT height)
 	g_pScene->Init();
 
 	// ‰ŠúƒŠƒ\[ƒXì¬
-	auto rtv = g_pScene->CreateObj<RenderTarget>("RTV");
+	auto rtv = g_pScene->CreateObj<RenderTarget>("RTV", eObjectTag::E_OBJ_TAG_RTV);
 	rtv->CreateFromScreen();
-	auto dsv = g_pScene->CreateObj<DepthStencil>("DSV");
+	auto dsv = g_pScene->CreateObj<DepthStencil>("DSV", eObjectTag::E_OBJ_TAG_DSV);
 	hr = dsv->Create(width, height, false);
 
 	SetRenderTargets(1, &rtv, dsv);
