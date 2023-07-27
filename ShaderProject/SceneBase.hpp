@@ -8,6 +8,10 @@
 #include <vector>
 #include <Windows.h>
 
+#include "BaseProperty.h"
+
+#include "Player.h"
+
 // @brief シーン追加用オブジェクト
 class SceneObjectBase
 {
@@ -143,19 +147,38 @@ template<class T> T* SceneBase::GetObj(const char* name)
     return ptr->m_pObject.m_pObj.get();
 }
 
-template<class T> std::list<T*> SceneBase::GetObjswithTag(eObjectTag tag)
+//template<class T>
+//std::list<T*> SceneBase::GetObjswithTag(eObjectTag tag)
+//{
+//	std::list<T*> result;
+//
+//	for (const auto pair : m_objects)
+//	{
+//		std::shared_ptr<SceneObject<Player>> objBasePtr = std::dynamic_pointer_cast<SceneObject<Player>>(pair.second);
+//		if (objBasePtr && objBasePtr->m_pObject.m_tag == tag)
+//		{
+//			std::shared_ptr<T> ptr = std::dynamic_pointer_cast<T>(objBasePtr->m_pObject.m_pObj);
+//			result.push_back(ptr.get());
+//		}
+//	}
+//
+//	return result;
+//}
+
+template<class T>
+std::list<T*> SceneBase::GetObjswithTag(eObjectTag tag)
 {
 	std::list<T*> result;
 
 	for (const auto& pair : m_objects)
 	{
-		std::shared_ptr<SceneObject<T>> obj = std::dynamic_pointer_cast<SceneObject<T>>(pair.second);
-		//const std::type_info& valueType = typeid(pair.second);	//playerなど
-		//bool typeFlag = std::is_base_of<valueType, T>::value;	//ObjectBaseなど
-		//std::shared_ptr<SceneObject<T>> obj = 
-		if (obj && obj->m_pObject.m_tag == tag)
+		std::shared_ptr<SceneObjectBase> objBasePtr = pair.second;
+		SceneObject<T>* derivedObjPtr = static_cast<SceneObject<T>*>(objBasePtr.get());
+
+		if (derivedObjPtr && derivedObjPtr->m_pObject.m_tag == tag)
 		{
-			result.push_back(obj->m_pObject.m_pObj.get());
+			std::shared_ptr<T> ptr = std::dynamic_pointer_cast<T>(derivedObjPtr->m_pObject.m_pObj);
+			result.push_back(ptr.get());
 		}
 	}
 

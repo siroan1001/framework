@@ -37,30 +37,13 @@ void ObjectBase::Draw()
 	//	シェーダーの取得
 	Shader* shader[] = {
 		SceneBase::GetObj<Shader>("VS_Object"),
-		//GetObj<Shader>("VS_GouraudShading"),
 		SceneBase::GetObj<Shader>("PS_TexColor"),
-		//GetObj<Shader>("PS_PhongShading"),
-		//GetObj<Shader>("PS_GouraudShading"),
-		//GetObj<Shader>("PS_Specular"),
-		//GetObj<Shader>("VS_WorldPosition"),
-		//GetObj<Shader>("PS_LimLight")
 	};
 	int shaderPair[][2] = {
 		{0, 1}, //	通常表示
-		//{0, 3},	//	フォンシェーディング
-		//{1, 4},	//	グローシェーディング
-		//{6, 5},	//	鏡面反射
-		//{6, 7},	//	リムライト
 	};
 
-	std::list<ObjectBase*> objlist = SceneBase::GetObjswithTag<ObjectBase>(eObjectTag::E_OBJ_TAG_OBJ);
-
-	for (ObjectBase* obj : objlist)
-	{
-		obj->Draw();
-	}
-
-	//	描画
+	////	描画
 	//int drawNum = _countof(shaderPair);
 	//for (int i = 0; i < drawNum; ++i)
 	//{
