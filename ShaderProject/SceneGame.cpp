@@ -6,6 +6,7 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "CameraGameMain.h"
 
 void SceneGame::Init()
 {
@@ -31,6 +32,11 @@ void SceneGame::Init()
 	Player* modelB = CreateObj<Player>("ModelB", eObjectTag::E_OBJ_TAG_OBJ);
 	Enemy*  modelC = CreateObj<Enemy> ("ModelC", eObjectTag::E_OBJ_TAG_OBJ);
 	
+	CameraBase* mainCam = CreateObj<CameraGameMain>("GameCam", eObjectTag::E_OBJ_TAG_CAM);
+	mainCam->SetPos(DirectX::XMFLOAT3(0.0f, 5.0f, 10.0f));
+	mainCam->SetLook(DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f));
+	mainCam->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_useCam = mainCam;
 }
 void SceneGame::Uninit()
 {

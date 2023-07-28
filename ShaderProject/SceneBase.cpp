@@ -2,6 +2,7 @@
 
 SceneBase::Objects SceneBase::m_objects;
 SceneBase::Items SceneBase::m_items;
+CameraBase* SceneBase::m_useCam;
 
 SceneBase::SceneBase()
 	: m_pParent(nullptr)

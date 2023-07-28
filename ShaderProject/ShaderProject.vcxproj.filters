@@ -201,6 +201,12 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraGameMain.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraDCC.h">
@@ -272,5 +278,17 @@
     <ClInclude Include="Enemy.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Stage.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraGameMain.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ShaderProject.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

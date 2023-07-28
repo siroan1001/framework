@@ -109,19 +109,9 @@ void SceneRoot::Update(float tick)
 {
 	CameraBase* pCamera = GetObj<CameraBase>("Camera");
 	LightBase* pLight = GetObj<LightBase>("Light");
-	//if (!IsKeyPress(VK_SHIFT))
-	//{
-	//	pCamera->Update();
-	//	pLight->Update();
-	//	return;
-	//}
 
 	//// SHIFTキーが押されてれば、シーンの切り替え処理
 	int idx = m_index;
-	//if (IsKeyTrigger(VK_LEFT)) --idx;
-	//if (IsKeyTrigger(VK_RIGHT)) ++idx;
-	//if (idx < 0) idx = SCENE_MAX - 1;
-	//if (idx >= SCENE_MAX) idx = 0;
 
 	if (idx != m_index)
 	{
@@ -140,7 +130,7 @@ void SceneRoot::Update(float tick)
 }
 void SceneRoot::Draw()
 {
-	CameraBase* pCamera = GetObj<CameraBase>("Camera");
+	CameraBase* pCamera = GetCamera();
 	LightBase* pLight = GetObj<LightBase>("Light");
 
 	DirectX::XMFLOAT4X4 fmat;

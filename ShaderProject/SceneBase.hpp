@@ -11,6 +11,7 @@
 #include "BaseProperty.h"
 
 #include "Player.h"
+#include "CameraBase.h"
 
 // @brief シーン追加用オブジェクト
 class SceneObjectBase
@@ -74,6 +75,9 @@ public:
 	template<class T> static T* GetObj(const char* name);
 	template<class T> static std::list<T*> GetObjswithTag(eObjectTag tag);
 
+	static void SetCamera(CameraBase* cam) { m_useCam = cam; }
+	static CameraBase* GetCamera() { return m_useCam; }
+
 	// 継承シーンの一通りの処理
 	virtual void Init() = 0;
 	virtual void Uninit() = 0;
@@ -87,6 +91,8 @@ protected:
 	SceneBase* m_pParent;
 	SceneBase* m_pSubScene;
 	static Items m_items;
+
+	static CameraBase* m_useCam;
 };
 
 /// <summary>
