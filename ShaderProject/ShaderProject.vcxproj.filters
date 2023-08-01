@@ -47,6 +47,9 @@
     <Filter Include="Object">
       <UniqueIdentifier>{c80ce99c-8dad-411f-865c-655b66f9fc84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{d40ceab9-aa7e-435d-aa18-64121a52a33f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="VS_Object.hlsl">
@@ -132,15 +135,6 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CameraDCC.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraWater.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraWipe.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
     <ClCompile Include="DirectX.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -161,9 +155,6 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Startup</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveLight.cpp">
-      <Filter>Light</Filter>
     </ClCompile>
     <ClCompile Include="SceneGame.cpp">
       <Filter>Scene</Filter>
@@ -195,9 +186,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="BaseProperty.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Object</Filter>
     </ClCompile>
@@ -207,17 +195,17 @@
     <ClCompile Include="CameraGameMain.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
+    <ClCompile Include="MoveLight.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManeger.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CameraDCC.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraWater.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraWipe.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="Defines.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -241,9 +229,6 @@
     </ClInclude>
     <ClInclude Include="Main.h">
       <Filter>Startup</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveLight.h">
-      <Filter>Light</Filter>
     </ClInclude>
     <ClInclude Include="SceneGame.h">
       <Filter>Scene</Filter>
@@ -284,6 +269,15 @@
     </ClInclude>
     <ClInclude Include="CameraGameMain.h">
       <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManeger.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,9 +2,18 @@
 #include "BaseProperty.h"
 #include <DirectXMath.h>
 #include "Model.h"
+#include <vector>
+#include "ShaderManeger.h"
 
 class ObjectBase : public BaseProperty
 {
+public:
+	struct ShaderPair
+	{
+		ShaderManeger::VSKind vsKind;
+		ShaderManeger::PSKind psKind;
+	};
+
 public:
 	ObjectBase();
 	~ObjectBase() {};
@@ -19,10 +28,12 @@ public:
 	DirectX::XMFLOAT3 GetRotation() { return m_Rot; };
 	DirectX::XMFLOAT3 GetScale()    { return m_Size; };
 
-private:
+protected:
 	DirectX::XMFLOAT3 m_Pos;
 	DirectX::XMFLOAT3 m_Rot;
 	DirectX::XMFLOAT3 m_Size;
 	Model* m_pModel;
+	std::vector<ShaderPair> m_ShaderPair;
+	int m_useShaderPair;
 };
 

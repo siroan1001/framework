@@ -52,21 +52,8 @@ void SceneRoot::Init()
 		0.0f, 1.0f,
 		SCENE_GAME
 	};
-	//FILE* fp;
-	//fopen_s(&fp, SettingFileName, "rb");
-	//if (fp)
-	//{
-	//	fread(&setting, sizeof(ViewSetting), 1, fp);
-	//	fclose(fp);
-	//}
 
 	//全シーンで共通して使うものを作成
-
-	// カメラの作成
-	CameraBase* pCamera = CreateObj<CameraDCC>("Camera", eObjectTag::E_OBJ_TAG_CAM);
-	pCamera->SetPos(setting.camPos);
-	pCamera->SetLook(setting.camLook);
-	pCamera->SetUp(setting.camUp);
 
 	// ライトの作成
 	MoveLight* pLight = CreateObj<MoveLight>("Light", eObjectTag::E_OBJ_TAG_LIGHT);
@@ -74,9 +61,7 @@ void SceneRoot::Init()
 	pLight->SetHSV(setting.lightH, setting.lightSV);
 	pLight->UpdateParam();
 
-	// モデルの読み込み
-	//Model* pModel = CreateObj<Model>("Model");
-	//pModel->Load("Assets/Model/spot/spot.fbx", 1.0f, true);
+	ShaderManeger& ShaderMane = ShaderManeger::GetInstance();
 
 	// シーンの作成
 	m_index = setting.index;
