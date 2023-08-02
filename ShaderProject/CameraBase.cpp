@@ -4,6 +4,7 @@
 CameraBase::CameraBase()
 	: m_pos(0.0f, 0.0f, -10.0f), m_look(0.0f, 0.0f, 0.0f), m_up(0.0f, 1.0f, 0.0f)
 	, m_fovy(DirectX::XMConvertToRadians(60.0f)), m_aspect(16.0f / 9.0f), m_near(0.2f), m_far(1000.0f)
+	, m_CamFlag(false)
 {
 }
 CameraBase::~CameraBase()
@@ -40,9 +41,10 @@ DirectX::XMFLOAT4X4 CameraBase::GetView(bool transpose)
 
 DirectX::XMFLOAT4X4 CameraBase::GetProj(bool transpose)
 {
-	DirectX::XMMATRIX mat = DirectX::XMMatrixPerspectiveFovLH(m_fovy, m_aspect, m_near, m_far);
-	if (transpose)
-		mat = DirectX::XMMatrixTranspose(mat);
+	DirectX::XMMATRIX mat;
+	if (!m_CamFlag)	mat = DirectX::XMMatrixPerspectiveFovLH(m_fovy, m_aspect, m_near, m_far);
+	else mat = DirectX::XMMatrixOrthographicLH(16.0, 9.0f, 0.5f, 1000.0f);
+	if (transpose)	mat = DirectX::XMMatrixTranspose(mat);
 	DirectX::XMFLOAT4X4 fmat;
 	DirectX::XMStoreFloat4x4(&fmat, mat);
 	return fmat;

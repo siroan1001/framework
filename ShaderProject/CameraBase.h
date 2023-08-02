@@ -31,6 +31,7 @@ public:
 protected:
 	DirectX::XMFLOAT3 m_pos, m_look, m_up;
 	float m_fovy, m_aspect, m_near, m_far;
+	bool m_CamFlag;
 };
 
 #endif // __CAMERA_BASE_H__

@@ -3,7 +3,7 @@
 class CameraGameMain : public CameraBase
 {
 public:
-	CameraGameMain() {};
+	CameraGameMain() { m_CamFlag = true; };
 	~CameraGameMain() {};
 	void Update() final {};
 };
