@@ -61,7 +61,7 @@ void SceneRoot::Init()
 	pLight->SetHSV(setting.lightH, setting.lightSV);
 	pLight->UpdateParam();
 
-	ShaderManeger& ShaderMane = ShaderManeger::GetInstance();
+	ShaderManager& ShaderMane = ShaderManager::GetInstance();
 
 	// ƒV[ƒ“‚Ìì¬
 	m_index = setting.index;

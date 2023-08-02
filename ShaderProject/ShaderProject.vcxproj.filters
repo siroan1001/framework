@@ -11,21 +11,6 @@
     <Filter Include="リソース ファイル\VertexShader">
       <UniqueIdentifier>{e4c96e83-672c-4720-aa96-8ee0c9525558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="リソース ファイル\PixelShader\Shading">
-      <UniqueIdentifier>{9f5d8094-adb6-4284-85c9-ae3508531552}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\PixelShader\Visual">
-      <UniqueIdentifier>{97f6bcd0-2b86-45a0-aaf6-ede9b828bc50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\PixelShader\Bumpmap">
-      <UniqueIdentifier>{a909e82b-f6f9-4a04-a3cf-5ed5a7507c85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\PixelShader\PostProcess">
-      <UniqueIdentifier>{5458150f-a74a-41fb-a885-fbf5427fdc89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\PixelShader\Effect">
-      <UniqueIdentifier>{4efc8691-b39c-4c65-b1e5-8ca7ac788a47}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{c3e0025d-d744-4505-964a-4b8ad1c6d63b}</UniqueIdentifier>
     </Filter>
@@ -55,82 +40,16 @@
     <FxCompile Include="VS_Object.hlsl">
       <Filter>リソース ファイル\VertexShader</Filter>
     </FxCompile>
-    <FxCompile Include="VS_GouraudShading.hlsl">
-      <Filter>リソース ファイル\VertexShader</Filter>
-    </FxCompile>
-    <FxCompile Include="VS_WorldPosition.hlsl">
-      <Filter>リソース ファイル\VertexShader</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_GouraudShading.hlsl">
-      <Filter>リソース ファイル\PixelShader\Shading</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_PhongShading.hlsl">
-      <Filter>リソース ファイル\PixelShader\Shading</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Specular.hlsl">
-      <Filter>リソース ファイル\PixelShader\Shading</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_LimLight.hlsl">
-      <Filter>リソース ファイル\PixelShader\Shading</Filter>
-    </FxCompile>
     <FxCompile Include="PS_TexColor.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+      <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
-    <FxCompile Include="PS_DistanceFog.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    <FxCompile Include="PS_Color.hlsl">
+      <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
-    <FxCompile Include="PS_HeightFog.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
+    <FxCompile Include="PS_OutLine.hlsl">
+      <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
-    <FxCompile Include="PS_ScreenUV.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
-    </FxCompile>
-    <FxCompile Include="VS_ScreenPosition.hlsl">
-      <Filter>リソース ファイル\VertexShader</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_PolarCoordinate.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Dissolve.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Moss.hlsl">
-      <Filter>リソース ファイル\PixelShader\Visual</Filter>
-    </FxCompile>
-    <FxCompile Include="VS_Bumpmap.hlsl">
-      <Filter>リソース ファイル\VertexShader</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Bumpmap.hlsl">
-      <Filter>リソース ファイル\PixelShader\Bumpmap</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_ParallaxMapping.hlsl">
-      <Filter>リソース ファイル\PixelShader\Bumpmap</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_ParallaxOcclusion.hlsl">
-      <Filter>リソース ファイル\PixelShader\Bumpmap</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Monochrome.hlsl">
-      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Sepia.hlsl">
-      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Dot.hlsl">
-      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Posterization.hlsl">
-      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_RGBSplit.hlsl">
-      <Filter>リソース ファイル\PixelShader\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_Effect.hlsl">
-      <Filter>リソース ファイル\PixelShader\Effect</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_WaterPlane.hlsl">
-      <Filter>リソース ファイル\PixelShader\Effect</Filter>
-    </FxCompile>
-    <FxCompile Include="VS_SpriteWorldPosition.hlsl">
+    <FxCompile Include="VS_OutLine.hlsl">
       <Filter>リソース ファイル\VertexShader</Filter>
     </FxCompile>
   </ItemGroup>
@@ -198,11 +117,14 @@
     <ClCompile Include="MoveLight.cpp">
       <Filter>Light</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderManeger.cpp">
+    <ClCompile Include="ShaderManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="StageObject.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -273,11 +195,14 @@
     <ClInclude Include="MoveLight.h">
       <Filter>Light</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderManeger.h">
+    <ClInclude Include="ShaderManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="StageObject.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

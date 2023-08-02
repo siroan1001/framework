@@ -4,19 +4,19 @@
 #include "LightBase.h"
 #include "SceneBase.hpp"
 #include "Shader.h"
-#include "ShaderManeger.h"
+#include "ShaderManager.h"
 
 ObjectBase::ObjectBase() : 
 	m_Pos(0.0f, 0.0f, 0.0f),
 	m_Rot(0.0f, 0.0f, 0.0f),
-	m_Size(1.0f, 1.0f, 1.0f),
-	m_useShaderPair(0)
+	m_Size(1.0f, 1.0f, 1.0f)
 {
-	m_pModel = new Model();
-	m_pModel->Load("Assets/Model/spot/spot.fbx", 1.0f, true);
+	m_ShaderPair.vsKind = ShaderManager::VSKind::E_VS_OBJECT;
+	m_ShaderPair.psKind = ShaderManager::PSKind::E_PS_TEXCOLOR;
+}
 
-	ShaderPair pair = { ShaderManeger::VSKind::E_VS_OBJECT, ShaderManeger::PSKind::E_PS_TEXCOLOR };
-	m_ShaderPair.push_back(pair);
+ObjectBase::~ObjectBase()
+{
 }
 
 void ObjectBase::Draw()
@@ -29,6 +29,7 @@ void ObjectBase::Draw()
 	DirectX::XMStoreFloat4x4(&mat[0], DirectX::XMMatrixIdentity());
 	mat[1] = pCamera->GetView();
 	mat[2] = pCamera->GetProj();
+
 	//	定数バッファに渡すライトの情報
 	DirectX::XMFLOAT3 lightDir = pLight->GetDirection();
 	DirectX::XMFLOAT4 light[] = {
@@ -42,16 +43,8 @@ void ObjectBase::Draw()
 	DirectX::XMFLOAT4 camera[] = { {camPos.x, camPos.y, camPos.z, 0.0f} };
 
 	//	シェーダーの取得
-	Shader* shader[] = {
-		SceneBase::GetObj<Shader>("VS_Object"),
-		SceneBase::GetObj<Shader>("PS_TexColor"),
-	};
-	int shaderPair[][2] = {
-		{0, 1}, //	通常表示
-	};
-
-	VertexShader* VS = ShaderManeger::GetVSShader(m_ShaderPair[m_useShaderPair].vsKind);
-	PixelShader* PS = ShaderManeger::GetPSShader(m_ShaderPair[m_useShaderPair].psKind);
+	VertexShader* VS = ShaderManager::GetVSShader(m_ShaderPair.vsKind);
+	PixelShader* PS = ShaderManager::GetPSShader(m_ShaderPair.psKind);
 
 	//　描画
 	//	座標の更新
@@ -59,16 +52,36 @@ void ObjectBase::Draw()
 		DirectX::XMMatrixTranspose(
 			DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, m_Pos.z)));
 
-	//	定数バッファの更新
-	VS->WriteBuffer(0, mat);
-	VS->WriteBuffer(1, light);
-	PS->WriteBuffer(0, light);
-	PS->WriteBuffer(0, camera);
+	//if (m_ShaderPair.vsKind == ShaderManager::VSKind::E_VS_OUTLINE)	m_ShaderPair.vsBuf.Buf.OutLineBuf.mat = mat;
+
+	//	定数バッファ設定
+	WriteShaderBuffer(VS, PS);
 
 	//	描画
 	m_pModel->SetVertexShader(VS);
 	m_pModel->SetPixelShader(PS);
 	m_pModel->Draw();
+}
 
+void ObjectBase::WriteShaderBuffer(VertexShader* VS, PixelShader* PS)
+{
+	switch (m_ShaderPair.vsKind)
+	{
+	case ShaderManager::VSKind::E_VS_OUTLINE:
+		VS->WriteBuffer(0, &m_ShaderPair.vsBuf.Buf.OutLineBuf);
+		break;
+	default:
+		break;
+	}
 
+	switch (m_ShaderPair.psKind)
+	{
+	case ShaderManager::PSKind::E_PS_COLOR:
+		PS->WriteBuffer(0, &m_ShaderPair.psBuf.Buf.ColorBuf);
+		break;
+	case ShaderManager::PSKind::E_PS_OUTLINE:
+		break;
+	default:
+		break;
+	}
 }

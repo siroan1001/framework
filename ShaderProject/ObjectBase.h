@@ -3,22 +3,26 @@
 #include <DirectXMath.h>
 #include "Model.h"
 #include <vector>
-#include "ShaderManeger.h"
+#include "ShaderManager.h"
 
 class ObjectBase : public BaseProperty
 {
 public:
 	struct ShaderPair
 	{
-		ShaderManeger::VSKind vsKind;
-		ShaderManeger::PSKind psKind;
+		ShaderManager::VSKind vsKind;
+		ShaderManager::PSKind psKind;
+		ShaderManager::VS_BUF vsBuf;
+		ShaderManager::PS_BUF psBuf;
 	};
 
 public:
 	ObjectBase();
-	~ObjectBase() {};
+	~ObjectBase();
 	virtual void Update() = 0;
 	void Draw();
+
+	void WriteShaderBuffer(VertexShader* VS, PixelShader* PS);
 
 	void SetPosition(DirectX::XMFLOAT3 pos) { m_Pos = pos; };
 	void SetRotation(DirectX::XMFLOAT3 rot) { m_Rot = rot; };
@@ -32,8 +36,7 @@ protected:
 	DirectX::XMFLOAT3 m_Pos;
 	DirectX::XMFLOAT3 m_Rot;
 	DirectX::XMFLOAT3 m_Size;
-	Model* m_pModel;
-	std::vector<ShaderPair> m_ShaderPair;
-	int m_useShaderPair;
+	std::shared_ptr<Model> m_pModel;
+	ShaderPair m_ShaderPair;
 };
 

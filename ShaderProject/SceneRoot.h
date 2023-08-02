@@ -2,7 +2,7 @@
 #define __SCENE_ROOT_H__
 
 #include "SceneBase.hpp"
-#include "ShaderManeger.h"
+#include "ShaderManager.h"
 
 class SceneRoot : public SceneBase
 {
