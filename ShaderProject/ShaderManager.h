@@ -9,15 +9,12 @@ public:
 	enum class VSKind
 	{
 		E_VS_OBJECT = 0,
-		E_VS_OUTLINE,
 		E_VS_MAX,
 	};
 
 	enum class PSKind
 	{
 		E_PS_TEXCOLOR = 0,
-		E_PS_COLOR,
-		E_PS_OUTLINE,
 		E_PS_MAX,
 	};
 
@@ -26,17 +23,11 @@ public:
 
 	};
 
-	struct VS_OUTLINE
-	{
-		DirectX::XMFLOAT4X4 mat[3];
-	};
-
 	struct VS_BUF
 	{
 		union
 		{
 			ShaderManager::VS_OBJECT ObjectBuf;
-			ShaderManager::VS_OUTLINE OutLineBuf;
 		}Buf;
 	};
 
@@ -45,25 +36,11 @@ public:
 
 	};
 
-	struct PS_COLOR_BUF
-	{
-		DirectX::XMFLOAT3 color;
-	};
-
-	struct PS_OUTLINE_BUF
-	{
-		float outlineWidth;
-	};
-
-
-
 	struct PS_BUF
 	{
 		union
 		{
 			ShaderManager::PS_TEXCOLOR_BUF TexcolerBuf;
-			ShaderManager::PS_COLOR_BUF ColorBuf;
-			ShaderManager::PS_OUTLINE_BUF OutLineBuf;
 		}Buf;
 	};
 

@@ -1,4 +1,4 @@
-#include "CameraDCC.h"
+#include "CameraDebug.h"
 #include "Input.h"
 
 
@@ -11,15 +11,16 @@ enum CameraDCCKind
 	CAM_DCC_FLIGHT,
 };
 
-CameraDCC::CameraDCC()
+CameraDebug::CameraDebug()
 	: m_state(CAM_DCC_NONE)
 	, m_oldPos{ 0, 0 }
 {
+	//m_CamFlag = true;
 }
-CameraDCC::~CameraDCC()
+CameraDebug::~CameraDebug()
 {
 }
-void CameraDCC::Update()
+void CameraDebug::Update()
 {
 	UpdateState();
 	if (m_state == CAM_DCC_NONE) return;
@@ -50,7 +51,7 @@ void CameraDCC::Update()
 	case CAM_DCC_FLIGHT:	UpdateFlight(arg);	break;
 	}
 }
-void CameraDCC::UpdateState()
+void CameraDebug::UpdateState()
 {
 	CameraDCCKind prev = (CameraDCCKind)m_state;
 	if (IsKeyPress(VK_MENU))
@@ -73,7 +74,7 @@ void CameraDCC::UpdateState()
 		GetCursorPos(&m_oldPos);
 	}
 }
-void CameraDCC::UpdateOrbit(Argument& arg)
+void CameraDebug::UpdateOrbit(Argument& arg)
 {
 	// マウスの移動量 / 画面サイズ の比率から、画面全体でどれだけ回転するか指定する。
 	float angleX =  360.0f * arg.mouseMove.x / 1280.0f;
@@ -95,7 +96,7 @@ void CameraDCC::UpdateOrbit(Argument& arg)
 	DirectX::XMStoreFloat3(&m_up, DirectX::XMVector3Normalize(DirectX::XMVector3Cross(DirectX::XMVector3Normalize(vRelative), vAxis)));
 
 }
-void CameraDCC::UpdateTrack(Argument& arg)
+void CameraDebug::UpdateTrack(Argument& arg)
 {
 	// 高さA、底辺Bとする三角形について tanΘ = A / Bが成り立つ
 	// 上記式をもとに割り出した遠景の高さを、移動量 / 画面サイズ の比率から、移動量として求める
@@ -113,13 +114,13 @@ void CameraDCC::UpdateTrack(Argument& arg)
 	DirectX::XMStoreFloat3(&m_pos, DirectX::XMVectorAdd(arg.vCamPos, vCamMove));
 	DirectX::XMStoreFloat3(&m_look, DirectX::XMVectorAdd(arg.vCamLook, vCamMove));
 }
-void CameraDCC::UpdateDolly(Argument& arg)
+void CameraDebug::UpdateDolly(Argument& arg)
 {
 	float rate = arg.focus / m_far;
 	DirectX::XMVECTOR vMove = DirectX::XMVectorScale(arg.vCamFront, m_far * 0.01f * rate * (arg.mouseMove.x + arg.mouseMove.y));
 	DirectX::XMStoreFloat3(&m_pos, DirectX::XMVectorAdd(arg.vCamPos, vMove));
 }
-void CameraDCC::UpdateFlight(Argument& arg)
+void CameraDebug::UpdateFlight(Argument& arg)
 {
 	// マウスの移動量 / 画面サイズ の比率から、画面全体でどれだけ回転するか指定する。
 	float angleX = 360.0f * arg.mouseMove.x / 1280.0f;

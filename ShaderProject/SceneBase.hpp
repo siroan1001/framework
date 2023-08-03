@@ -59,7 +59,20 @@ class SceneBase
 private:
 	using Objects = std::map<std::string, std::shared_ptr<SceneObjectBase>>;
 	using Items = std::list<std::string>;
+
 public:
+	enum eCamType
+	{
+		E_CAM_TYPE_GAME_MAIN = 0,
+		E_CAM_TYPE_GAME_DEBUG,
+		E_CAM_TYPE_MAX,
+	};
+
+public:
+	static void init();
+	static void uninit();
+
+
 	SceneBase();
 	virtual ~SceneBase();
 	void _update(float tick);
@@ -75,8 +88,7 @@ public:
 	template<class T> static T* GetObj(const char* name);
 	template<class T> static std::list<T*> GetObjswithTag(eObjectTag tag);
 
-	static void SetCamera(CameraBase* cam) { m_useCam = cam; }
-	static CameraBase* GetCamera() { return m_useCam; }
+	static CameraBase* GetCamera() { return m_pCam[m_CamType]; }
 
 	// åpè≥ÉVÅ[ÉìÇÃàÍí ÇËÇÃèàóù
 	virtual void Init() = 0;
@@ -92,7 +104,8 @@ protected:
 	SceneBase* m_pSubScene;
 	static Items m_items;
 
-	static CameraBase* m_useCam;
+	static CameraBase* m_pCam[E_CAM_TYPE_MAX];
+	static eCamType m_CamType;
 };
 
 /// <summary>

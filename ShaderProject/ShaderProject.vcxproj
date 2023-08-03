@@ -169,18 +169,6 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <FxCompile Include="PS_Color.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="PS_OutLine.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
     <FxCompile Include="PS_TexColor.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
@@ -193,15 +181,10 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="VS_OutLine.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraBase.cpp" />
+    <ClCompile Include="CameraDebug.cpp" />
     <ClCompile Include="CameraGameMain.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -211,7 +194,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MeshBuffer.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="MoveLight.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -229,6 +211,7 @@
   <ItemGroup>
     <ClInclude Include="BaseProperty.h" />
     <ClInclude Include="CameraBase.h" />
+    <ClInclude Include="CameraDebug.h" />
     <ClInclude Include="CameraGameMain.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DirectX.h" />
@@ -239,7 +222,6 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="MeshBuffer.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ModelManager.h" />
     <ClInclude Include="MoveLight.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="Player.h" />

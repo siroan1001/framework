@@ -27,16 +27,5 @@ StageObject::StageObject(int x, int y, DirectX::XMFLOAT3* pPos)
     //　モデル読み込み
     m_pModel = std::make_shared<Model>();
     m_pModel->Load("Assets/Model/stage/stage.fbx");
-
-    ////　使用するシェーダーの種類を指定
-    //m_ShaderPair.vsKind = ShaderManager::VSKind::E_VS_OBJECT;
-    //m_ShaderPair.psKind = ShaderManager::PSKind::E_PS_COLOR;
-
-    ////　カラー指定（デバッグ用）
-    //int randnum[3] = { rand() % 256, rand() % 256, rand() % 256 };
-    //m_ShaderPair.psBuf.Buf.ColorBuf.color.x = randnum[0] / 256.0f;
-    //m_ShaderPair.psBuf.Buf.ColorBuf.color.y = randnum[1] / 256.0f;
-    //m_ShaderPair.psBuf.Buf.ColorBuf.color.z = randnum[2] / 256.0f;
-
 }
 

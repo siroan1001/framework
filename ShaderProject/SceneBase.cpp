@@ -1,13 +1,37 @@
 #include "SceneBase.hpp"
 
+#include "CameraGameMain.h"
+#include "CameraDebug.h"
+
 SceneBase::Objects SceneBase::m_objects;
 SceneBase::Items SceneBase::m_items;
-CameraBase* SceneBase::m_useCam;
+CameraBase* SceneBase::m_pCam[SceneBase::eCamType::E_CAM_TYPE_MAX];
+SceneBase::eCamType SceneBase::m_CamType;
+
+void SceneBase::init()
+{
+	CameraBase* Cam = CreateObj<CameraGameMain>("GameCam", eObjectTag::E_OBJ_TAG_CAM);
+	Cam->SetPos(DirectX::XMFLOAT3(3.0f, 2.5f, 3.0f));
+	Cam->SetLook(DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f));
+	Cam->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_pCam[eCamType::E_CAM_TYPE_GAME_MAIN] = Cam;
+	Cam = CreateObj<CameraDebug>("GameDebugCam", eObjectTag::E_OBJ_TAG_CAM);
+	m_pCam[eCamType::E_CAM_TYPE_GAME_DEBUG] = Cam;
+}
+
+void SceneBase::uninit()
+{
+	for (int i = 0; i < eCamType::E_CAM_TYPE_MAX; i++)
+	{
+		delete m_pCam[i];
+	}
+}
 
 SceneBase::SceneBase()
 	: m_pParent(nullptr)
 	, m_pSubScene(nullptr)
 {
+
 }
 SceneBase::~SceneBase()
 {

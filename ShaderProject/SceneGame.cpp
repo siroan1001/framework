@@ -8,20 +8,15 @@
 #include "Enemy.h"
 #include "Stage.h"
 #include "CameraGameMain.h"
+#include "CameraDebug.h"
 
 void SceneGame::Init()
 {
 	Player* modelA = CreateObj<Player>("ModelA", eObjectTag::E_OBJ_TAG_OBJ);
-	//Player* modelB = CreateObj<Player>("ModelB", eObjectTag::E_OBJ_TAG_OBJ);
-	//Enemy*  modelC = CreateObj<Enemy> ("ModelC", eObjectTag::E_OBJ_TAG_OBJ);
 
 	Stage* stage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
 	
-	CameraBase* mainCam = CreateObj<CameraGameMain>("GameCam", eObjectTag::E_OBJ_TAG_CAM);
-	mainCam->SetPos(DirectX::XMFLOAT3(3.0f, 2.5f, 3.0f));
-	mainCam->SetLook(DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f));
-	mainCam->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
-	m_useCam = mainCam;
+	m_CamType = eCamType::E_CAM_TYPE_GAME_DEBUG;
 }
 void SceneGame::Uninit()
 {

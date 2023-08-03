@@ -4,7 +4,7 @@
 #include "CameraBase.h"
 #include <Windows.h>
 
-class CameraDCC : public CameraBase
+class CameraDebug : public CameraBase
 {
 private:
 	struct Argument
@@ -18,8 +18,8 @@ private:
 		float focus;
 	};
 public:
-	CameraDCC();
-	~CameraDCC();
+	CameraDebug();
+	~CameraDebug();
 	void Update() final;
 
 private:

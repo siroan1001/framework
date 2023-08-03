@@ -1,6 +1,5 @@
 #include "SceneRoot.h"
 #include <stdio.h>
-#include "CameraDCC.h"
 #include "MoveLight.h"
 #include "Model.h"
 #include "Input.h"
@@ -63,6 +62,8 @@ void SceneRoot::Init()
 
 	ShaderManager& ShaderMane = ShaderManager::GetInstance();
 
+	SceneBase::init();
+
 	// ƒV[ƒ“‚Ìì¬
 	m_index = setting.index;
 	ChangeScene();
@@ -70,6 +71,8 @@ void SceneRoot::Init()
 
 void SceneRoot::Uninit()
 {
+	SceneBase::uninit();
+
 	//CameraBase* pCamera = GetObj<CameraBase>("Camera");
 	//MoveLight* pLight = GetObj<MoveLight>("Light");
 	//ViewSetting setting =
@@ -104,6 +107,8 @@ void SceneRoot::Update(float tick)
 		RemoveSubScene();
 		ChangeScene();
 	}
+
+	m_pCam[m_CamType]->Update();
 
 	// ƒJƒƒ‰‰Šú‰»
 	if (IsKeyTrigger('R'))

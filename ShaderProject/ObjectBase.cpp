@@ -52,8 +52,6 @@ void ObjectBase::Draw()
 		DirectX::XMMatrixTranspose(
 			DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, m_Pos.z)));
 
-	//if (m_ShaderPair.vsKind == ShaderManager::VSKind::E_VS_OUTLINE)	m_ShaderPair.vsBuf.Buf.OutLineBuf.mat = mat;
-
 	//	定数バッファ設定
 	WriteShaderBuffer(VS, PS);
 
@@ -67,20 +65,12 @@ void ObjectBase::WriteShaderBuffer(VertexShader* VS, PixelShader* PS)
 {
 	switch (m_ShaderPair.vsKind)
 	{
-	case ShaderManager::VSKind::E_VS_OUTLINE:
-		VS->WriteBuffer(0, &m_ShaderPair.vsBuf.Buf.OutLineBuf);
-		break;
 	default:
 		break;
 	}
 
 	switch (m_ShaderPair.psKind)
 	{
-	case ShaderManager::PSKind::E_PS_COLOR:
-		PS->WriteBuffer(0, &m_ShaderPair.psBuf.Buf.ColorBuf);
-		break;
-	case ShaderManager::PSKind::E_PS_OUTLINE:
-		break;
 	default:
 		break;
 	}

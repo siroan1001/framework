@@ -18,8 +18,6 @@ ShaderManager::ShaderManager()
 
 	const char* PSfile[] = {
 		"Assets/Shader/PS_TexColor.cso",
-		"Assets/Shader/PS_Color.cso",
-		"Assets/Shader/PS_OutLine.cso",
 	};
 
 	int num;

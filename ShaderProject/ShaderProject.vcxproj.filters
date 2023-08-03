@@ -43,15 +43,6 @@
     <FxCompile Include="PS_TexColor.hlsl">
       <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
-    <FxCompile Include="PS_Color.hlsl">
-      <Filter>リソース ファイル\PixelShader</Filter>
-    </FxCompile>
-    <FxCompile Include="PS_OutLine.hlsl">
-      <Filter>リソース ファイル\PixelShader</Filter>
-    </FxCompile>
-    <FxCompile Include="VS_OutLine.hlsl">
-      <Filter>リソース ファイル\VertexShader</Filter>
-    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectX.cpp">
@@ -123,8 +114,8 @@
     <ClCompile Include="StageObject.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="ModelManager.cpp">
-      <Filter>Manager</Filter>
+    <ClCompile Include="CameraDebug.cpp">
+      <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,8 +192,8 @@
     <ClInclude Include="StageObject.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="ModelManager.h">
-      <Filter>Manager</Filter>
+    <ClInclude Include="CameraDebug.h">
+      <Filter>Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
