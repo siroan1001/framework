@@ -21,10 +21,10 @@ void SceneBase::init()
 
 void SceneBase::uninit()
 {
-	for (int i = 0; i < eCamType::E_CAM_TYPE_MAX; i++)
-	{
-		delete m_pCam[i];
-	}
+	//for (int i = 0; i < eCamType::E_CAM_TYPE_MAX; i++)
+	//{
+	//	delete m_pCam[i];
+	//}
 }
 
 SceneBase::SceneBase()

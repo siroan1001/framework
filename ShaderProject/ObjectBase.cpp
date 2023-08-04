@@ -52,6 +52,13 @@ void ObjectBase::Draw()
 		DirectX::XMMatrixTranspose(
 			DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, m_Pos.z)));
 
+	if (m_ShaderPair.vsKind == ShaderManager::VSKind::E_VS_OBJECT)
+	{
+		m_ShaderPair.vsBuf.Buf.ObjectBuf.world = mat[0];
+		m_ShaderPair.vsBuf.Buf.ObjectBuf.view = mat[1];
+		m_ShaderPair.vsBuf.Buf.ObjectBuf.proj = mat[2];
+	}
+
 	//	定数バッファ設定
 	WriteShaderBuffer(VS, PS);
 
@@ -65,6 +72,9 @@ void ObjectBase::WriteShaderBuffer(VertexShader* VS, PixelShader* PS)
 {
 	switch (m_ShaderPair.vsKind)
 	{
+	case ShaderManager::VSKind::E_VS_OBJECT:
+		VS->WriteBuffer(0, &m_ShaderPair.vsBuf.Buf.ObjectBuf);
+		break;
 	default:
 		break;
 	}

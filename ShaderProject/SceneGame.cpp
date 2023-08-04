@@ -16,7 +16,7 @@ void SceneGame::Init()
 
 	Stage* stage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
 	
-	m_CamType = eCamType::E_CAM_TYPE_GAME_DEBUG;
+	m_CamType = eCamType::E_CAM_TYPE_GAME_MAIN;
 }
 void SceneGame::Uninit()
 {
