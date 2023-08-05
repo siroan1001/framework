@@ -43,6 +43,9 @@
     <FxCompile Include="PS_TexColor.hlsl">
       <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
+    <FxCompile Include="PS_GouraudShading.hlsl">
+      <Filter>リソース ファイル\PixelShader</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectX.cpp">

@@ -15,6 +15,7 @@ public:
 	enum class PSKind
 	{
 		E_PS_TEXCOLOR = 0,
+		E_PS_GOURAUDSHADING,
 		E_PS_MAX,
 	};
 
@@ -38,11 +39,17 @@ public:
 
 	};
 
+	struct PS_GOURAUDSHADING_BUF
+	{
+
+	};
+
 	struct PS_BUF
 	{
 		union
 		{
 			ShaderManager::PS_TEXCOLOR_BUF TexcolerBuf;
+			ShaderManager::PS_GOURAUDSHADING_BUF GouraudBuf;
 		}Buf;
 	};
 
