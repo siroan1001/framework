@@ -18,6 +18,7 @@ ShaderManager::ShaderManager()
 
 	const char* PSfile[] = {
 		"Assets/Shader/PS_TexColor.cso",
+		"Assets/Shader/PS_GouraudShading.cso",
 	};
 
 	int num;
