@@ -12,7 +12,9 @@
 
 void SceneGame::Init()
 {
-	Player* modelA = CreateObj<Player>("ModelA", eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[SceneGame::PlayerNum::E_PLAYER_NUM_1] = CreateObj<Player>("Player1", eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[SceneGame::PlayerNum::E_PLAYER_NUM_2] = CreateObj<Player>("Player2", eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[SceneGame::PlayerNum::E_PLAYER_NUM_2]->SetAIFlag(true);
 
 	Stage* stage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
 	

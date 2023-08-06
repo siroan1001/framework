@@ -12,7 +12,7 @@ ObjectBase::ObjectBase() :
 	m_Size(1.0f, 1.0f, 1.0f)
 {
 	m_ShaderPair.vsKind = ShaderManager::VSKind::E_VS_OBJECT;
-	m_ShaderPair.psKind = ShaderManager::PSKind::E_PS_GOURAUDSHADING;
+	m_ShaderPair.psKind = ShaderManager::PSKind::E_PS_TEXCOLOR;
 }
 
 ObjectBase::~ObjectBase()
