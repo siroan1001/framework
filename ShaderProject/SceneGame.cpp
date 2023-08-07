@@ -16,10 +16,10 @@ void SceneGame::Init()
 	Player* player;
 	player = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);
 	player->SetRotation(DirectX::XMFLOAT3(0.0f, 180.0f, 0.0f));
-	player->SetPosition(DirectX::XMFLOAT3(5.0f, 1.0f, -5.0f));
+	player->SetPosition(DirectX::XMFLOAT3(5.0f, 0.5f, -5.0f));
 	player = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_2], eObjectTag::E_OBJ_TAG_OBJ);
 	player->SetRotation(DirectX::XMFLOAT3(0.0f, -90.0f, 0.0f));
-	player->SetPosition(DirectX::XMFLOAT3(-5.0f, 1.0f, 5.0f));
+	player->SetPosition(DirectX::XMFLOAT3(-5.0f, 0.5f, 5.0f));
 	player->SetAIFlag(true);
 
 	Stage* stage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);

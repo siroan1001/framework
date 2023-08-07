@@ -17,7 +17,7 @@ ModelManager::ModelManager()
 {
 	std::shared_ptr<Model> model;
 	model = std::make_shared<Model>();
-	model->Load("Assets/Model/spot/spot.fbx", 0.7f);
+	model->Load("Assets/Model/player/player.fbx", 0.35f);
 	m_pModelList.push_back(model);
 	model = std::make_shared<Model>();;
 	model->Load("Assets/Model/stage/stage.fbx");
