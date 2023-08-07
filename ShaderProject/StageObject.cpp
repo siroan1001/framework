@@ -10,7 +10,7 @@ StageObject::StageObject(int x, int y, DirectX::XMFLOAT3* pPos)
 
     //　座標計算
     DirectX::XMFLOAT3 Center = *pPos;
-    float Size = 10.0f;
+    float Size = 12.0f;
     float Width = Size / Stage::SIZE;
 
     // グリッドの左上を計算

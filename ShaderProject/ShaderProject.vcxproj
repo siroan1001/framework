@@ -192,6 +192,7 @@
     <ClCompile Include="CameraGameMain.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameUI.cpp" />
     <ClCompile Include="Geometory.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LightBase.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameUI.h" />
     <ClInclude Include="Geometory.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LightBase.h" />

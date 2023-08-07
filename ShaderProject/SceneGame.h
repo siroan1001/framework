@@ -13,6 +13,14 @@ public:
 		E_PLAYER_NUM_MAX,
 	};
 
+	enum Action
+	{
+		E_ACTION_MENU = 0,
+		E_ACTION_ROLL,
+		E_ACTION_MOVE,
+		E_ACTION_MAX,
+	};
+
 public: 
 	void Init();
 	void Uninit();
@@ -20,5 +28,12 @@ public:
 	void Draw();
 
 private:
-	Player* m_pPlayer[E_PLAYER_NUM_MAX];
+	void ActionMenu();
+	void ActionRoll();
+	void ActionMove();
+
+private:
+	const char* m_Name[E_PLAYER_NUM_MAX] = { "Player1", "Player2" };
+	PlayerNum m_PlayerTurn;
+	Action m_Action;
 };

@@ -35,6 +35,9 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{d40ceab9-aa7e-435d-aa18-64121a52a33f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{e5d6cbed-5261-4971-af8f-ec20ed78eab8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="VS_Object.hlsl">
@@ -120,6 +123,9 @@
     <ClCompile Include="CameraDebug.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
+    <ClCompile Include="GameUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -197,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="CameraDebug.h">
       <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

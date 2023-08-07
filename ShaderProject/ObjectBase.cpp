@@ -48,9 +48,12 @@ void ObjectBase::Draw()
 
 	//　描画
 	//	座標の更新
-	DirectX::XMStoreFloat4x4(&mat[0],
-		DirectX::XMMatrixTranspose(
-			DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, m_Pos.z)));
+	DirectX::XMMATRIX S  = DirectX::XMMatrixScaling(m_Size.x, m_Size.y, m_Size.z);
+	DirectX::XMMATRIX Rz = DirectX::XMMatrixRotationZ(DirectX::XMConvertToRadians(m_Rot.z));
+	DirectX::XMMATRIX Rx = DirectX::XMMatrixRotationX(DirectX::XMConvertToRadians(m_Rot.x));
+	DirectX::XMMATRIX Ry = DirectX::XMMatrixRotationY(DirectX::XMConvertToRadians(m_Rot.y));
+	DirectX::XMMATRIX T  = DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, m_Pos.z);
+	DirectX::XMStoreFloat4x4(&mat[0], DirectX::XMMatrixTranspose(S * Rz * Rx * Ry * T));
 
 	if (m_ShaderPair.vsKind == ShaderManager::VSKind::E_VS_OBJECT)
 	{
