@@ -1,5 +1,6 @@
 #include "StageObject.h"
 #include "Stage.h"
+#include "ModelManager.h"
 
 DirectX::XMFLOAT3* StageObject::m_pParentPos;
 
@@ -25,7 +26,6 @@ StageObject::StageObject(int x, int y, DirectX::XMFLOAT3* pPos)
     m_Pos = DirectX::XMFLOAT3(posX, posY, posZ);
 
     //Å@ÉÇÉfÉãì«Ç›çûÇ›
-    m_pModel = std::make_shared<Model>();
-    m_pModel->Load("Assets/Model/stage/stage.fbx");
+    m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
 }
 

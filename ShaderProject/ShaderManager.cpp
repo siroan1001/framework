@@ -1,6 +1,5 @@
 #include "ShaderManager.h"
 
-//ShaderManager& ShaderManager::GetInstance();
 std::vector<VertexShader*> ShaderManager::m_pVSList;
 std::vector<PixelShader*> ShaderManager::m_pPSList;
 

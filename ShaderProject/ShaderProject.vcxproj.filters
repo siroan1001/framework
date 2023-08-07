@@ -38,6 +38,9 @@
     <Filter Include="UI">
       <UniqueIdentifier>{e5d6cbed-5261-4971-af8f-ec20ed78eab8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Light\Base">
+      <UniqueIdentifier>{ae8d6711-accf-4376-b697-f9001719dde0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="VS_Object.hlsl">
@@ -59,9 +62,6 @@
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>System</Filter>
-    </ClCompile>
-    <ClCompile Include="LightBase.cpp">
-      <Filter>Light</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>System</Filter>
@@ -126,6 +126,12 @@
     <ClCompile Include="GameUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="LightBase.cpp">
+      <Filter>Light\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -139,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>System</Filter>
-    </ClInclude>
-    <ClInclude Include="LightBase.h">
-      <Filter>Light</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>System</Filter>
@@ -206,6 +209,12 @@
     </ClInclude>
     <ClInclude Include="GameUI.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="LightBase.h">
+      <Filter>Light\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

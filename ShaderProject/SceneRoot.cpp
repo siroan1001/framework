@@ -7,6 +7,9 @@
 
 #include "SceneGame.h"
 
+#include "ShaderManager.h"
+#include "ModelManager.h"
+
 //--- ’è”’è‹`
 enum SceneKind
 {
@@ -60,7 +63,8 @@ void SceneRoot::Init()
 	pLight->SetHSV(setting.lightH, setting.lightSV);
 	pLight->UpdateParam();
 
-	ShaderManager& ShaderMane = ShaderManager::GetInstance();
+	ShaderManager& ShaderMana = ShaderManager::GetInstance();
+	ModelManager& ModelMana = ModelManager::GetInstance();
 
 	SceneBase::init();
 
