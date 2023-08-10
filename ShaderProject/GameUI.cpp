@@ -1,11 +1,11 @@
 #include "GameUI.h"
 #include "Sprite.h"
+#include "SceneBase.hpp"
 
-GameUI::GameUI()
+GameUI::GameUI() : m_pVS(nullptr), m_pPS(nullptr)
 {
 	m_pTex = new Texture;
-	m_pTex->Create("Assets/Texture/space.png");
-
+	m_pTex->Create("Assets/Texture/MenuBG.png");
 	m_Pos = { 0.0f, 0.0f };
 	m_Size = { 300.0f, 300.0f };
 }
@@ -17,6 +17,13 @@ GameUI::~GameUI()
 
 void GameUI::Draw()
 {
+	//RenderTarget* rtv = SceneBase::GetObj<RenderTarget>("UIRTV");
+	//DepthStencil* dsv = SceneBase::GetObj<DepthStencil>("UIDSV");
+	//float color[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	//rtv->Clear(color);
+	//dsv->Clear();
+	//SetRenderTargets(1, &rtv, dsv);
+
 	DirectX::XMFLOAT4X4 view;
 	XMStoreFloat4x4(&view, DirectX::XMMatrixIdentity());
 
@@ -40,5 +47,11 @@ void GameUI::Draw()
 	Sprite::SetProjection(proj);
 	Sprite::SetSize(m_Size);
 	Sprite::SetTexture(m_pTex);
+	if (m_pVS) Sprite::SetVertexShader(m_pVS);
+	if (m_pPS) Sprite::SetPixelShader(m_pPS);
 	Sprite::Draw();
+
+	//rtv = SceneBase::GetObj<RenderTarget>("RTV");
+	//dsv = SceneBase::GetObj<DepthStencil>("DSV");
+	//SetRenderTargets(1, &rtv, dsv);
 }

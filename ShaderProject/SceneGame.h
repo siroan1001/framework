@@ -27,6 +27,8 @@ public:
 	void Update(float tick);
 	void Draw();
 
+	static void ChangeAction(Action action);
+
 private:
 	void ActionMenu();
 	void ActionRoll();
@@ -35,5 +37,5 @@ private:
 private:
 	const char* m_Name[E_PLAYER_NUM_MAX] = { "Player1", "Player2" };
 	PlayerNum m_PlayerTurn;
-	Action m_Action;
+	static Action m_Action;
 };

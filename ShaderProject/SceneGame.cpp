@@ -3,6 +3,7 @@
 #include "CameraBase.h"
 #include "LightBase.h"
 #include "Input.h"
+#include "Defines.h"
 
 #include "Player.h"
 #include "Enemy.h"
@@ -10,6 +11,7 @@
 #include "CameraGameMain.h"
 #include "CameraDebug.h"
 #include "GameUI.h"
+#include "MenuUI.h"
 
 void SceneGame::Init()
 {
@@ -29,7 +31,15 @@ void SceneGame::Init()
 	m_PlayerTurn = SceneGame::PlayerNum::E_PLAYER_NUM_1;
 	m_Action = Action::E_ACTION_MENU;
 
-	CreateObj<GameUI>("SampleUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	MenuUI* menu = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	menu->SetPos(DirectX::XMFLOAT2(100.0f, 100.0f));
+	//menu->SetSize(DirectX::XMFLOAT2(20.0f, 20.0f));
+	menu->SetActive(true);
+
+	RenderTarget* pWipeRTV = CreateObj<RenderTarget>("UIRTV", eObjectTag::E_OBJ_TAG_RTV);
+	pWipeRTV->Create(DXGI_FORMAT_R8G8B8A8_UNORM, SCREEN_WIDTH, SCREEN_HEIGHT);
+	DepthStencil* pWipeDSV = CreateObj<DepthStencil>("UIDSV", eObjectTag::E_OBJ_TAG_DSV);
+	pWipeDSV->Create(SCREEN_WIDTH, SCREEN_HEIGHT, false);
 }
 void SceneGame::Uninit()
 {
@@ -60,27 +70,38 @@ void SceneGame::Draw()
 		obj->Draw();
 	}
 
-	GetObj<GameUI>("SampleUI")->Draw();
+	std::list<GameUI*> UIlist;
+	UIlist = GetObjswithTag<GameUI>(eObjectTag::E_OBJ_TAG_SPRITE);
 
+	for (GameUI* obj : UIlist)
+	{
+		obj->Draw();
+	}
+}
 
+void SceneGame::ChangeAction(Action action)
+{
+	m_Action = action;
 }
 
 void SceneGame::ActionMenu()
 {
-	if (IsKeyRepeat('W'))
-	{//カーソル上
 
-	}
 
-	if (IsKeyRepeat('S'))
-	{//カーソル下
+	//if (IsKeyRepeat('W'))
+	//{//カーソル上
 
-	}
+	//}
 
-	if (IsKeyTrigger('L'))
-	{//決定
+	//if (IsKeyRepeat('S'))
+	//{//カーソル下
 
-	}
+	//}
+
+	//if (IsKeyTrigger('L'))
+	//{//決定
+
+	//}
 }
 
 void SceneGame::ActionRoll()
