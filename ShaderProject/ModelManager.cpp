@@ -19,8 +19,11 @@ ModelManager::ModelManager()
 	model = std::make_shared<Model>();
 	model->Load("Assets/Model/player/player.fbx", 0.35f);
 	m_pModelList.push_back(model);
-	model = std::make_shared<Model>();;
+	model = std::make_shared<Model>();
 	model->Load("Assets/Model/stage/stage.fbx");
+	m_pModelList.push_back(model);
+	model = std::make_shared<Model>();
+	model->Load("Assets/Model/dice/dice.fbx");
 	m_pModelList.push_back(model);
 }
 

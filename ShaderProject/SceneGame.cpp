@@ -13,6 +13,8 @@
 #include "GameUI.h"
 #include "MenuUI.h"
 
+SceneGame::Action SceneGame::m_Action;
+
 void SceneGame::Init()
 {
 	Player* player;
@@ -32,8 +34,7 @@ void SceneGame::Init()
 	m_Action = Action::E_ACTION_MENU;
 
 	MenuUI* menu = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
-	menu->SetPos(DirectX::XMFLOAT2(100.0f, 100.0f));
-	//menu->SetSize(DirectX::XMFLOAT2(20.0f, 20.0f));
+	menu->SetPos(DirectX::XMFLOAT2(200.0f, 200.0f));
 	menu->SetActive(true);
 
 	RenderTarget* pWipeRTV = CreateObj<RenderTarget>("UIRTV", eObjectTag::E_OBJ_TAG_RTV);

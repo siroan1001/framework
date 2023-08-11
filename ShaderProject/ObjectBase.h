@@ -38,5 +38,6 @@ protected:
 	DirectX::XMFLOAT3 m_Size;
 	std::shared_ptr<Model> m_pModel;
 	ShaderPair m_ShaderPair;
+	bool m_Use;
 };
 

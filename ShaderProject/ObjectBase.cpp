@@ -21,6 +21,8 @@ ObjectBase::~ObjectBase()
 
 void ObjectBase::Draw()
 {
+	if (!m_Use) return;
+
 	CameraBase* pCamera = SceneBase::GetCamera();
 	LightBase*  pLight  = SceneBase::GetObj<LightBase>("Light");
 

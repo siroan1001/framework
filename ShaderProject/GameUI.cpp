@@ -17,12 +17,9 @@ GameUI::~GameUI()
 
 void GameUI::Draw()
 {
-	//RenderTarget* rtv = SceneBase::GetObj<RenderTarget>("UIRTV");
-	//DepthStencil* dsv = SceneBase::GetObj<DepthStencil>("UIDSV");
-	//float color[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	//rtv->Clear(color);
-	//dsv->Clear();
-	//SetRenderTargets(1, &rtv, dsv);
+	RenderTarget* rtv = SceneBase::GetObj<RenderTarget>("RTV");
+	DepthStencil* dsv = SceneBase::GetObj<DepthStencil>("DSV");
+	SetRenderTargets(1, &rtv, nullptr);
 
 	DirectX::XMFLOAT4X4 view;
 	XMStoreFloat4x4(&view, DirectX::XMMatrixIdentity());
@@ -51,7 +48,5 @@ void GameUI::Draw()
 	if (m_pPS) Sprite::SetPixelShader(m_pPS);
 	Sprite::Draw();
 
-	//rtv = SceneBase::GetObj<RenderTarget>("RTV");
-	//dsv = SceneBase::GetObj<DepthStencil>("DSV");
-	//SetRenderTargets(1, &rtv, dsv);
+	SetRenderTargets(1, &rtv, dsv);
 }

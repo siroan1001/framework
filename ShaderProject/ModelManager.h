@@ -9,6 +9,7 @@ public:
 	{
 		E_MODEL_KIND_PLAYER = 0,
 		E_MODEL_KIND_STAGE,
+		E_MODEL_KIND_DICE,
 		E_MODEL_KIND_MAX,
 	};
 

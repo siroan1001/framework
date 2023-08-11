@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -200,6 +200,7 @@
     <ClCompile Include="CameraBase.cpp" />
     <ClCompile Include="CameraDebug.cpp" />
     <ClCompile Include="CameraGameMain.cpp" />
+    <ClCompile Include="Dice.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameUI.cpp" />
@@ -232,6 +233,7 @@
     <ClInclude Include="CameraDebug.h" />
     <ClInclude Include="CameraGameMain.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="Dice.h" />
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameUI.h" />
