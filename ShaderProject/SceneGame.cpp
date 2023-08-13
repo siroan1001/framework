@@ -12,8 +12,10 @@
 #include "CameraDebug.h"
 #include "GameUI.h"
 #include "MenuUI.h"
+#include "Dice.h"
 
 SceneGame::Action SceneGame::m_Action;
+SceneGame::Action SceneGame::m_NextAction;
 
 void SceneGame::Init()
 {
@@ -32,21 +34,25 @@ void SceneGame::Init()
 
 	m_PlayerTurn = SceneGame::PlayerNum::E_PLAYER_NUM_1;
 	m_Action = Action::E_ACTION_MENU;
+	m_NextAction = m_Action;
 
 	MenuUI* menu = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
 	menu->SetPos(DirectX::XMFLOAT2(200.0f, 200.0f));
-	menu->SetActive(true);
+	menu->SetActive(false);
 
-	RenderTarget* pWipeRTV = CreateObj<RenderTarget>("UIRTV", eObjectTag::E_OBJ_TAG_RTV);
-	pWipeRTV->Create(DXGI_FORMAT_R8G8B8A8_UNORM, SCREEN_WIDTH, SCREEN_HEIGHT);
-	DepthStencil* pWipeDSV = CreateObj<DepthStencil>("UIDSV", eObjectTag::E_OBJ_TAG_DSV);
-	pWipeDSV->Create(SCREEN_WIDTH, SCREEN_HEIGHT, false);
+	Dice* dice = CreateObj<Dice>("Dice", eObjectTag::E_OBJ_TAG_OBJ);
+	dice->SetPosition(DirectX::XMFLOAT3(5.0f, 2.5f, -5.0f));
+	dice->SetActive(false);
+
+	ChengeAction();
 }
 void SceneGame::Uninit()
 {
 }
 void SceneGame::Update(float tick)
 {
+	if (m_Action != m_NextAction)	ChengeAction();
+
 	switch (m_Action)
 	{
 		case Action::E_ACTION_MENU:
@@ -80,35 +86,55 @@ void SceneGame::Draw()
 	}
 }
 
-void SceneGame::ChangeAction(Action action)
+void SceneGame::SetNextAction(Action action)
 {
-	m_Action = action;
+	m_NextAction = action;
 }
 
 void SceneGame::ActionMenu()
 {
-
-
-	//if (IsKeyRepeat('W'))
-	//{//カーソル上
-
-	//}
-
-	//if (IsKeyRepeat('S'))
-	//{//カーソル下
-
-	//}
-
-	//if (IsKeyTrigger('L'))
-	//{//決定
-
-	//}
+	GetObj<MenuUI>("MenuUI")->Update();
 }
 
 void SceneGame::ActionRoll()
 {
+	GetObj<Dice>("Dice")->Update();
 }
 
 void SceneGame::ActionMove()
 {
+}
+
+void SceneGame::ChengeAction()
+{
+
+	switch (m_Action)
+	{
+	case SceneGame::E_ACTION_MENU:
+		GetObj<MenuUI>("MenuUI")->SetActive(false);
+		break;
+	case SceneGame::E_ACTION_ROLL:
+		GetObj<Dice>("Dice")->SetActive(false);
+		break;
+	case SceneGame::E_ACTION_MOVE:
+		break;
+	default:
+		break;
+	}
+
+	switch (m_NextAction)
+	{
+	case SceneGame::E_ACTION_MENU:
+		GetObj<MenuUI>("MenuUI")->SetActive(true);
+		break;
+	case SceneGame::E_ACTION_ROLL:
+		GetObj<Dice>("Dice")->SetActive(true);
+		break;
+	case SceneGame::E_ACTION_MOVE:
+		break;
+	default:
+		break;
+	}
+
+	m_Action = m_NextAction;
 }

@@ -147,6 +147,9 @@
     <ClCompile Include="UIBase.cpp">
       <Filter>UI\Base</Filter>
     </ClCompile>
+    <ClCompile Include="Dice.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -236,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="UIBase.h">
       <Filter>UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Dice.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,8 @@ MenuUI::~MenuUI()
 
 void MenuUI::Update()
 {
+	if (!m_Use)	return;
+
 	if (IsKeyRepeat('W'))
 	{//ÉJÅ[É\Éãè„
 	
@@ -32,7 +34,7 @@ void MenuUI::Update()
 	
 	if (IsKeyTrigger('L'))
 	{//åàíË
-		SceneGame::ChangeAction(SceneGame::Action::E_ACTION_ROLL);
+		SceneGame::SetNextAction(SceneGame::Action::E_ACTION_ROLL);
 	}
 }
 

@@ -27,6 +27,7 @@ public:
 	void SetPosition(DirectX::XMFLOAT3 pos) { m_Pos = pos; };
 	void SetRotation(DirectX::XMFLOAT3 rot) { m_Rot = rot; };
 	void SetScale(DirectX::XMFLOAT3 size)   { m_Size = size; };
+	void SetActive(bool flag) { m_Use = flag; }
 
 	DirectX::XMFLOAT3 GetPosition() { return m_Pos; };
 	DirectX::XMFLOAT3 GetRotation() { return m_Rot; };

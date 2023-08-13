@@ -6,5 +6,8 @@ public:
 	Dice();
 	~Dice();
 	void Update() final;
+
+private:
+	int m_Num;
 };
 
