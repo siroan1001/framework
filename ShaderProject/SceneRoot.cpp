@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "Input.h"
 #include "Geometory.h"
+#include "Timer.h"
 
 #include "SceneGame.h"
 
@@ -65,6 +66,8 @@ void SceneRoot::Init()
 
 	ShaderManager& ShaderMana = ShaderManager::GetInstance();
 	ModelManager& ModelMana = ModelManager::GetInstance();
+
+	Timer::Init();
 
 	SceneBase::init();
 

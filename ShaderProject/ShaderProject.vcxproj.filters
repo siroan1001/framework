@@ -150,6 +150,9 @@
     <ClCompile Include="Dice.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -242,6 +245,9 @@
     </ClInclude>
     <ClInclude Include="Dice.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

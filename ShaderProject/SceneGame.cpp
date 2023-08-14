@@ -4,6 +4,7 @@
 #include "LightBase.h"
 #include "Input.h"
 #include "Defines.h"
+#include "Timer.h"
 
 #include "Player.h"
 #include "Enemy.h"
@@ -16,33 +17,34 @@
 
 SceneGame::Action SceneGame::m_Action;
 SceneGame::Action SceneGame::m_NextAction;
+int SceneGame::m_MoveNum;
 
 void SceneGame::Init()
 {
-	Player* player;
-	player = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);
-	player->SetRotation(DirectX::XMFLOAT3(0.0f, 180.0f, 0.0f));
-	player->SetPosition(DirectX::XMFLOAT3(5.0f, 0.5f, -5.0f));
-	player = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_2], eObjectTag::E_OBJ_TAG_OBJ);
-	player->SetRotation(DirectX::XMFLOAT3(0.0f, -90.0f, 0.0f));
-	player->SetPosition(DirectX::XMFLOAT3(-5.0f, 0.5f, 5.0f));
-	player->SetAIFlag(true);
+	m_pPlayer[E_PLAYER_NUM_1] = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[E_PLAYER_NUM_1]->SetRotation(DirectX::XMFLOAT3(0.0f, 180.0f, 0.0f));
+	m_pPlayer[E_PLAYER_NUM_1]->SetPosition(DirectX::XMFLOAT3(5.0f, 0.5f, -5.0f));
+	m_pPlayer[E_PLAYER_NUM_2] = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_2], eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[E_PLAYER_NUM_2]->SetRotation(DirectX::XMFLOAT3(0.0f, -90.0f, 0.0f));
+	m_pPlayer[E_PLAYER_NUM_2]->SetPosition(DirectX::XMFLOAT3(-5.0f, 0.5f, 5.0f));
+	m_pPlayer[E_PLAYER_NUM_2]->SetAIFlag(true);
 
-	Stage* stage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
+	m_pStage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
 
 	m_CamType = eCamType::E_CAM_TYPE_GAME_MAIN;
 
 	m_PlayerTurn = SceneGame::PlayerNum::E_PLAYER_NUM_1;
 	m_Action = Action::E_ACTION_MENU;
 	m_NextAction = m_Action;
+	m_MoveNum = 0;
 
-	MenuUI* menu = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
-	menu->SetPos(DirectX::XMFLOAT2(200.0f, 200.0f));
-	menu->SetActive(false);
+	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pMenuUI->SetPos(DirectX::XMFLOAT2(200.0f, 200.0f));
+	m_pMenuUI->SetActive(false);
 
-	Dice* dice = CreateObj<Dice>("Dice", eObjectTag::E_OBJ_TAG_OBJ);
-	dice->SetPosition(DirectX::XMFLOAT3(5.0f, 2.5f, -5.0f));
-	dice->SetActive(false);
+	m_Dice = CreateObj<Dice>("Dice", eObjectTag::E_OBJ_TAG_OBJ);
+	m_Dice->SetPosition(DirectX::XMFLOAT3(5.0f, 2.5f, -5.0f));
+	m_Dice->SetActive(false);
 
 	ChengeAction();
 }
@@ -91,6 +93,12 @@ void SceneGame::SetNextAction(Action action)
 	m_NextAction = action;
 }
 
+void SceneGame::SetMoveNum(int num)
+{
+	m_MoveNum = num;
+	Timer::StartTimer(1.0f);
+}
+
 void SceneGame::ActionMenu()
 {
 	GetObj<MenuUI>("MenuUI")->Update();
@@ -99,6 +107,7 @@ void SceneGame::ActionMenu()
 void SceneGame::ActionRoll()
 {
 	GetObj<Dice>("Dice")->Update();
+	if (Timer::IsTimeElapsed())		m_Action = Action::E_ACTION_MOVE;
 }
 
 void SceneGame::ActionMove()
@@ -107,7 +116,6 @@ void SceneGame::ActionMove()
 
 void SceneGame::ChengeAction()
 {
-
 	switch (m_Action)
 	{
 	case SceneGame::E_ACTION_MENU:

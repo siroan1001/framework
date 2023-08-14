@@ -1,7 +1,9 @@
 #pragma once
 #include "SceneBase.hpp"
 #include "Player.h"
-
+#include "Stage.h"
+#include "MenuUI.h"
+#include "Dice.h"
 
 class SceneGame : public SceneBase
 {
@@ -28,6 +30,7 @@ public:
 	void Draw();
 
 	static void SetNextAction(Action action);
+	static void SetMoveNum(int num);
 
 private:
 	void ActionMenu();
@@ -41,4 +44,11 @@ private:
 	PlayerNum m_PlayerTurn;
 	static Action m_Action;
 	static Action m_NextAction;
+	static int m_MoveNum;
+
+private:
+	Player* m_pPlayer[E_PLAYER_NUM_MAX];
+	Stage* m_pStage;
+	MenuUI* m_pMenuUI;
+	Dice* m_Dice;
 };

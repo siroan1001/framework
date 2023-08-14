@@ -24,12 +24,12 @@ void MenuUI::Update()
 
 	if (IsKeyRepeat('W'))
 	{//カーソル上
-	
+		
 	}
 	
 	if (IsKeyRepeat('S'))
 	{//カーソル下
-	
+		
 	}
 	
 	if (IsKeyTrigger('L'))
