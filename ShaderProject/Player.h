@@ -5,7 +5,7 @@ class Player : public ObjectBase
 public:
 	Player();
 	~Player();
-	void Update() {};
+	void Update() final;
 
 	void SetAIFlag(bool flag) { m_AIFlag = flag; }
 

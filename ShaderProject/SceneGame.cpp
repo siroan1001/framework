@@ -112,6 +112,7 @@ void SceneGame::ActionRoll()
 
 void SceneGame::ActionMove()
 {
+	GetObj<Player>(m_Name[m_PlayerTurn])->Update();
 }
 
 void SceneGame::ChengeAction()

@@ -9,3 +9,7 @@ Player::Player() : m_AIFlag(false)
 Player::~Player()
 {
 }
+
+void Player::Update()
+{
+}
