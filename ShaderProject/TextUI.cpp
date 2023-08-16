@@ -42,14 +42,16 @@ void TextUI::SetString(std::wstring str)
 		}
 		if (diff > 0)
 		{
-			delete m_CharUI.back();
+			m_CharUI.pop_back();
 			diff--;
 		}
 	}
 
+	bool flag;
 	m_CharPair.clear();
 	for(int num = 0; num < m_Str.size(); num++)
 	{
+		flag = false;
 		for (int i = 0; i < 12; i++)
 		{
 			for (int j = 0; j < 15; j++)
@@ -57,9 +59,11 @@ void TextUI::SetString(std::wstring str)
 				if (m_Str[num] == characters[i][j])
 				{
 					m_CharUI[num]->SetUVPos(DirectX::XMFLOAT2(m_uvSize.x * j, -m_uvSize.y + -m_uvSize.y * i));
+					flag = true;
 					break;
 				}
 			}
+			if (flag)	break;
 		}
 	}
 }
@@ -68,5 +72,19 @@ void TextUI::SetCharSize(DirectX::XMFLOAT2 size)
 {
 	m_CharSize = size; 
 	m_Size.y = m_CharSize.y;
+}
+
+std::wstring TextUI::intToFullWidthString(int num)
+{
+	static const wchar_t fullWidthDigits[] = L"‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X";
+	std::wstring result;
+
+	while (num > 0) {
+		int digit = num % 10;
+		result = fullWidthDigits[digit] + result;
+		num /= 10;
+	}
+
+	return result;
 }
 

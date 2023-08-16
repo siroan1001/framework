@@ -17,44 +17,72 @@ void Player::Update()
 {
 	if (!m_MoveFlag)
 	{
+		DirectX::XMINT2 posint = m_PosInt;
+
 		if (IsKeyPress('W') && IsKeyPress('S') || IsKeyPress('A') && IsKeyPress('D')) return;
 
 		if (IsKeyPress('W') && IsKeyPress('A'))
 		{
-			m_PosInt.x++;
+			posint.x++;
 			m_MoveFlag = true;
 		}
 		if (IsKeyPress('W') && IsKeyPress('D'))
 		{
-			m_PosInt.y--;
+			posint.y--;
 			m_MoveFlag = true;
 		}
 		if (IsKeyPress('S') && IsKeyPress('A'))
 		{
-			m_PosInt.y++;
+			posint.y++;
 			m_MoveFlag = true;
 		}
 		if (IsKeyPress('S') && IsKeyPress('D'))
 		{
-			m_PosInt.x--;
+			posint.x--;
 			m_MoveFlag = true;
 		}
 
-		if (m_PosInt.x > 5)
+		if (posint.x > 5)
 		{
-			m_PosInt.x = 5;
+			posint.x = 5;
 		}
-		else if (m_PosInt.x < 0)
+		else if (posint.x < 0)
 		{
-			m_PosInt.x = 0;
+			posint.x = 0;
 		}
-		if (m_PosInt.y > 5)
+		if (posint.y > 5)
 		{
-			m_PosInt.y = 5;
+			posint.y = 5;
 		}
-		else if (m_PosInt.y < 0)
+		else if (posint.y < 0)
 		{
-			m_PosInt.y = 0;
+			posint.y = 0;
+		}
+
+		if (m_PosInt.x != posint.x || m_PosInt.y != posint.y)
+		{//À•W‚ª•Ï‚í‚Á‚Ä‚¢‚é
+			switch (m_Route.size())
+			{
+			case 0:
+				SceneGame::ChangeMoveNum(-1); 
+				m_Route.push_back(m_PosInt);
+				break;
+			default:
+				DirectX::XMINT2 route = m_Route.back();
+				if (route.x == posint.x && route.y == posint.y)
+				{//’¼‘O‚É’Ê‚Á‚½êŠ‚Æ“¯‚¶“¹
+					SceneGame::ChangeMoveNum(1);
+					m_Route.pop_back();
+				}
+				else
+				{
+					SceneGame::ChangeMoveNum(-1);
+					m_Route.push_back(m_PosInt);
+				}
+				break;
+			}
+
+			m_PosInt = posint;
 		}
 
 		SetPosition(m_PosInt);

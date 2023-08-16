@@ -13,6 +13,9 @@ public:
     void SetString(std::wstring str);
     void SetCharSize(DirectX::XMFLOAT2 size);
 
+public:
+	static std::wstring intToFullWidthString(int num);
+
 private:
 	std::wstring m_Str;
 	DirectX::XMFLOAT2 m_CharSize;

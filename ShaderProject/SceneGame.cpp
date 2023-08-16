@@ -21,6 +21,8 @@
 SceneGame::Action SceneGame::m_Action;
 SceneGame::Action SceneGame::m_NextAction;
 int SceneGame::m_MoveNum;
+int SceneGame::m_MoveNumMax;
+bool SceneGame::m_TurnChangeFlag;
 
 void SceneGame::Init()
 {
@@ -40,13 +42,14 @@ void SceneGame::Init()
 	m_Action = Action::E_ACTION_MENU;
 	m_NextAction = m_Action;
 	m_MoveNum = 0;
+	m_TurnChangeFlag = false;
 
 	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
 	m_pMenuUI->SetPos(DirectX::XMFLOAT2(150.0f, 150.0f));
 	m_pMenuUI->SetActive(false);
 
 	m_pDiceNumUI = CreateObj<TextUI>("DiceNumUI", eObjectTag::E_OBJ_TAG_SPRITE);
-	m_pDiceNumUI->SetPos(DirectX::XMFLOAT2(600.0f, 680.0f));
+	m_pDiceNumUI->SetPos(DirectX::XMFLOAT2(600.0f, 690.0f));
 	m_pDiceNumUI->SetActive(false);
 	m_pDiceNumUI->SetCharSize(DirectX::XMFLOAT2(45.0f, 45.0f));
 	m_pDiceNumUI->SetString(L"‚ ‚Æ‚O");
@@ -62,6 +65,13 @@ void SceneGame::Uninit()
 }
 void SceneGame::Update(float tick)
 {
+	if (m_TurnChangeFlag)
+	{
+		TurnChange();
+		m_NextAction = E_ACTION_MENU;
+		m_TurnChangeFlag = false;
+	}
+
 	if (m_Action != m_NextAction)	ChengeAction();
 
 	switch (m_Action)
@@ -107,7 +117,16 @@ void SceneGame::SetNextAction(Action action)
 void SceneGame::SetMoveNum(int num)
 {
 	m_MoveNum = num;
+	m_MoveNumMax = m_MoveNum;
 	Timer::StartTimer(1.0f);
+}
+
+void SceneGame::ChangeMoveNum(int num)
+{
+	m_MoveNum += num;
+	std::wstring str = L"‚ ‚Æ" + TextUI::intToFullWidthString(m_MoveNum);
+	GetObj<TextUI>("DiceNumUI")->SetString(str);
+	if (m_MoveNum > m_MoveNumMax)	m_MoveNum = m_MoveNumMax;
 }
 
 void SceneGame::ActionMenu()
@@ -125,6 +144,17 @@ void SceneGame::ActionRoll()
 void SceneGame::ActionMove()
 {
 	GetObj<Player>(m_Name[m_PlayerTurn])->Update();
+	if (m_MoveNum <= 0)
+	{	
+		m_TurnChangeFlag = true;
+	}
+}
+
+void SceneGame::TurnChange()
+{
+	m_MoveNum = 0;
+	m_PlayerTurn = static_cast<PlayerNum>(m_PlayerTurn + 1);
+	if (m_PlayerTurn == E_PLAYER_NUM_MAX)	m_PlayerTurn = E_PLAYER_NUM_1;
 }
 
 void SceneGame::ChengeAction()
@@ -138,10 +168,13 @@ void SceneGame::ChengeAction()
 		GetObj<Dice>("Dice")->SetActive(false);
 		break;
 	case SceneGame::E_ACTION_MOVE:
+		GetObj<TextUI>("DiceNumUI")->SetActive(false);
 		break;
 	default:
 		break;
 	}
+
+	std::wstring str;
 
 	switch (m_NextAction)
 	{
@@ -150,8 +183,13 @@ void SceneGame::ChengeAction()
 		break;
 	case SceneGame::E_ACTION_ROLL:
 		GetObj<Dice>("Dice")->SetActive(true);
+		DirectX::XMFLOAT3 pos = GetObj<Player>(m_Name[m_PlayerTurn])->GetPosition();
+		pos.y = 2.5f;
+		GetObj<Dice>("Dice")->SetPosition(pos);
 		break;
 	case SceneGame::E_ACTION_MOVE:
+		str = L"‚ ‚Æ" + TextUI::intToFullWidthString(m_MoveNum);
+		GetObj<TextUI>("DiceNumUI")->SetString(str);
 		GetObj<TextUI>("DiceNumUI")->SetActive(true);
 
 		break;

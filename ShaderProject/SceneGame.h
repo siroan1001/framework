@@ -32,11 +32,15 @@ public:
 
 	static void SetNextAction(Action action);
 	static void SetMoveNum(int num);
+	static void ChangeMoveNum(int num);
+
 
 private:
 	void ActionMenu();
 	void ActionRoll();
 	void ActionMove();
+
+	void TurnChange();
 
 	void ChengeAction();
 
@@ -46,6 +50,8 @@ private:
 	static Action m_Action;
 	static Action m_NextAction;
 	static int m_MoveNum;
+	static int m_MoveNumMax;
+	static bool m_TurnChangeFlag;
 
 private:
 	Player* m_pPlayer[E_PLAYER_NUM_MAX];
