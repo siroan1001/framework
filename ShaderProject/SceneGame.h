@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Stage.h"
 #include "MenuUI.h"
+#include "TextUI.h"
 #include "Dice.h"
 
 class SceneGame : public SceneBase
@@ -50,5 +51,6 @@ private:
 	Player* m_pPlayer[E_PLAYER_NUM_MAX];
 	Stage* m_pStage;
 	MenuUI* m_pMenuUI;
+	TextUI* m_pDiceNumUI;
 	Dice* m_Dice;
 };

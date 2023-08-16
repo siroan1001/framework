@@ -19,6 +19,5 @@ private:
 	GameUI* m_pCursor;
 	std::vector <GameUI*> m_pChoice;
 	int m_ChoiceNum;
-	bool m_Use;
 };
 

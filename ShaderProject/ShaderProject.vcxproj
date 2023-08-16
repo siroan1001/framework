@@ -224,6 +224,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageObject.cpp" />
     <ClCompile Include="Startup.cpp" />
+    <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="UIBase.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageObject.h" />
+    <ClInclude Include="TextUI.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="UIBase.h" />

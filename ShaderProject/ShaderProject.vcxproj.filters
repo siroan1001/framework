@@ -153,6 +153,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="TextUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -248,6 +251,9 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUI.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
