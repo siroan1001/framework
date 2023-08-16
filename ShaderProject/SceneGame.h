@@ -5,6 +5,7 @@
 #include "MenuUI.h"
 #include "TextUI.h"
 #include "Dice.h"
+#include "BG.h"
 
 class SceneGame : public SceneBase
 {
@@ -59,4 +60,5 @@ private:
 	MenuUI* m_pMenuUI;
 	TextUI* m_pDiceNumUI;
 	Dice* m_Dice;
+	BG* m_pBG;
 };

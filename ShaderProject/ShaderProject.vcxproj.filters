@@ -156,6 +156,7 @@
     <ClCompile Include="TextUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="BG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -255,6 +256,7 @@
     <ClInclude Include="TextUI.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="BG.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShaderProject.rc">

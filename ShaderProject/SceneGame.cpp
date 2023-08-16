@@ -49,14 +49,19 @@ void SceneGame::Init()
 	m_pMenuUI->SetActive(false);
 
 	m_pDiceNumUI = CreateObj<TextUI>("DiceNumUI", eObjectTag::E_OBJ_TAG_SPRITE);
-	m_pDiceNumUI->SetPos(DirectX::XMFLOAT2(600.0f, 690.0f));
 	m_pDiceNumUI->SetActive(false);
 	m_pDiceNumUI->SetCharSize(DirectX::XMFLOAT2(45.0f, 45.0f));
 	m_pDiceNumUI->SetString(L"‚ ‚Æ‚O");
+	m_pDiceNumUI->SetPos(DirectX::XMFLOAT2(600.0f, 690.0f));
 
 	m_Dice = CreateObj<Dice>("Dice", eObjectTag::E_OBJ_TAG_OBJ);
 	m_Dice->SetPosition(DirectX::XMFLOAT3(5.0f, 2.5f, -5.0f));
 	m_Dice->SetActive(false);
+
+	m_pBG = CreateObj<BG>("BG", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pBG->SetPos(DirectX::XMFLOAT2(1280.0f / 2.0f, 720.0f / 2.0f));
+	m_pBG->SetSize(DirectX::XMFLOAT2(1280.0f, 720.0f));
+	m_pBG->CreateTex("Assets/Texture/BG.jpg");
 
 	ChengeAction();
 }
@@ -118,6 +123,7 @@ void SceneGame::SetMoveNum(int num)
 {
 	m_MoveNum = num;
 	m_MoveNumMax = m_MoveNum;
+	GetObj<TextUI>("DiceNumUI")->SetPos(DirectX::XMFLOAT2(600.0f, 690.0f));
 	Timer::StartTimer(1.0f);
 }
 
@@ -126,6 +132,7 @@ void SceneGame::ChangeMoveNum(int num)
 	m_MoveNum += num;
 	std::wstring str = L"‚ ‚Æ" + TextUI::intToFullWidthString(m_MoveNum);
 	GetObj<TextUI>("DiceNumUI")->SetString(str);
+	GetObj<TextUI>("DiceNumUI")->SetPos(DirectX::XMFLOAT2(600.0f, 690.0f));
 	if (m_MoveNum > m_MoveNumMax)	m_MoveNum = m_MoveNumMax;
 }
 
@@ -153,6 +160,8 @@ void SceneGame::ActionMove()
 void SceneGame::TurnChange()
 {
 	m_MoveNum = 0;
+	GetObj<Dice>("Dice")->Reset();
+	GetObj<Player>(m_Name[m_PlayerTurn])->Reset();
 	m_PlayerTurn = static_cast<PlayerNum>(m_PlayerTurn + 1);
 	if (m_PlayerTurn == E_PLAYER_NUM_MAX)	m_PlayerTurn = E_PLAYER_NUM_1;
 }

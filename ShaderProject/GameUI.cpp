@@ -9,7 +9,7 @@ GameUI::GameUI() : m_pVS(nullptr), m_pPS(nullptr)
 	m_Pos = { 0.0f, 0.0f };
 	m_Size = { 300.0f, 300.0f };
 	m_uvPos = { 0.0f, 0.0f };
-	m_uvSize = { 1.0f, 1.0f };
+	m_uvSize = { 1.0f, -1.0f };
 }
 
 GameUI::~GameUI()

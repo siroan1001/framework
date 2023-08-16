@@ -12,6 +12,9 @@ public:
 
     void SetString(std::wstring str);
     void SetCharSize(DirectX::XMFLOAT2 size);
+	void SetPos(DirectX::XMFLOAT2 pos);
+
+	DirectX::XMFLOAT2 GetPos() { return m_CharUI[0]->GetPos(); }
 
 public:
 	static std::wstring intToFullWidthString(int num);

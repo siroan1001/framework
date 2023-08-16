@@ -74,6 +74,15 @@ void TextUI::SetCharSize(DirectX::XMFLOAT2 size)
 	m_Size.y = m_CharSize.y;
 }
 
+void TextUI::SetPos(DirectX::XMFLOAT2 pos)
+{
+	for (GameUI* charUI : m_CharUI)
+	{
+		charUI->SetPos(pos);
+		pos.x += m_CharSize.x;
+	}
+}
+
 std::wstring TextUI::intToFullWidthString(int num)
 {
 	static const wchar_t fullWidthDigits[] = L"‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X";
@@ -85,6 +94,7 @@ std::wstring TextUI::intToFullWidthString(int num)
 		num /= 10;
 	}
 
+	if (result.empty())	result = fullWidthDigits[0];
 	return result;
 }
 

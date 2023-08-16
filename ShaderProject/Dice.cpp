@@ -35,6 +35,12 @@ void Dice::Update()
 	}
 }
 
+void Dice::Reset()
+{
+	m_Num = 0;
+	m_RotFlag = true;
+}
+
 void Dice::NumRot()
 {
 	DirectX::XMFLOAT3 camRot = DirectX::XMFLOAT3(65.0f, 45.0f, 0.0f);

@@ -197,6 +197,7 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BG.cpp" />
     <ClCompile Include="CameraBase.cpp" />
     <ClCompile Include="CameraDebug.cpp" />
     <ClCompile Include="CameraGameMain.cpp" />
@@ -231,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseProperty.h" />
+    <ClInclude Include="BG.h" />
     <ClInclude Include="CameraBase.h" />
     <ClInclude Include="CameraDebug.h" />
     <ClInclude Include="CameraGameMain.h" />

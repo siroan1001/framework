@@ -21,6 +21,7 @@ public:
 	void SetUVSize(DirectX::XMFLOAT2 uvsize) { m_uvSize = uvsize; }
 
 	Texture* GetTex() { return m_pTex; }
+	DirectX::XMFLOAT2 GetPos() { return m_Pos; }
 
 	void CreateTex(const char* file) { m_pTex->Create(file); }
 

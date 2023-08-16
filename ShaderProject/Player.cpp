@@ -103,3 +103,9 @@ void Player::SetPosition(DirectX::XMINT2 num)
 	m_Pos = stage->GetPosition(m_PosInt);
 	m_Pos.y = 0.5f;
 }
+
+void Player::Reset()
+{
+	m_MoveFlag = false;
+	m_Route.clear();
+}

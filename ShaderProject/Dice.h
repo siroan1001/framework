@@ -10,6 +10,8 @@ public:
 	int GetDiceNum() { return m_Num; }
 	bool GetDiceFlag() { return m_RotFlag; }
 
+	void Reset();
+
 private:
 	void NumRot();
 
