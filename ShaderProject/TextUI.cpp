@@ -5,7 +5,7 @@ TextUI::TextUI() : m_CharSize{0.0f, 0.0f}
 	m_pTex = new Texture;
 	m_pTex->Create("Assets/Texture/text.png");
 	m_CharSize = DirectX::XMFLOAT2(10.0f, 20.0f);
-	m_uvSize = DirectX::XMFLOAT2(1.0f / 15.0f, 1.0f / 12.0f);
+	m_uvSize = DirectX::XMFLOAT2(1.0f / 15.0f, -1.0f / 12.0f);
 }
 
 TextUI::~TextUI()
@@ -56,8 +56,7 @@ void TextUI::SetString(std::wstring str)
 			{
 				if (m_Str[num] == characters[i][j])
 				{
-					//m_CharPair.push_back(DirectX::XMINT2(i, j));
-					m_CharUI[num]->SetUVPos(DirectX::XMFLOAT2(m_uvSize.x * j, m_uvSize.y * i));
+					m_CharUI[num]->SetUVPos(DirectX::XMFLOAT2(m_uvSize.x * j, -m_uvSize.y + -m_uvSize.y * i));
 					break;
 				}
 			}
