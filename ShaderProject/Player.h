@@ -12,5 +12,6 @@ public:
 private:
 	bool m_AIFlag;
 	DirectX::XMINT2 m_PosInt;
+	bool m_MoveFlag;
 };
 
