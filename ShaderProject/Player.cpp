@@ -4,7 +4,7 @@
 #include "Stage.h"
 #include "Input.h"
 
-Player::Player() : m_AIFlag(false)
+Player::Player() : m_AIFlag(false), m_MoveFlag(false)
 {
 	m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER);
 }
@@ -15,45 +15,57 @@ Player::~Player()
 
 void Player::Update()
 {
-	if (IsKeyTrigger('W'))
+	if (!m_MoveFlag)
 	{
-		m_PosInt.x++;
-		m_PosInt.y--;
-	}
-	if (IsKeyTrigger('A'))
-	{
-		m_PosInt.x++;
-		m_PosInt.y++;
-	}
-	if (IsKeyTrigger('S'))
-	{
-		m_PosInt.x--;
-		m_PosInt.y++;
-	}
-	if (IsKeyTrigger('D'))
-	{
-		m_PosInt.x--;
-		m_PosInt.y--;
-	}
+		if (IsKeyPress('W') && IsKeyPress('S') || IsKeyPress('A') && IsKeyPress('D')) return;
 
-	if (m_PosInt.x > 5)
-	{
-		m_PosInt.x = 5;
-	}
-	else if (m_PosInt.x < 0)
-	{
-		m_PosInt.x = 0;
-	}
-	if (m_PosInt.y > 5)
-	{
-		m_PosInt.y = 5;
-	}
-	else if (m_PosInt.y < 0)
-	{
-		m_PosInt.y = 0;
-	}
+		if (IsKeyPress('W') && IsKeyPress('A'))
+		{
+			m_PosInt.x++;
+			m_MoveFlag = true;
+		}
+		if (IsKeyPress('W') && IsKeyPress('D'))
+		{
+			m_PosInt.y--;
+			m_MoveFlag = true;
+		}
+		if (IsKeyPress('S') && IsKeyPress('A'))
+		{
+			m_PosInt.y++;
+			m_MoveFlag = true;
+		}
+		if (IsKeyPress('S') && IsKeyPress('D'))
+		{
+			m_PosInt.x--;
+			m_MoveFlag = true;
+		}
 
-	SetPosition(m_PosInt);
+		if (m_PosInt.x > 5)
+		{
+			m_PosInt.x = 5;
+		}
+		else if (m_PosInt.x < 0)
+		{
+			m_PosInt.x = 0;
+		}
+		if (m_PosInt.y > 5)
+		{
+			m_PosInt.y = 5;
+		}
+		else if (m_PosInt.y < 0)
+		{
+			m_PosInt.y = 0;
+		}
+
+		SetPosition(m_PosInt);
+	}
+	else
+	{
+		if (IsKeyRelease('W') || IsKeyRelease('A') || IsKeyRelease('S') || IsKeyRelease('D'))
+		{
+			m_MoveFlag = false;
+		}
+	}
 }
 
 void Player::SetPosition(DirectX::XMINT2 num)
