@@ -16,8 +16,7 @@ void BG::Draw()
 		0.0f,		//画面下端の座標
 		-1.0f,		//Z方向で写せる最小値
 		1.0f		//Z方向で写せる最大値
-	)
-	));
+	)));
 
 	DirectX::XMMATRIX t = DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, 0.0f);
 	DirectX::XMFLOAT4X4 world;

@@ -41,7 +41,7 @@ void Dice::Update()
 	}
 	else
 	{
-		if (!Timer::IsUsed())	Timer::StartTimer(1.5f);
+		if (!Timer::IsUsed())	Timer::StartTimer(1.0f);
 		if (m_RotFlag)
 		{
 			m_Rot.x += 5.0f;
@@ -65,7 +65,7 @@ void Dice::Reset()
 
 void Dice::NumRot()
 {
-	DirectX::XMFLOAT3 camRot = DirectX::XMFLOAT3(65.0f, 45.0f, 0.0f);
+	DirectX::XMFLOAT3 camRot = DirectX::XMFLOAT3(70.0f, 45.0f, 0.0f);
 	m_RotFlag = false;
 	m_Rot = camRot;
 

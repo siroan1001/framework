@@ -156,7 +156,12 @@
     <ClCompile Include="TextUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="BG.cpp" />
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="BG.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -256,7 +261,12 @@
     <ClInclude Include="TextUI.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="BG.h" />
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BG.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShaderProject.rc">

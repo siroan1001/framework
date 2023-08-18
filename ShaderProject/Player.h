@@ -21,5 +21,6 @@ private:
 	DirectX::XMINT2 m_PosInt;
 	bool m_MoveFlag;
 	std::vector<DirectX::XMINT2> m_Route;
+	int m_LastMove;
 };
 

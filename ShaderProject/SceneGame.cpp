@@ -143,6 +143,11 @@ void SceneGame::ChangeMoveNum(int num)
 
 void SceneGame::ActionMenu()
 {
+	if (GetObj<Player>(m_Name[m_PlayerTurn])->GetAIFlag())
+	{
+		m_NextAction = E_ACTION_ROLL;
+		return;
+	}
 	GetObj<MenuUI>("MenuUI")->Update();
 }
 

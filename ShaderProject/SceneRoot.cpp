@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Geometory.h"
 #include "Timer.h"
+#include <time.h>
 
 #include "SceneGame.h"
 
@@ -55,6 +56,8 @@ void SceneRoot::Init()
 		0.0f, 1.0f,
 		SCENE_GAME
 	};
+
+	srand((unsigned int)time(NULL));
 
 	//全シーンで共通して使うものを作成
 
