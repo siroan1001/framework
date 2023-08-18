@@ -35,6 +35,7 @@ public:
 	static void SetMoveNum(int num);
 	static void ChangeMoveNum(int num);
 
+	static const char* GetPlayerName() { return m_Name[m_PlayerTurn]; }
 
 private:
 	void ActionMenu();
@@ -46,8 +47,8 @@ private:
 	void ChengeAction();
 
 private:
-	const char* m_Name[E_PLAYER_NUM_MAX] = { "Player1", "Player2" };
-	PlayerNum m_PlayerTurn;
+	const static char* m_Name[E_PLAYER_NUM_MAX];
+	static PlayerNum m_PlayerTurn;
 	static Action m_Action;
 	static Action m_NextAction;
 	static int m_MoveNum;

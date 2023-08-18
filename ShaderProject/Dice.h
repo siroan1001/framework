@@ -5,7 +5,7 @@ class Dice : public ObjectBase
 public:
 	Dice();
 	~Dice();
-	void Update() final;
+	void Update();
 
 	int GetDiceNum() { return m_Num; }
 	bool GetDiceFlag() { return m_RotFlag; }

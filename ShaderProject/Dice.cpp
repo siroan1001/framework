@@ -2,6 +2,7 @@
 #include "ModelManager.h"
 #include "Input.h"
 #include "SceneGame.h"
+#include "Timer.h"
 
 Dice::Dice() : m_Num(0), m_RotFlag(true)
 {
@@ -14,23 +15,44 @@ Dice::~Dice()
 
 void Dice::Update()
 {
-	if (!m_Use)	return;
+	if (!m_Use)	return; 
+	
+	bool AIflag = SceneGame::GetObj<Player>(SceneGame::GetPlayerName())->GetAIFlag();
 
-	if (m_RotFlag)
+	if (!AIflag)
 	{
-		m_Rot.x += 5.0f;
-		m_Rot.y -= 5.0f;
+		if (m_RotFlag)
+		{
+			m_Rot.x += 5.0f;
+			m_Rot.y -= 5.0f;
 
-		m_Num = rand() % 6 + 1;
+			m_Num = rand() % 6 + 1;
 
-		if (IsKeyTrigger('L'))
-		{//サイコロをたたく
-			NumRot();
+			if (IsKeyTrigger('L'))
+			{//サイコロをたたく
+				NumRot();
+			}
+
+			if (IsKeyTrigger('K'))
+			{//メニューに戻る
+				SceneGame::SetNextAction(SceneGame::Action::E_ACTION_MENU);
+			}
 		}
+	}
+	else
+	{
+		if (!Timer::IsUsed())	Timer::StartTimer(1.5f);
+		if (m_RotFlag)
+		{
+			m_Rot.x += 5.0f;
+			m_Rot.y -= 5.0f;
 
-		if (IsKeyTrigger('K'))
-		{//メニューに戻る
-			SceneGame::SetNextAction(SceneGame::Action::E_ACTION_MENU);
+			m_Num = rand() % 6 + 1;
+
+			if (Timer::IsTimeElapsed())
+			{//サイコロをたたく
+				NumRot();
+			}
 		}
 	}
 }

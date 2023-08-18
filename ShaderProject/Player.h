@@ -12,6 +12,8 @@ public:
 	void SetAIFlag(bool flag) { m_AIFlag = flag; }
 	void SetPosition(DirectX::XMINT2 num);
 
+	bool GetAIFlag() { return m_AIFlag; }
+
 	void Reset();
 
 private:

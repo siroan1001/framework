@@ -20,12 +20,17 @@
 
 SceneGame::Action SceneGame::m_Action;
 SceneGame::Action SceneGame::m_NextAction;
+const char* SceneGame::m_Name[E_PLAYER_NUM_MAX];
+SceneGame::PlayerNum SceneGame::m_PlayerTurn;
 int SceneGame::m_MoveNum;
 int SceneGame::m_MoveNumMax;
 bool SceneGame::m_TurnChangeFlag;
 
 void SceneGame::Init()
 {
+	m_Name[E_PLAYER_NUM_1] = "Player1";
+	m_Name[E_PLAYER_NUM_2] = "Player2";
+
 	m_pStage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
 
 	m_pPlayer[E_PLAYER_NUM_1] = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);

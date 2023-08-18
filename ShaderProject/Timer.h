@@ -12,6 +12,8 @@ public:
 
     static bool IsTimeElapsed();
 
+    static bool IsUsed() { return timer_started; }
+
 private:
     static std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
     static float duration;
