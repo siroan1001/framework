@@ -1,6 +1,6 @@
 #pragma once
 #include "ObjectBase.h"
-#include "SceneGame.h"
+#include "Player.h"
 
 class StageObject : public ObjectBase
 {
@@ -9,12 +9,12 @@ public:
 	~StageObject() {};
 	void Update() final {};
 
-	void KeepStage(SceneGame::PlayerNum playernum);
+	void KeepStage(Player::PlayerNum playernum);
 	void ReleaseStage();
 
 private:
 	static DirectX::XMFLOAT3* m_pParentPos;
-	SceneGame::PlayerNum m_HuvePlayer;
+	Player::PlayerNum m_HuvePlayer;
 	int m_Lv;
 };
 

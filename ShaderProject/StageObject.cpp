@@ -26,43 +26,43 @@ StageObject::StageObject(int x, int y, DirectX::XMFLOAT3* pPos)
     m_Pos = DirectX::XMFLOAT3(posX, posY, posZ);
 
     //Å@ÉÇÉfÉãì«Ç›çûÇ›
-    m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+    m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
 
-    m_HuvePlayer = SceneGame::PlayerNum::E_PLAYER_NUM_MAX;
+    m_HuvePlayer = Player::PlayerNum::E_PLAYER_NUM_MAX;
     m_Lv = 0;
 }
 
-void StageObject::KeepStage(SceneGame::PlayerNum playernum)
+void StageObject::KeepStage(Player::PlayerNum playernum)
 {
     m_HuvePlayer = playernum;
     m_Lv++;
     switch (m_HuvePlayer)
     {
-    case SceneGame::E_PLAYER_NUM_1:
+    case Player::PlayerNum::E_PLAYER_NUM_1:
         switch (m_Lv)
         {
         case 1:
-            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
             break;
         case 2:
-            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
             break;
         case 3:
-            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
             break;
         }
         break;
-    case SceneGame::E_PLAYER_NUM_2:
+    case Player::PlayerNum::E_PLAYER_NUM_2:
         switch (m_Lv)
         {
         case 1:
-            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
             break;
         case 2:
-            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
             break;
         case 3:
-            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE);
+            m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_STAGE_LV0);
             break;
         }
         break;
@@ -71,7 +71,7 @@ void StageObject::KeepStage(SceneGame::PlayerNum playernum)
 
 void StageObject::ReleaseStage()
 {
-    m_HuvePlayer = SceneGame::PlayerNum::E_PLAYER_NUM_MAX;
+    m_HuvePlayer = Player::PlayerNum::E_PLAYER_NUM_MAX;
     m_Lv = 0;
 }
 

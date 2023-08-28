@@ -168,6 +168,10 @@ void Player::SetPosition(DirectX::XMINT2 num)
 	m_Pos.y = 0.5f;
 }
 
+void Player::StopedPlayer()
+{
+}
+
 void Player::Reset()
 {
 	m_MoveFlag = false;

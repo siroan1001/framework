@@ -1,6 +1,6 @@
 #pragma once
 #include "SceneBase.hpp"
-//#include "Player.h"
+#include "Player.h"
 //#include "Stage.h"
 //#include "MenuUI.h"
 //#include "TextUI.h"
@@ -10,12 +10,7 @@
 class SceneGame : public SceneBase
 {
 public:
-	enum PlayerNum
-	{
-		E_PLAYER_NUM_1 = 0,
-		E_PLAYER_NUM_2,
-		E_PLAYER_NUM_MAX,
-	};
+
 
 	enum Action
 	{
@@ -47,8 +42,8 @@ private:
 	void ChengeAction();
 
 private:
-	const static char* m_Name[E_PLAYER_NUM_MAX];
-	static PlayerNum m_PlayerTurn;
+	const static char* m_Name[Player::PlayerNum::E_PLAYER_NUM_MAX];
+	static Player::PlayerNum m_PlayerTurn;
 	static Action m_Action;
 	static Action m_NextAction;
 	static int m_MoveNum;
@@ -56,7 +51,7 @@ private:
 	static bool m_TurnChangeFlag;
 
 private:
-	class Player* m_pPlayer[E_PLAYER_NUM_MAX];
+	class Player* m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_MAX];
 	class Stage* m_pStage;
 	class MenuUI* m_pMenuUI;
 	class TextUI* m_pDiceNumUI;

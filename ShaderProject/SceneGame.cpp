@@ -20,30 +20,30 @@
 
 SceneGame::Action SceneGame::m_Action;
 SceneGame::Action SceneGame::m_NextAction;
-const char* SceneGame::m_Name[E_PLAYER_NUM_MAX];
-SceneGame::PlayerNum SceneGame::m_PlayerTurn;
+const char* SceneGame::m_Name[Player::PlayerNum::E_PLAYER_NUM_MAX];
+Player::PlayerNum SceneGame::m_PlayerTurn;
 int SceneGame::m_MoveNum;
 int SceneGame::m_MoveNumMax;
 bool SceneGame::m_TurnChangeFlag;
 
 void SceneGame::Init()
 {
-	m_Name[E_PLAYER_NUM_1] = "Player1";
-	m_Name[E_PLAYER_NUM_2] = "Player2";
+	m_Name[Player::PlayerNum::E_PLAYER_NUM_1] = "Player1";
+	m_Name[Player::PlayerNum::E_PLAYER_NUM_2] = "Player2";
 
 	m_pStage = CreateObj<Stage>("Stage", eObjectTag::E_OBJ_TAG_OBJ);
 
-	m_pPlayer[E_PLAYER_NUM_1] = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);
-	m_pPlayer[E_PLAYER_NUM_1]->SetRotation(DirectX::XMFLOAT3(0.0f, 180.0f, 0.0f));
-	m_pPlayer[E_PLAYER_NUM_1]->SetPosition(DirectX::XMINT2(5, 5));
-	m_pPlayer[E_PLAYER_NUM_2] = CreateObj<Player>(m_Name[PlayerNum::E_PLAYER_NUM_2], eObjectTag::E_OBJ_TAG_OBJ);
-	m_pPlayer[E_PLAYER_NUM_2]->SetRotation(DirectX::XMFLOAT3(0.0f, -90.0f, 0.0f));
-	m_pPlayer[E_PLAYER_NUM_2]->SetPosition(DirectX::XMINT2(0, 0));
-	m_pPlayer[E_PLAYER_NUM_2]->SetAIFlag(true);
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1] = CreateObj<Player>(m_Name[Player::PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1]->SetRotation(DirectX::XMFLOAT3(0.0f, 180.0f, 0.0f));
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1]->SetPosition(DirectX::XMINT2(5, 5));
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2] = CreateObj<Player>(m_Name[Player::PlayerNum::E_PLAYER_NUM_2], eObjectTag::E_OBJ_TAG_OBJ);
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->SetRotation(DirectX::XMFLOAT3(0.0f, -90.0f, 0.0f));
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->SetPosition(DirectX::XMINT2(0, 0));
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->SetAIFlag(true);
 
 	m_CamType = eCamType::E_CAM_TYPE_GAME_MAIN;
 
-	m_PlayerTurn = SceneGame::PlayerNum::E_PLAYER_NUM_1;
+	m_PlayerTurn = Player::PlayerNum::E_PLAYER_NUM_1;
 	m_Action = Action::E_ACTION_MENU;
 	m_NextAction = m_Action;
 	m_MoveNum = 0;
@@ -172,8 +172,8 @@ void SceneGame::TurnChange()
 	m_MoveNum = 0;
 	GetObj<Dice>("Dice")->Reset();
 	GetObj<Player>(m_Name[m_PlayerTurn])->Reset();
-	m_PlayerTurn = static_cast<PlayerNum>(m_PlayerTurn + 1);
-	if (m_PlayerTurn == E_PLAYER_NUM_MAX)	m_PlayerTurn = E_PLAYER_NUM_1;
+	m_PlayerTurn = static_cast<Player::PlayerNum>(m_PlayerTurn + 1);
+	if (m_PlayerTurn == Player::PlayerNum::E_PLAYER_NUM_MAX)	m_PlayerTurn = Player::PlayerNum::E_PLAYER_NUM_1;
 }
 
 void SceneGame::ChengeAction()
