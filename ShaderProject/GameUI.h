@@ -32,6 +32,7 @@ protected:
 	PixelShader* m_pPS;
 	DirectX::XMFLOAT2 m_Pos;
 	DirectX::XMFLOAT2 m_Size;
+	float m_Rot;
 	DirectX::XMFLOAT2 m_uvPos;
 	DirectX::XMFLOAT2 m_uvSize;
 };

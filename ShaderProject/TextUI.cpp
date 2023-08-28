@@ -71,6 +71,10 @@ void TextUI::SetString(std::wstring str)
 void TextUI::SetCharSize(DirectX::XMFLOAT2 size)
 {
 	m_CharSize = size; 
+	for (int i = 0; i < m_CharUI.size(); i++)
+	{
+		m_CharUI[i]->SetSize(m_CharSize);
+	}
 	m_Size.y = m_CharSize.y;
 }
 

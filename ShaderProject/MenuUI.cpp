@@ -12,13 +12,13 @@ MenuUI::MenuUI()
 	m_pCursor = new GameUI();
 	TextUI* choice = new TextUI();
 	choice->SetString(L"サイコロをふる");
-	choice->SetCharSize(DirectX::XMFLOAT2(15.0f, 15.0f));
-	choice->SetPos(DirectX::XMFLOAT2(-45.0f, 0.0f));
+	choice->SetCharSize(DirectX::XMFLOAT2(20.0f, 20.0f));
+	choice->SetPos(DirectX::XMFLOAT2(-60.0f, 0.0f));
 	m_pChoice.push_back(choice);
 	choice = new TextUI();
 	choice->SetString(L"アイテム");
-	choice->SetCharSize(DirectX::XMFLOAT2(15.0f, 15.0f));
-	choice->SetPos(DirectX::XMFLOAT2(22.5f, 0.0f));
+	choice->SetCharSize(DirectX::XMFLOAT2(20.0f, 20.0f));
+	choice->SetPos(DirectX::XMFLOAT2(30.0f, 0.0f));
 	choice->SetActive(false);
 	m_pChoice.push_back(choice);
 	m_Use = false;

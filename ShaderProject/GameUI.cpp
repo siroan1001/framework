@@ -8,6 +8,7 @@ GameUI::GameUI() : m_pVS(nullptr), m_pPS(nullptr)
 	m_pTex->Create("Assets/Texture/MenuBG.png");
 	m_Pos = { 0.0f, 0.0f };
 	m_Size = { 300.0f, 300.0f };
+	m_Rot = 0.0f;
 	m_uvPos = { 0.0f, 0.0f };
 	m_uvSize = { 1.0f, -1.0f };
 }
@@ -40,8 +41,9 @@ void GameUI::Draw()
 	));
 
 	DirectX::XMMATRIX t = DirectX::XMMatrixTranslation(m_Pos.x, m_Pos.y, 0.0f);
+	DirectX::XMMATRIX r = DirectX::XMMatrixRotationZ(m_Rot);
 	DirectX::XMFLOAT4X4 world;
-	DirectX::XMStoreFloat4x4(&world, XMMatrixTranspose(t));
+	DirectX::XMStoreFloat4x4(&world, XMMatrixTranspose(r * t));
 
 	Sprite::SetWorld(world);
 	Sprite::SetView(view);
