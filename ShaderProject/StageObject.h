@@ -9,8 +9,15 @@ public:
 	~StageObject() {};
 	void Update() final {};
 
+	Player::PlayerNum GetHuvingPlayer() { return m_HuvePlayer; }
+
 	void KeepStage(Player::PlayerNum playernum);
+	void LevelUpStage();
+	void DamageStage();
 	void ReleaseStage();
+
+private:
+	void ChangeModel();
 
 private:
 	static DirectX::XMFLOAT3* m_pParentPos;

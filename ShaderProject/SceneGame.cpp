@@ -163,6 +163,7 @@ void SceneGame::ActionMove()
 	GetObj<Player>(m_Name[m_PlayerTurn])->Update();
 	if (m_MoveNum <= 0)
 	{	
+		GetObj<Player>(m_Name[m_PlayerTurn])->StopedPlayer();
 		m_TurnChangeFlag = true;
 	}
 }

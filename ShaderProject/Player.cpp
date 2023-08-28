@@ -2,14 +2,19 @@
 #include "ModelManager.h"
 #include "SceneGame.h"
 #include "Stage.h"
+#include "StageObject.h"
 #include "Input.h"
 #include "Timer.h"
+
+static Player::PlayerNum g_PlayerNum = Player::PlayerNum::E_PLAYER_NUM_1;
 
 Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999)
 {
 	m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER);
+	m_PlayerNum = g_PlayerNum;
+	g_PlayerNum = static_cast<Player::PlayerNum>(g_PlayerNum + 1);
 }
-//xl2411k
+
 Player::~Player()
 {
 }
@@ -170,6 +175,20 @@ void Player::SetPosition(DirectX::XMINT2 num)
 
 void Player::StopedPlayer()
 {
+	StageObject* stage = SceneGame::GetObj<Stage>("Stage")->GetStageObj(m_PosInt);
+	Player::PlayerNum targetPNum = stage->GetHuvingPlayer();
+	if (targetPNum == m_PlayerNum)
+	{//自分のステージだった場合（レベル上げ処理）
+		stage->LevelUpStage();
+	}
+	else if (targetPNum == PlayerNum::E_PLAYER_NUM_MAX)
+	{//まだ誰も確保していないステージだった場合（獲得処理）
+		stage->KeepStage(m_PlayerNum);
+	}
+	else
+	{//他の人のステージだった場合（ダメージ処理）
+
+	}
 }
 
 void Player::Reset()

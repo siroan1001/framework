@@ -32,5 +32,6 @@ private:
 	bool m_MoveFlag;
 	std::vector<DirectX::XMINT2> m_Route;
 	int m_LastMove;
+	PlayerNum m_PlayerNum;
 };
 
