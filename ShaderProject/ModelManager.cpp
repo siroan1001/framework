@@ -1,6 +1,6 @@
 #include "ModelManager.h"
 
-std::vector<std::shared_ptr<Model>> ModelManager::m_pModelList;
+std::shared_ptr<Model> ModelManager::m_pModelList[E_MODEL_KIND_MAX];
 
 ModelManager& ModelManager::GetInstance()
 {
@@ -15,16 +15,13 @@ std::shared_ptr<Model> ModelManager::GetModel(ModelKind kind)
 
 ModelManager::ModelManager()
 {
-	std::shared_ptr<Model> model;
-	model = std::make_shared<Model>();
-	model->Load("Assets/Model/player/player.fbx", 0.35f);
-	m_pModelList.push_back(model);
-	model = std::make_shared<Model>();
-	model->Load("Assets/Model/stage/stage.fbx");
-	m_pModelList.push_back(model);
-	model = std::make_shared<Model>();
-	model->Load("Assets/Model/dice/dice.fbx");
-	m_pModelList.push_back(model);
+	for (std::shared_ptr<Model> model : m_pModelList)
+	{
+		model = std::make_shared<Model>();
+	}
+	m_pModelList[ModelKind::E_MODEL_KIND_PLAYER]->Load("Assets/Model/player/player.fbx", 0.35f);
+	m_pModelList[ModelKind::E_MODEL_KIND_STAGE]->Load("Assets/Model/stage2.0/stage2.0.fbx");
+	m_pModelList[ModelKind::E_MODEL_KIND_DICE]->Load("Assets/Model/dice/dice.fbx");
 }
 
 ModelManager::~ModelManager()

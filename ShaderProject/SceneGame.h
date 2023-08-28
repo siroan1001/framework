@@ -1,10 +1,10 @@
 #pragma once
 #include "SceneBase.hpp"
-#include "Player.h"
-#include "Stage.h"
-#include "MenuUI.h"
-#include "TextUI.h"
-#include "Dice.h"
+//#include "Player.h"
+//#include "Stage.h"
+//#include "MenuUI.h"
+//#include "TextUI.h"
+//#include "Dice.h"
 #include "BG.h"
 
 class SceneGame : public SceneBase
@@ -56,10 +56,10 @@ private:
 	static bool m_TurnChangeFlag;
 
 private:
-	Player* m_pPlayer[E_PLAYER_NUM_MAX];
-	Stage* m_pStage;
-	MenuUI* m_pMenuUI;
-	TextUI* m_pDiceNumUI;
-	Dice* m_Dice;
-	BG* m_pBG;
+	class Player* m_pPlayer[E_PLAYER_NUM_MAX];
+	class Stage* m_pStage;
+	class MenuUI* m_pMenuUI;
+	class TextUI* m_pDiceNumUI;
+	class Dice* m_Dice;
+	class BG* m_pBG;
 };

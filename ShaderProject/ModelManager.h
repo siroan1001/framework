@@ -22,6 +22,6 @@ private:
 	ModelManager();
 	~ModelManager();
 
-	static std::vector<std::shared_ptr<Model>> m_pModelList;
+	static std::shared_ptr<Model> m_pModelList[E_MODEL_KIND_MAX];
 };
 
