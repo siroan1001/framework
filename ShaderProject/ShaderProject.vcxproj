@@ -216,6 +216,7 @@
     <ClCompile Include="MoveLight.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerUI.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneRoot.cpp" />
@@ -253,6 +254,7 @@
     <ClInclude Include="MoveLight.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerUI.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SceneBase.hpp" />
     <ClInclude Include="SceneGame.h" />

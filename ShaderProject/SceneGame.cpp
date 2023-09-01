@@ -68,6 +68,11 @@ void SceneGame::Init()
 	m_pBG->SetSize(DirectX::XMFLOAT2(1280.0f, 720.0f));
 	m_pBG->CreateTex("Assets/Texture/BG.jpg");
 
+	m_pPlayer1UI = CreateObj<PlayerUI>("Player1UI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pPlayer1UI->SetPos(DirectX::XMFLOAT2(120.0f, 40.0f));
+
+	m_pPlayer2UI = CreateObj<PlayerUI>("Player2UI", eObjectTag::E_OBJ_TAG_SPRITE);
+
 	ChengeAction();
 }
 void SceneGame::Uninit()
@@ -111,12 +116,13 @@ void SceneGame::Draw()
 	std::list<GameUI*> UIlist;
 	UIlist = GetObjswithTag<GameUI>(eObjectTag::E_OBJ_TAG_SPRITE);
 
-	for (GameUI* obj : UIlist)
-	{
-		obj->Draw();
-	}
-
+	//for (GameUI* obj : UIlist)
+	//{
+	//	obj->Draw();
+	//}
+	m_pMenuUI->Draw();
 	m_pDiceNumUI->Draw();
+	m_pPlayer1UI->Draw();
 }
 
 void SceneGame::SetNextAction(Action action)

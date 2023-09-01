@@ -132,9 +132,6 @@
     <ClCompile Include="CameraDebug.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
-    <ClCompile Include="GameUI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="LightBase.cpp">
       <Filter>Light\Base</Filter>
     </ClCompile>
@@ -144,23 +141,29 @@
     <ClCompile Include="MenuUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UIBase.cpp">
-      <Filter>UI\Base</Filter>
-    </ClCompile>
     <ClCompile Include="Dice.cpp">
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="TextUI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="BG.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TextUI.cpp">
+      <Filter>UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI.cpp">
+      <Filter>UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBase.cpp">
+      <Filter>UI\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +240,6 @@
     <ClInclude Include="CameraDebug.h">
       <Filter>Camera</Filter>
     </ClInclude>
-    <ClInclude Include="GameUI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="LightBase.h">
       <Filter>Light\Base</Filter>
     </ClInclude>
@@ -249,23 +249,29 @@
     <ClInclude Include="MenuUI.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="UIBase.h">
-      <Filter>UI\Base</Filter>
-    </ClInclude>
     <ClInclude Include="Dice.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="TextUI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="BG.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUI.h">
+      <Filter>UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI.h">
+      <Filter>UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIBase.h">
+      <Filter>UI\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

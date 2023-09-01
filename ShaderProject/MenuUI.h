@@ -20,7 +20,6 @@ public:
 	void Update();
 	void Draw();
 
-	void SetActive(bool flag) { m_Use = flag; }
 	void SetPos(DirectX::XMFLOAT2 pos) final;
 
 private:
