@@ -23,8 +23,11 @@ public:
 	void StopedPlayer();
 
 	bool GetAIFlag() { return m_AIFlag; }
+	int GetMoney() { return m_Money; }
 
 	void Reset();
+
+	void AddMoney(int num);
 
 private:
 	bool m_AIFlag;
@@ -33,5 +36,8 @@ private:
 	std::vector<DirectX::XMINT2> m_Route;
 	int m_LastMove;
 	PlayerNum m_PlayerNum;
+	std::vector<int[2]> m_HaveStageNum;
+
+	int m_Money;
 };
 

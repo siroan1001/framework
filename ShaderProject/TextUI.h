@@ -17,7 +17,7 @@ public:
 	DirectX::XMFLOAT2 GetPos() { return m_CharUI[0]->GetPos(); }
 
 public:
-	static std::wstring intToFullWidthString(int num);
+	static std::wstring intToFullWidthString(int num, bool fill = false, int size = 0);
 
 private:
 	std::wstring m_Str;

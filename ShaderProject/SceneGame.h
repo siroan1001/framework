@@ -11,8 +11,6 @@
 class SceneGame : public SceneBase
 {
 public:
-
-
 	enum Action
 	{
 		E_ACTION_MENU = 0,
@@ -38,6 +36,7 @@ private:
 	void ActionRoll();
 	void ActionMove();
 
+	void PlayerChange();
 	void TurnChange();
 
 	void ChengeAction();

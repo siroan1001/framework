@@ -36,7 +36,8 @@ void TextUI::SetString(std::wstring str)
 			ui->SetSize(m_CharSize);
 			ui->SetPos(DirectX::XMFLOAT2(m_Pos.x + m_CharSize.x * m_CharUI.size(), m_Pos.y));
 			ui->SetUVSize(m_uvSize);
-			ui->CreateTex("Assets/Texture/text.png");
+			//ui->CreateTex("Assets/Texture/text.png");
+			ui->SetTexture(m_pTex);
 			m_CharUI.push_back(ui);
 			diff++;
 		}
@@ -87,7 +88,7 @@ void TextUI::SetPos(DirectX::XMFLOAT2 pos)
 	}
 }
 
-std::wstring TextUI::intToFullWidthString(int num)
+std::wstring TextUI::intToFullWidthString(int num, bool fill, int size)
 {
 	static const wchar_t fullWidthDigits[] = L"‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X";
 	std::wstring result;
@@ -99,6 +100,13 @@ std::wstring TextUI::intToFullWidthString(int num)
 	}
 
 	if (result.empty())	result = fullWidthDigits[0];
+
+	if (fill && result.size() < size) {
+		int zeroCount = size - result.size();
+		std::wstring zeros(zeroCount, fullWidthDigits[0]);
+		result = zeros + result;
+	}
+
 	return result;
 }
 

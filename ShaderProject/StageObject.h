@@ -10,6 +10,7 @@ public:
 	void Update() final {};
 
 	Player::PlayerNum GetHuvingPlayer() { return m_HuvePlayer; }
+	int GetLavel() { return m_Lv; }
 
 	void KeepStage(Player::PlayerNum playernum);
 	void LevelUpStage();

@@ -71,6 +71,16 @@ public:
 		m_pUIList.insert(std::pair<std::string, std::shared_ptr<UIObjBase>>(name, std::make_shared<UIObj<T>>(ptr)));
 		return ptr.get();
 	}
+	template<class T> T* GetUI(const char* name)
+	{
+		// オブジェクトの探索
+		UI::iterator it = m_pUIList.find(name);
+		if (it == m_pUIList.end()) return nullptr;
+
+		// 型変換
+		std::shared_ptr<UIObj<T>> ptr = std::reinterpret_pointer_cast<UIObj<T>>(it->second);
+		return ptr->m_pUI.m_Obj.get();
+	}
 
 	void SetPos(DirectX::XMFLOAT2 pos)
 	{

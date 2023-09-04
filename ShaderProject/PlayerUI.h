@@ -11,6 +11,7 @@ public:
 	void Update();
 
 	void SetNameString(const wchar_t* str);
+	void SetMoneyString(int num);
 
 public:
 	//GameUI* m_pBG;

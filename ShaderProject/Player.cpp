@@ -8,7 +8,7 @@
 
 static Player::PlayerNum g_PlayerNum = Player::PlayerNum::E_PLAYER_NUM_1;
 
-Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999)
+Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999), m_Money(500)
 {
 	m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER);
 	m_PlayerNum = g_PlayerNum;
@@ -177,13 +177,25 @@ void Player::StopedPlayer()
 {
 	StageObject* stage = SceneGame::GetObj<Stage>("Stage")->GetStageObj(m_PosInt);
 	Player::PlayerNum targetPNum = stage->GetHuvingPlayer();
+	int Lv = stage->GetLavel();
 	if (targetPNum == m_PlayerNum)
 	{//自分のステージだった場合（レベル上げ処理）
-		stage->LevelUpStage();
+		if (Lv > 3)
+		{
+			stage->LevelUpStage();
+		}
 	}
 	else if (targetPNum == PlayerNum::E_PLAYER_NUM_MAX)
 	{//まだ誰も確保していないステージだった場合（獲得処理）
-		stage->KeepStage(m_PlayerNum);
+		if (m_Money - 300 >= 0)
+		{
+			stage->KeepStage(m_PlayerNum);
+			AddMoney(-300);
+		}
+		else
+		{//お金が足らなかった
+
+		}
 	}
 	else
 	{//他の人のステージだった場合（ダメージ処理）
@@ -196,4 +208,20 @@ void Player::Reset()
 	m_MoveFlag = false;
 	m_Route.clear();
 	m_LastMove = 999;
+}
+
+void Player::AddMoney(int num)
+{
+	m_Money += num;
+	switch (m_PlayerNum)
+	{
+	case Player::E_PLAYER_NUM_1:
+		SceneGame::GetObj<PlayerUI>("Player1UI")->SetMoneyString(m_Money);
+		break;
+	case Player::E_PLAYER_NUM_2:
+		SceneGame::GetObj<PlayerUI>("Player2UI")->SetMoneyString(m_Money);
+		break;
+	default:
+		break;
+	}
 }

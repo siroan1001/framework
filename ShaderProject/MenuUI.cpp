@@ -8,6 +8,7 @@ MenuUI::MenuUI()
 	m_ChoiceNum = 2;
 	m_pBG = new GameUI();
 	m_pBG->SetSize(DirectX::XMFLOAT2(150.0f, 75.0f));
+	m_pBG->CreateTex("Assets/Texture/MenuBG.png");
 	m_pBG->SetPS(ShaderManager::GetPSShader(ShaderManager::PSKind::E_PS_FRAME));
 	m_pCursor = new GameUI();
 	TextUI* choice = new TextUI();
