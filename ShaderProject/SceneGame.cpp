@@ -77,6 +77,9 @@ void SceneGame::Init()
 	m_pPlayer2UI->SetNameString(L"ƒvƒŒƒCƒ„[‚Q");
 	m_pPlayer2UI->SetMoneyString(m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->GetMoney());
 
+	m_pTurnUI = CreateObj<TurnUI>("TextUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pTurnUI->SetPos(DirectX::XMFLOAT2(640.0f, 40.0f));
+
 	ChengeAction();
 }
 void SceneGame::Uninit()
@@ -125,6 +128,7 @@ void SceneGame::Draw()
 	m_pDiceNumUI->Draw();
 	m_pPlayer1UI->Draw();
 	m_pPlayer2UI->Draw();
+	m_pTurnUI->Draw();
 }
 
 void SceneGame::SetNextAction(Action action)

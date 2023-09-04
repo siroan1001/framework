@@ -27,6 +27,7 @@ void Dice::Update()
 			m_Rot.y -= 5.0f;
 
 			m_Num = rand() % 6 + 1;
+			//m_Num = 2;
 
 			if (IsKeyTrigger('L'))
 			{//ÉTÉCÉRÉçÇÇΩÇΩÇ≠
@@ -65,14 +66,14 @@ void Dice::Reset()
 
 void Dice::NumRot()
 {
-	DirectX::XMFLOAT3 camRot = DirectX::XMFLOAT3(70.0f, 45.0f, 0.0f);
+	DirectX::XMFLOAT3 camRot = DirectX::XMFLOAT3(68.0f, 45.0f, 0.0f);
 	m_RotFlag = false;
 	m_Rot = camRot;
 
 	switch (m_Num)
 	{
 	case 1:
-		m_Rot = DirectX::XMFLOAT3(0.0f, -45.0f, 25.0f);
+		m_Rot = DirectX::XMFLOAT3(0.0f, -45.0f, 22.0f);
 		break;
 	case 2:
 		m_Rot.x += 180.0f;
@@ -86,7 +87,7 @@ void Dice::NumRot()
 	case 5:
 		break;
 	case 6:
-		m_Rot = DirectX::XMFLOAT3(0.0f, 135.0f, -25.0f);
+		m_Rot = DirectX::XMFLOAT3(0.0f, 135.0f, -22.0f);
 		break;
 	default:
 		break;

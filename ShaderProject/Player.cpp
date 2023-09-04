@@ -10,9 +10,21 @@ static Player::PlayerNum g_PlayerNum = Player::PlayerNum::E_PLAYER_NUM_1;
 
 Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999), m_Money(500)
 {
-	m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER);
 	m_PlayerNum = g_PlayerNum;
 	g_PlayerNum = static_cast<Player::PlayerNum>(g_PlayerNum + 1);
+	switch (m_PlayerNum)
+	{
+	case Player::E_PLAYER_NUM_1:
+		m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER_RED);
+		break;
+	case Player::E_PLAYER_NUM_2:
+		m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER_BLUE);
+		break;
+	case Player::E_PLAYER_NUM_MAX:
+		break;
+	default:
+		break;
+	}
 }
 
 Player::~Player()

@@ -21,6 +21,8 @@ ModelManager::ModelManager()
 	}
 
 	m_pModelList[ModelKind::E_MODEL_KIND_PLAYER]->Load("Assets/Model/player/player.fbx", 0.35f);
+	m_pModelList[ModelKind::E_MODEL_KIND_PLAYER_RED]->Load("Assets/Model/player/P1/Player1.fbx", 0.35f);
+	m_pModelList[ModelKind::E_MODEL_KIND_PLAYER_BLUE]->Load("Assets/Model/player/P2/player2.fbx", 0.35f);
 	m_pModelList[ModelKind::E_MODEL_KIND_STAGE_LV0]->Load("Assets/Model/Stage3.0/Lv0/StageLv0.fbx");
 	m_pModelList[ModelKind::E_MODEL_KIND_STAGE_RED_LV1]->Load("Assets/Model/Stage3.0/Red/Lv1/StageRedLv1.fbx");
 	m_pModelList[ModelKind::E_MODEL_KIND_STAGE_RED_LV2]->Load("Assets/Model/Stage3.0/Red/Lv2/StageRedLv2.fbx");
