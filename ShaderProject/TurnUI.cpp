@@ -9,5 +9,15 @@ TurnUI::TurnUI()
 	TextUI* text = CreateUI<TextUI>("Turn");
 	text->SetCharSize(DirectX::XMFLOAT2(30.0f, 30.0f));
 	text->SetString(L"あと９ターン");
-	text->SetPos(DirectX::XMFLOAT2(-80.0f, 0.0f));
+	text->SetPos(DirectX::XMFLOAT2(-75.0f, 0.0f));
+}
+
+void TurnUI::SetTurnString(int num)
+{
+	std::wstring result;
+	std::wstring NumStr = TextUI::intToFullWidthString(num);
+
+	result = L"あと" + NumStr + L"ターン";
+
+	GetUI<TextUI>("Turn")->SetString(result);
 }

@@ -42,6 +42,8 @@ private:
 
 	void ChengeAction();
 
+	void GameEnd();
+
 private:
 	const static char* m_Name[Player::PlayerNum::E_PLAYER_NUM_MAX];
 	static Player::PlayerNum m_PlayerTurn;
@@ -49,7 +51,9 @@ private:
 	static Action m_NextAction;
 	static int m_MoveNum;
 	static int m_MoveNumMax;
-	static bool m_TurnChangeFlag;
+	static bool m_PlayerChangeFlag;
+	static int m_Turn;
+	static bool m_End;
 
 private:
 	class Player* m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_MAX];
@@ -61,4 +65,5 @@ private:
 	class PlayerUI* m_pPlayer1UI;
 	class PlayerUI* m_pPlayer2UI;
 	class TurnUI* m_pTurnUI;
+	class GameEndUI* m_pGameEndUI;
 };

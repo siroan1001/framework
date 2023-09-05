@@ -16,6 +16,8 @@ void UIBase::Update()
 
 void UIBase::Draw()
 {
+	if (!m_Use)	return;
+
 	for (const auto& uiPair : m_pUIList)
 	{
 		uiPair.second->Draw();

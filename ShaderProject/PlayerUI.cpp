@@ -7,7 +7,6 @@
 PlayerUI::PlayerUI()
 {
 	GameUI* BG = CreateUI<GameUI>("BG");
-	BG->CreateTex("Assets/Texture/PlayerUI.png");
 	BG->SetSize(DirectX::XMFLOAT2(240.0f, 80.0f));
 	TextUI* Name = CreateUI<TextUI>("Name");
 	Name->SetString(L"ÉvÉåÉCÉÑÅ[ÇP");
@@ -25,6 +24,22 @@ PlayerUI::~PlayerUI()
 
 void PlayerUI::Update()
 {
+}
+
+void PlayerUI::SetBGSprite(Player::PlayerNum pnum)
+{
+	GameUI* BG = GetUI<GameUI>("BG");
+	switch (pnum)
+	{
+	case Player::E_PLAYER_NUM_1:
+		BG->CreateTex("Assets/Texture/Player1UI.png");
+		break;
+	case Player::E_PLAYER_NUM_2:
+		BG->CreateTex("Assets/Texture/Player2UI.png");
+		break;
+	default:
+		break;
+	}
 }
 
 void PlayerUI::SetNameString(const wchar_t * str)

@@ -14,9 +14,9 @@ void Timer::Init()
 
 void Timer::StartTimer(float seconds)
 {
-    duration = seconds;
-    timer_started = true;
-    start_time = std::chrono::high_resolution_clock::now();
+    duration = seconds;		//指定時間
+    timer_started = true;	//使用フラグ
+    start_time = std::chrono::high_resolution_clock::now();		//現状時間の把握
 }
 
 bool Timer::IsTimeElapsed()

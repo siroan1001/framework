@@ -14,7 +14,7 @@
 #include "GameUI.h"
 #include "MenuUI.h"
 #include "Dice.h"
-
+#include "GameEndUI.h"
 
 #include <string>
 
@@ -24,7 +24,9 @@ const char* SceneGame::m_Name[Player::PlayerNum::E_PLAYER_NUM_MAX];
 Player::PlayerNum SceneGame::m_PlayerTurn;
 int SceneGame::m_MoveNum;
 int SceneGame::m_MoveNumMax;
-bool SceneGame::m_TurnChangeFlag;
+bool SceneGame::m_PlayerChangeFlag;
+int SceneGame::m_Turn;
+bool SceneGame::m_End;
 
 void SceneGame::Init()
 {
@@ -47,7 +49,9 @@ void SceneGame::Init()
 	m_Action = Action::E_ACTION_MENU;
 	m_NextAction = m_Action;
 	m_MoveNum = 0;
-	m_TurnChangeFlag = false;
+	m_PlayerChangeFlag = false;
+	m_Turn = 1;
+	m_End = false;
 
 	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
 	m_pMenuUI->SetPos(DirectX::XMFLOAT2(150.0f, 150.0f));
@@ -69,16 +73,21 @@ void SceneGame::Init()
 	m_pBG->CreateTex("Assets/Texture/BG.jpg");
 
 	m_pPlayer1UI = CreateObj<PlayerUI>("Player1UI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pPlayer1UI->SetBGSprite(Player::PlayerNum::E_PLAYER_NUM_1);
 	m_pPlayer1UI->SetPos(DirectX::XMFLOAT2(120.0f, 40.0f));
 	m_pPlayer1UI->SetMoneyString(m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1]->GetMoney());
 
 	m_pPlayer2UI = CreateObj<PlayerUI>("Player2UI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pPlayer2UI->SetBGSprite(Player::PlayerNum::E_PLAYER_NUM_2);
 	m_pPlayer2UI->SetPos(DirectX::XMFLOAT2(1160.0f, 40.0f));
 	m_pPlayer2UI->SetNameString(L"ƒvƒŒƒCƒ„[‚Q");
 	m_pPlayer2UI->SetMoneyString(m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->GetMoney());
 
 	m_pTurnUI = CreateObj<TurnUI>("TextUI", eObjectTag::E_OBJ_TAG_SPRITE);
-	m_pTurnUI->SetPos(DirectX::XMFLOAT2(640.0f, 40.0f));
+	m_pTurnUI->SetPos(DirectX::XMFLOAT2(100.0f, 670.0f));
+	m_pTurnUI->SetTurnString(m_Turn);
+
+	m_pGameEndUI = CreateObj<GameEndUI>("GameEndUI", eObjectTag::E_OBJ_TAG_SPRITE);
 
 	ChengeAction();
 }
@@ -87,17 +96,21 @@ void SceneGame::Uninit()
 }
 void SceneGame::Update(float tick)
 {
-	if (m_TurnChangeFlag)
+	if (m_End)	return;
+
+	if (m_PlayerChangeFlag)
 	{
 		PlayerChange();
-		m_NextAction = E_ACTION_MENU;
-		m_TurnChangeFlag = false;
+		if(!m_End)	m_NextAction = E_ACTION_MENU;
+		m_PlayerChangeFlag = false;
 	}
 
-	if (m_Action != m_NextAction)	ChengeAction();
-
-	switch (m_Action)
+	if (!m_End)
 	{
+		if (m_Action != m_NextAction)	ChengeAction();
+
+		switch (m_Action)
+		{
 		case Action::E_ACTION_MENU:
 			ActionMenu();
 			break;
@@ -107,6 +120,11 @@ void SceneGame::Update(float tick)
 		case Action::E_ACTION_MOVE:
 			ActionMove();
 			break;
+		}
+	}
+	else
+	{
+		GameEnd();
 	}
 }
 
@@ -129,6 +147,7 @@ void SceneGame::Draw()
 	m_pPlayer1UI->Draw();
 	m_pPlayer2UI->Draw();
 	m_pTurnUI->Draw();
+	m_pGameEndUI->Draw();
 }
 
 void SceneGame::SetNextAction(Action action)
@@ -176,7 +195,7 @@ void SceneGame::ActionMove()
 	if (m_MoveNum <= 0)
 	{	
 		GetObj<Player>(m_Name[m_PlayerTurn])->StopedPlayer();
-		m_TurnChangeFlag = true;
+		m_PlayerChangeFlag = true;
 	}
 }
 
@@ -195,6 +214,14 @@ void SceneGame::PlayerChange()
 
 void SceneGame::TurnChange()
 {
+	m_Turn--;
+	m_pTurnUI->SetTurnString(m_Turn);
+	if (m_Turn <= 0)
+	{
+		m_End = true;
+		return;
+	}
+
 	for (int i = 0; i < Player::PlayerNum::E_PLAYER_NUM_MAX; i++)
 	{
 		GetObj<Player>(m_Name[i])->AddMoney(400);
@@ -235,11 +262,15 @@ void SceneGame::ChengeAction()
 		str = L"‚ ‚Æ" + TextUI::intToFullWidthString(m_MoveNum);
 		GetObj<TextUI>("DiceNumUI")->SetString(str);
 		GetObj<TextUI>("DiceNumUI")->SetActive(true);
-
 		break;
 	default:
 		break;
 	}
 
 	m_Action = m_NextAction;
+}
+
+void SceneGame::GameEnd()
+{
+	m_pGameEndUI->SetActive(true);
 }

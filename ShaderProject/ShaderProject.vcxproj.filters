@@ -14,34 +14,37 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{c3e0025d-d744-4505-964a-4b8ad1c6d63b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{fe8a2bbd-cadf-4262-a1e1-1128e5d6aa1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="System">
       <UniqueIdentifier>{13a0a5a6-8597-4c90-a269-2c5508fabb22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Light">
-      <UniqueIdentifier>{8329c15d-9aed-4e3d-9f5d-a5b16c04590c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Startup">
       <UniqueIdentifier>{62fd9dcc-d30c-4256-bfb5-7aa87a83f7a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Camera\Base">
-      <UniqueIdentifier>{fa782f64-35a8-47d6-8932-0794be7e44cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object">
-      <UniqueIdentifier>{c80ce99c-8dad-411f-865c-655b66f9fc84}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Manager">
       <UniqueIdentifier>{d40ceab9-aa7e-435d-aa18-64121a52a33f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI">
-      <UniqueIdentifier>{e5d6cbed-5261-4971-af8f-ec20ed78eab8}</UniqueIdentifier>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{6d2991bf-3656-4198-8ffe-deb8ff44f481}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Light\Base">
+    <Filter Include="GameObject\Camera">
+      <UniqueIdentifier>{fe8a2bbd-cadf-4262-a1e1-1128e5d6aa1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Camera\Base">
+      <UniqueIdentifier>{fa782f64-35a8-47d6-8932-0794be7e44cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Light">
+      <UniqueIdentifier>{8329c15d-9aed-4e3d-9f5d-a5b16c04590c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Light\Base">
       <UniqueIdentifier>{ae8d6711-accf-4376-b697-f9001719dde0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\Base">
+    <Filter Include="GameObject\Object">
+      <UniqueIdentifier>{c80ce99c-8dad-411f-865c-655b66f9fc84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\UI">
+      <UniqueIdentifier>{e5d6cbed-5261-4971-af8f-ec20ed78eab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\UI\Base">
       <UniqueIdentifier>{ed2b6fa4-fcc1-4177-849c-4904093f3812}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -100,49 +103,49 @@
       <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="CameraBase.cpp">
-      <Filter>Camera\Base</Filter>
+      <Filter>GameObject\Camera\Base</Filter>
     </ClCompile>
     <ClCompile Include="SceneRoot.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="ObjectBase.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="CameraGameMain.cpp">
-      <Filter>Camera</Filter>
+      <Filter>GameObject\Camera</Filter>
     </ClCompile>
     <ClCompile Include="MoveLight.cpp">
-      <Filter>Light</Filter>
+      <Filter>GameObject\Light</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="StageObject.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="CameraDebug.cpp">
-      <Filter>Camera</Filter>
+      <Filter>GameObject\Camera</Filter>
     </ClCompile>
     <ClCompile Include="LightBase.cpp">
-      <Filter>Light\Base</Filter>
+      <Filter>GameObject\Light\Base</Filter>
     </ClCompile>
     <ClCompile Include="ModelManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="MenuUI.cpp">
-      <Filter>UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="Dice.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>System</Filter>
@@ -151,22 +154,25 @@
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="BG.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClCompile>
     <ClCompile Include="TextUI.cpp">
-      <Filter>UI\Base</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClCompile>
     <ClCompile Include="GameUI.cpp">
-      <Filter>UI\Base</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClCompile>
     <ClCompile Include="PlayerUI.cpp">
-      <Filter>UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="UIBase.cpp">
-      <Filter>UI\Base</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClCompile>
     <ClCompile Include="TurnUI.cpp">
-      <Filter>UI</Filter>
+      <Filter>GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEndUI.cpp">
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,53 +213,53 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="CameraBase.h">
-      <Filter>Camera\Base</Filter>
+      <Filter>GameObject\Camera\Base</Filter>
     </ClInclude>
     <ClInclude Include="SceneRoot.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ObjectBase.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="BaseProperty.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stage.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="CameraGameMain.h">
-      <Filter>Camera</Filter>
+      <Filter>GameObject\Camera</Filter>
     </ClInclude>
     <ClInclude Include="MoveLight.h">
-      <Filter>Light</Filter>
+      <Filter>GameObject\Light</Filter>
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="StageObject.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="CameraDebug.h">
-      <Filter>Camera</Filter>
+      <Filter>GameObject\Camera</Filter>
     </ClInclude>
     <ClInclude Include="LightBase.h">
-      <Filter>Light\Base</Filter>
+      <Filter>GameObject\Light\Base</Filter>
     </ClInclude>
     <ClInclude Include="ModelManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="MenuUI.h">
-      <Filter>UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
     <ClInclude Include="Dice.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>System</Filter>
@@ -262,22 +268,25 @@
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="BG.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject\Object</Filter>
     </ClInclude>
     <ClInclude Include="TextUI.h">
-      <Filter>UI\Base</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClInclude>
     <ClInclude Include="GameUI.h">
-      <Filter>UI\Base</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClInclude>
     <ClInclude Include="PlayerUI.h">
-      <Filter>UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIBase.h">
-      <Filter>UI\Base</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClInclude>
     <ClInclude Include="TurnUI.h">
-      <Filter>UI</Filter>
+      <Filter>GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEndUI.h">
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

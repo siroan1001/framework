@@ -204,6 +204,7 @@
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameEndUI.cpp" />
     <ClCompile Include="GameUI.cpp" />
     <ClCompile Include="Geometory.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="Dice.h" />
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameEndUI.h" />
     <ClInclude Include="GameUI.h" />
     <ClInclude Include="Geometory.h" />
     <ClInclude Include="Input.h" />

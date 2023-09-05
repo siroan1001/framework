@@ -90,8 +90,9 @@ public:
 		}
 		m_Pos = pos;
 	}
-	void SetActive(bool flag) { m_Use = flag;
-	}
+	void SetActive(bool flag) { m_Use = flag; }
+
+	bool GetActive() { return m_Use; }
 
 protected:	
 	bool m_Use;
