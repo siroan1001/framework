@@ -63,7 +63,7 @@ void SceneRoot::Init()
 
 	// ƒJƒƒ‰‚Ìì¬
 	CameraBase* Cam = CreateObj<CameraGameMain>("GameCam", eObjectTag::E_OBJ_TAG_CAM);
-	Cam->SetPos(DirectX::XMFLOAT3(2.0f, 2.0f, 2.0f));
+	Cam->SetPos(DirectX::XMFLOAT3(3.75f, 3.0f, 3.75f));
 	Cam->SetLook(DirectX::XMFLOAT3(-1.5f, 0.0f, -1.5f));
 	Cam->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
 	m_pCam[eCamType::E_CAM_TYPE_GAME_MAIN] = Cam;

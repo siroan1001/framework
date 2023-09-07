@@ -43,7 +43,7 @@ DirectX::XMFLOAT4X4 CameraBase::GetProj(bool transpose)
 {
 	DirectX::XMMATRIX mat;
 	if (!m_CamFlag)	mat = DirectX::XMMatrixPerspectiveFovLH(m_fovy, m_aspect, m_near, m_far);
-	else mat = DirectX::XMMatrixOrthographicLH(17.6, 9.9f, 0.5f, 1000.0f);
+	else mat = DirectX::XMMatrixOrthographicLH(14.0, 7.875f, 0.5f, 1000.0f);
 	if (transpose)	mat = DirectX::XMMatrixTranspose(mat);
 	DirectX::XMFLOAT4X4 fmat;
 	DirectX::XMStoreFloat4x4(&fmat, mat);
