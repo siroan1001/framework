@@ -260,6 +260,10 @@ void Player::StopedPlayer()
 		default:
 			break;
 		}
+		if (m_Money < 0)
+		{
+			AddMoney(-(m_Money));
+		}
 	}
 }
 
