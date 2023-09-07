@@ -10,6 +10,7 @@ static Player::PlayerNum g_PlayerNum = Player::PlayerNum::E_PLAYER_NUM_1;
 
 Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999), m_Money(500)
 {
+	if (g_PlayerNum >= Player::E_PLAYER_NUM_MAX)	g_PlayerNum = Player::E_PLAYER_NUM_1;
 	m_PlayerNum = g_PlayerNum;
 	g_PlayerNum = static_cast<Player::PlayerNum>(g_PlayerNum + 1);
 	switch (m_PlayerNum)
@@ -19,8 +20,6 @@ Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999), m_Money(
 		break;
 	case Player::E_PLAYER_NUM_2:
 		m_pModel = ModelManager::GetModel(ModelManager::ModelKind::E_MODEL_KIND_PLAYER_BLUE);
-		break;
-	case Player::E_PLAYER_NUM_MAX:
 		break;
 	default:
 		break;
@@ -66,17 +65,17 @@ void Player::Update()
 				m_MoveFlag = true;
 			}
 
-			if (posint.x > 5)
+			if (posint.x > 3)
 			{
-				posint.x = 5;
+				posint.x = 3;
 			}
 			else if (posint.x < 0)
 			{
 				posint.x = 0;
 			}
-			if (posint.y > 5)
+			if (posint.y > 3)
 			{
-				posint.y = 5;
+				posint.y = 3;
 			}
 			else if (posint.y < 0)
 			{
@@ -154,17 +153,17 @@ void Player::Update()
 				}
 
 				//ãŒÀ‚ð’´‚¦‚é‚Æ‚«‚Ì•â³
-				if (posint.x > 5)
+				if (posint.x > 3)
 				{
-					posint.x = 5;
+					posint.x = 3;
 				}
 				else if (posint.x < 0)
 				{
 					posint.x = 0;
 				}
-				if (posint.y > 5)
+				if (posint.y > 3)
 				{
-					posint.y = 5;
+					posint.y = 3;
 				}
 				else if (posint.y < 0)
 				{
@@ -233,6 +232,7 @@ void Player::StopedPlayer()
 		if (m_Money - 300 >= 0)
 		{
 			stage->KeepStage(m_PlayerNum);
+			m_HaveStageNum.push_back(m_PosInt);
 			AddMoney(-300);
 		}
 		else
@@ -266,15 +266,15 @@ void Player::StopedPlayer()
 int Player::GetPoint()
 {
 	int result = 0;
-	for (int* num : m_HaveStageNum)
+	for (DirectX::XMINT2 num : m_HaveStageNum)
 	{
-		StageObject* stage = SceneGame::GetObj<Stage>("Stage")->GetStageObj(DirectX::XMINT2(num[0], num[1]));
+		StageObject* stage = SceneGame::GetObj<Stage>("Stage")->GetStageObj(num);
 		int Lv = stage->GetLavel();
 		result += Lv;
 	}
 	result += m_Money / 500;
 
-	return 0;
+	return result;
 }
 
 void Player::Reset()

@@ -39,7 +39,7 @@ void SceneGame::Init()
 
 	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1] = CreateObj<Player>(m_Name[Player::PlayerNum::E_PLAYER_NUM_1], eObjectTag::E_OBJ_TAG_OBJ);
 	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1]->SetRotation(DirectX::XMFLOAT3(0.0f, 180.0f, 0.0f));
-	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1]->SetPosition(DirectX::XMINT2(5, 5));
+	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_1]->SetPosition(DirectX::XMINT2(3, 3));
 	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2] = CreateObj<Player>(m_Name[Player::PlayerNum::E_PLAYER_NUM_2], eObjectTag::E_OBJ_TAG_OBJ);
 	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->SetRotation(DirectX::XMFLOAT3(0.0f, -90.0f, 0.0f));
 	m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_2]->SetPosition(DirectX::XMINT2(0, 0));
@@ -52,7 +52,7 @@ void SceneGame::Init()
 	m_NextAction = m_Action;
 	m_MoveNum = 0;
 	m_PlayerChangeFlag = false;
-	m_Turn = 9;
+	m_Turn = 5;
 	m_End = false;
 
 	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);

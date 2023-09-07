@@ -37,7 +37,7 @@ private:
 	std::vector<DirectX::XMINT2> m_Route;
 	int m_LastMove;
 	PlayerNum m_PlayerNum;
-	std::vector<int[2]> m_HaveStageNum;
+	std::vector<DirectX::XMINT2> m_HaveStageNum;
 	int m_Money;
 	bool m_AnimeFlag;
 	float m_MaxSize;

@@ -14,7 +14,7 @@ public:
 	StageObject* GetStageObj(DirectX::XMINT2 num) { return m_pStageOBj[num.y][num.x]; }
 
 public:
-	const static int SIZE = 6;
+	const static int SIZE = 4;
 
 private:
 	StageObject* m_pStageOBj[SIZE][SIZE];
