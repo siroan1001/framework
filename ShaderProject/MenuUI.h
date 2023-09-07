@@ -22,8 +22,8 @@ public:
 private:
 	int m_ChoiceNum;
 	MenuKind m_Kind;
-	int m_maxMove;
-	int m_CurentMove;
+	float m_maxMove;
+	float m_CurentMove;
 	bool m_MoveFlag;
 };
 

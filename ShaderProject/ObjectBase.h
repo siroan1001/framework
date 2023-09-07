@@ -32,11 +32,13 @@ public:
 	DirectX::XMFLOAT3 GetPosition() { return m_Pos; };
 	DirectX::XMFLOAT3 GetRotation() { return m_Rot; };
 	DirectX::XMFLOAT3 GetScale()    { return m_Size; };
+	DirectX::XMFLOAT3 GetOrizinScale()    { return m_OrizinSize; };
 
 protected:
 	DirectX::XMFLOAT3 m_Pos;
 	DirectX::XMFLOAT3 m_Rot;
 	DirectX::XMFLOAT3 m_Size;
+	DirectX::XMFLOAT3 m_OrizinSize;
 	std::shared_ptr<Model> m_pModel;
 	ShaderPair m_ShaderPair;
 	bool m_Use;

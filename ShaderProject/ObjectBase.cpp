@@ -9,7 +9,8 @@
 ObjectBase::ObjectBase() : 
 	m_Pos(0.0f, 0.0f, 0.0f),
 	m_Rot(0.0f, 0.0f, 0.0f),
-	m_Size(1.0f, 1.0f, 1.0f)
+	m_Size(1.0f, 1.0f, 1.0f),
+	m_OrizinSize(1.0f, 1.0f, 1.0f)
 {
 	m_ShaderPair.vsKind = ShaderManager::VSKind::E_VS_OBJECT;
 	m_ShaderPair.psKind = ShaderManager::PSKind::E_PS_TEXCOLOR;

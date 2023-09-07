@@ -25,6 +25,10 @@ Player::Player() : m_AIFlag(false), m_MoveFlag(false), m_LastMove(999), m_Money(
 	default:
 		break;
 	}
+
+	m_AnimeFlag = true;
+	m_MaxSize = 0.9f;
+	m_CurentSize = 0.0f;
 }
 
 Player::~Player()
@@ -175,6 +179,33 @@ void Player::Update()
 		}
 
 	}
+	
+	float sizeY;
+	if (m_AnimeFlag)
+	{
+		sizeY = GetOrizinScale().y;
+		m_CurentSize += 0.1f / 15.0f;
+		sizeY = (1.0f - m_CurentSize);
+		if (sizeY <= 0.9f)
+		{
+			m_CurentSize = 0.1f;
+			sizeY = 0.9f;
+			m_AnimeFlag = false;
+		}
+		sizeY = (1.0f - m_CurentSize);
+	}
+	else
+	{
+		sizeY = GetScale().y;
+		sizeY += 0.1f / 15.0f;
+		if (sizeY >= 1.0f)
+		{
+			m_CurentSize = 0.0f;
+			sizeY = 1.0f;
+			m_AnimeFlag = true;
+		}
+	}
+	SetScale(DirectX::XMFLOAT3(1.0f, sizeY, 1.0f));
 }
 
 void Player::SetPosition(DirectX::XMINT2 num)

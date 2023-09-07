@@ -37,7 +37,9 @@ private:
 	int m_LastMove;
 	PlayerNum m_PlayerNum;
 	std::vector<int[2]> m_HaveStageNum;
-
 	int m_Money;
+	bool m_AnimeFlag;
+	float m_MaxSize;
+	float m_CurentSize;
 };
 
