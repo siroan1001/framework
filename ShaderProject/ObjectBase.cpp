@@ -80,6 +80,8 @@ void ObjectBase::WriteShaderBuffer(VertexShader* VS, PixelShader* PS)
 	case ShaderManager::VSKind::E_VS_OBJECT:
 		VS->WriteBuffer(0, &m_ShaderPair.vsBuf.Buf.ObjectBuf);
 		break;
+	case ShaderManager::VSKind::E_VS_SWP:
+		VS->WriteBuffer(0, &m_ShaderPair.vsBuf.Buf.SWPBuf);
 	default:
 		break;
 	}

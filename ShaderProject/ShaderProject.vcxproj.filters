@@ -64,6 +64,9 @@
     <FxCompile Include="PS_Frame.hlsl">
       <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
+    <FxCompile Include="VS_SpriteWorldPosition.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectX.cpp">

@@ -9,6 +9,7 @@ public:
 	enum class VSKind
 	{
 		E_VS_OBJECT = 0,
+		E_VS_SWP,
 		E_VS_MAX,
 	};
 
@@ -27,11 +28,19 @@ public:
 		DirectX::XMFLOAT4X4 proj;
 	};
 
+	struct VS_SWP
+	{
+		DirectX::XMFLOAT4X4 world;
+		DirectX::XMFLOAT4X4 view;
+		DirectX::XMFLOAT4X4 proj;
+	};
+
 	struct VS_BUF
 	{
 		union
 		{
 			ShaderManager::VS_OBJECT ObjectBuf;
+			ShaderManager::VS_SWP SWPBuf;
 		}Buf;
 	};
 

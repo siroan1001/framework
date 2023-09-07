@@ -12,7 +12,7 @@ struct VS_OUT
 	float3 wPos : POSITION0;
 };
 
-cbuffer Matrix: register(b0)
+cbuffer WVP: register(b0)
 {
 	float4x4 world;
 	float4x4 view;

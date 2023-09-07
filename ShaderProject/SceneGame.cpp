@@ -56,7 +56,7 @@ void SceneGame::Init()
 	m_End = false;
 
 	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
-	m_pMenuUI->SetPos(DirectX::XMFLOAT2(150.0f, 150.0f));
+	m_pMenuUI->SetPos(DirectX::XMFLOAT2(220.0f, 180.0f));
 	m_pMenuUI->SetActive(false);
 
 	m_pDiceNumUI = CreateObj<TextUI>("DiceNumUI", eObjectTag::E_OBJ_TAG_SPRITE);

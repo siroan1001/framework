@@ -13,6 +13,7 @@ ShaderManager::ShaderManager()
 {
 	const char* VSfile[] = {
 		"Assets/Shader/VS_Object.cso",
+		"Assets/Shader/VS_SpriteWorldPosition.cso",
 	};
 
 	const char* PSfile[] = {

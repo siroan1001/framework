@@ -93,6 +93,7 @@ public:
 	void SetActive(bool flag) { m_Use = flag; }
 
 	bool GetActive() { return m_Use; }
+	DirectX::XMFLOAT2 GetPos() { return m_Pos; }
 
 protected:	
 	bool m_Use;

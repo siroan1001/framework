@@ -45,7 +45,6 @@ void GameUI::Draw()
 	DirectX::XMMATRIX r = DirectX::XMMatrixRotationZ(m_Rot);
 	DirectX::XMFLOAT4X4 world;
 	DirectX::XMStoreFloat4x4(&world, XMMatrixTranspose(r * t));
-
 	Sprite::SetWorld(world);
 	Sprite::SetView(view);
 	Sprite::SetProjection(proj);

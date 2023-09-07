@@ -2,9 +2,10 @@
 
 #include "GameUI.h"
 #include "TextUI.h"
+#include "UIBase.h"
 #include <vector>
 
-class MenuUI : public GameUI
+class MenuUI : public UIBase
 {
 private:
 	enum MenuKind
@@ -16,17 +17,13 @@ private:
 
 public:
 	MenuUI();
-	~MenuUI();
 	void Update();
-	void Draw();
-
-	void SetPos(DirectX::XMFLOAT2 pos) final;
 
 private:
-	GameUI* m_pBG;
-	GameUI* m_pCursor;
-	std::vector <TextUI*> m_pChoice;
 	int m_ChoiceNum;
 	MenuKind m_Kind;
+	int m_maxMove;
+	int m_CurentMove;
+	bool m_MoveFlag;
 };
 

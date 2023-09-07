@@ -6,77 +6,57 @@
 MenuUI::MenuUI()
 {
 	m_ChoiceNum = 2;
-	m_pBG = new GameUI();
-	m_pBG->SetSize(DirectX::XMFLOAT2(150.0f, 75.0f));
-	m_pBG->CreateTex("Assets/Texture/MenuBG.png");
-	//m_pBG->SetPS(ShaderManager::GetPSShader(ShaderManager::PSKind::E_PS_FRAME));
-	m_pCursor = new GameUI();
-	TextUI* choice = new TextUI();
+	GameUI* BG = CreateUI<GameUI>("BG");
+	BG->CreateTex("Assets/Texture/MenuBG.png");
+	BG->SetSize(DirectX::XMFLOAT2(275.0f, 75.0f));
+	GameUI* Cursor = CreateUI<GameUI>("Cursor");
+	Cursor->CreateTex("Assets/Texture/yazirusi.png");
+	Cursor->SetSize(DirectX::XMFLOAT2(25.0f, 25.0f));
+	Cursor->SetPos(DirectX::XMFLOAT2(-105.0f, 0.0f));
+	TextUI* choice = CreateUI<TextUI>("choice1");
 	choice->SetString(L"サイコロをふる");
-	choice->SetCharSize(DirectX::XMFLOAT2(20.0f, 20.0f));
-	choice->SetPos(DirectX::XMFLOAT2(-60.0f, 0.0f));
-	m_pChoice.push_back(choice);
-	choice = new TextUI();
-	choice->SetString(L"アイテム");
-	choice->SetCharSize(DirectX::XMFLOAT2(20.0f, 20.0f));
-	choice->SetPos(DirectX::XMFLOAT2(30.0f, 0.0f));
-	choice->SetActive(false);
-	m_pChoice.push_back(choice);
+	choice->SetCharSize(DirectX::XMFLOAT2(30.0f, 30.0f));
+	choice->SetPos(DirectX::XMFLOAT2(-65.0f, 0.0f));
+
 	m_Use = false;
 	m_Kind = E_MENU_KIND_DICE;
-}
-
-MenuUI::~MenuUI()
-{
+	m_maxMove = -15.0f;
+	m_CurentMove = 0.0f;
+	m_MoveFlag = true;
 }
 
 void MenuUI::Update()
 {
 	if (!m_Use)	return;
 
-	if (IsKeyTrigger('W'))
-	{//カーソル上
-		m_pChoice[m_Kind]->SetActive(false);
-		m_Kind = static_cast<MenuKind>(m_Kind - 1);
-		if (m_Kind < 0)	m_Kind = E_MENU_KIND_ITEM;
-		m_pChoice[m_Kind]->SetActive(true);
+	GameUI* Cursor = GetUI<GameUI>("Cursor");
+
+	if (m_MoveFlag)
+	{
+		m_CurentMove += m_maxMove / 10.0f;
+		if (m_CurentMove <= m_maxMove)
+		{
+			m_CurentMove = m_maxMove;
+			m_MoveFlag = false;
+		}
 	}
-	
-	if (IsKeyTrigger('S'))
-	{//カーソル下
-		m_pChoice[m_Kind]->SetActive(false);
-		m_Kind = static_cast<MenuKind>(m_Kind + 1);
-		if (m_Kind == E_MENU_KIND_MAX)	m_Kind = E_MENU_KIND_DICE;
-		m_pChoice[m_Kind]->SetActive(true);
-	}
+	else
+	{
+		m_CurentMove -= m_maxMove / 10.0f;
+		if (m_CurentMove >= 0.0f)
+		{
+			m_CurentMove = 0.0f;
+			m_MoveFlag = true;
+		}
+	}		
+	DirectX::XMFLOAT2 pos;
+	pos.x = GetPos().x - 105.0f - m_CurentMove;
+	pos.y = GetPos().y;
+	Cursor->SetPos(pos);
 
 	if (IsKeyTrigger('L'))
 	{//決定
 		if(m_Kind == E_MENU_KIND_DICE)	
 			SceneGame::SetNextAction(SceneGame::Action::E_ACTION_ROLL);
-	}
-}
-
-void MenuUI::Draw()
-{
-	if (!m_Use)	return;
-	m_pBG->Draw();
-	for (TextUI* text : m_pChoice)
-	{
-		text->Draw();
-	}
-}
-
-void MenuUI::SetPos(DirectX::XMFLOAT2 pos)
-{
-	m_Pos = pos;
-	m_pBG->SetPos(pos);
-	DirectX::XMFLOAT2 Curentpos;
-	for (TextUI* text : m_pChoice)
-	{
-		Curentpos = text->GetPos();
-		pos.x += Curentpos.x;
-		pos.y += Curentpos.y;
-		text->SetPos(pos);
 	}
 }
