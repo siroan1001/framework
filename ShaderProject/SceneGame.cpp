@@ -102,7 +102,14 @@ void SceneGame::Update(float tick)
 	if (IsKeyTrigger(VK_RETURN))
 		SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_TITLE);
 
-	if (m_End)	return;
+	if (m_End)
+	{
+		if (IsKeyPress('L'))
+		{
+			SceneRoot::SetNextScene(SceneRoot::SCENE_TITLE);
+		}
+		return;
+	}
 
 	if (m_PlayerChangeFlag)
 	{
@@ -279,4 +286,5 @@ void SceneGame::ChengeAction()
 void SceneGame::GameEnd()
 {
 	m_pGameEndUI->SetActive(true);
+	m_pGameEndUI->SetWLSprite(true);
 }

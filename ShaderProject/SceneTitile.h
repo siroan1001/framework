@@ -1,6 +1,7 @@
 #pragma once
 #include "SceneBase.hpp"
 #include "GameUI.h"
+#include "TextUI.h"
 
 class SceneTitle : public SceneBase
 {

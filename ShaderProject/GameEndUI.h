@@ -4,5 +4,7 @@ class GameEndUI : public UIBase
 {
 public:
 	GameEndUI();
+
+	void SetWLSprite(bool flag);
 };
 

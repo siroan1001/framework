@@ -88,7 +88,7 @@ void SceneRoot::Init()
 	SceneBase::init();
 
 	// ƒV[ƒ“‚Ìì¬
-	m_index = SCENE_GAME;
+	m_index = SCENE_TITLE;
 	m_nextindex = m_index;
 	ChangeScene();
 }
