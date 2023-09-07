@@ -2,13 +2,14 @@
 #include "Sprite.h"
 #include "SceneBase.hpp"
 
-GameUI::GameUI() : m_pVS(nullptr), m_pPS(nullptr)
+GameUI::GameUI() : m_Use(true), m_pVS(nullptr), m_pPS(nullptr)
 {
 	m_pTex = new Texture;
-	m_pTex->Create("Assets/Texture/MenuBG.png");
+	m_pTex->Create("Assets/Texture/ImageBase.png");
 	m_Pos = { 0.0f, 0.0f };
 	m_Size = { 300.0f, 300.0f };
 	m_Rot = 0.0f;
+	m_Color = { 1.0f, 1.0f, 1.0f, 1.0f };
 	m_uvPos = { 0.0f, 0.0f };
 	m_uvSize = { 1.0f, -1.0f };
 }
@@ -50,6 +51,7 @@ void GameUI::Draw()
 	Sprite::SetProjection(proj);
 	Sprite::SetSize(m_Size);
 	Sprite::SetTexture(m_pTex);
+	Sprite::SetColor(m_Color);
 	Sprite::SetVertexShader(m_pVS);
 	Sprite::SetPixelShader(m_pPS);
 	Sprite::SetUVPos(m_uvPos);

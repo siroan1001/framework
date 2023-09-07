@@ -1,10 +1,12 @@
 #include "SceneGame.h"
+#include "SceneRoot.h"
 #include "Model.h"
 #include "CameraBase.h"
 #include "LightBase.h"
 #include "Input.h"
 #include "Defines.h"
 #include "Timer.h"
+#include "Fade.h"
 
 #include "Player.h"
 #include "Enemy.h"
@@ -88,6 +90,7 @@ void SceneGame::Init()
 	m_pTurnUI->SetTurnString(m_Turn);
 
 	m_pGameEndUI = CreateObj<GameEndUI>("GameEndUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pGameEndUI->SetPos(DirectX::XMFLOAT2(640.0f, 360.0f));
 
 	ChengeAction();
 }
@@ -96,6 +99,9 @@ void SceneGame::Uninit()
 }
 void SceneGame::Update(float tick)
 {
+	if (IsKeyTrigger(VK_RETURN))
+		SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_TITLE);
+
 	if (m_End)	return;
 
 	if (m_PlayerChangeFlag)

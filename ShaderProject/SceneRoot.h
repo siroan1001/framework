@@ -6,16 +6,27 @@
 class SceneRoot : public SceneBase
 {
 public:
+	enum SceneKind
+	{
+		SCENE_TITLE,
+		SCENE_GAME,
+		SCENE_MAX
+	};
+
+public:
 	void Init();
 	void Uninit();
 	void Update(float tick);
 	void Draw();
 
+	static void SetNextScene(SceneKind kind);
+
 private:
 	void ChangeScene();
 
 private:
-	int m_index;
+	static SceneKind m_index;
+	static SceneKind m_nextindex;
 };
 
 #endif // __SCENE_ROOT_H__

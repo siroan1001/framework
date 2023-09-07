@@ -83,8 +83,8 @@ public:
 	void RemoveSubScene();
 
 	// オブジェクト操作関数
-	template<class T> static T* CreateObj(const char* name, eObjectTag tag);
-	static void DestroyObj(const char* name);
+	template<class T> T* CreateObj(const char* name, eObjectTag tag);
+	void DestroyObj(const char* name);
 	template<class T> static T* GetObj(const char* name);
 	template<class T> static std::list<T*> GetObjswithTag(eObjectTag tag);
 
@@ -102,7 +102,7 @@ private:
 protected:
 	SceneBase* m_pParent;
 	SceneBase* m_pSubScene;
-	static Items m_items;
+	Items m_items;
 
 	static CameraBase* m_pCam[E_CAM_TYPE_MAX];
 	static eCamType m_CamType;
@@ -166,26 +166,7 @@ template<class T> T* SceneBase::GetObj(const char* name)
     return ptr->m_pObject.m_pObj.get();
 }
 
-//template<class T>
-//std::list<T*> SceneBase::GetObjswithTag(eObjectTag tag)
-//{
-//	std::list<T*> result;
-//
-//	for (const auto pair : m_objects)
-//	{
-//		std::shared_ptr<SceneObject<Player>> objBasePtr = std::dynamic_pointer_cast<SceneObject<Player>>(pair.second);
-//		if (objBasePtr && objBasePtr->m_pObject.m_tag == tag)
-//		{
-//			std::shared_ptr<T> ptr = std::dynamic_pointer_cast<T>(objBasePtr->m_pObject.m_pObj);
-//			result.push_back(ptr.get());
-//		}
-//	}
-//
-//	return result;
-//}
-
-template<class T>
-std::list<T*> SceneBase::GetObjswithTag(eObjectTag tag)
+template<class T> std::list<T*> SceneBase::GetObjswithTag(eObjectTag tag)
 {
 	std::list<T*> result;
 

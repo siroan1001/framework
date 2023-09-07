@@ -4,19 +4,12 @@
 #include "CameraDebug.h"
 
 SceneBase::Objects SceneBase::m_objects;
-SceneBase::Items SceneBase::m_items;
 CameraBase* SceneBase::m_pCam[SceneBase::eCamType::E_CAM_TYPE_MAX];
 SceneBase::eCamType SceneBase::m_CamType;
 
 void SceneBase::init()
 {
-	CameraBase* Cam = CreateObj<CameraGameMain>("GameCam", eObjectTag::E_OBJ_TAG_CAM);
-	Cam->SetPos(DirectX::XMFLOAT3(5.5f, 4.0f, 5.5f));
-	Cam->SetLook(DirectX::XMFLOAT3(-1.5f, 0.0f, -1.5f));
-	Cam->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
-	m_pCam[eCamType::E_CAM_TYPE_GAME_MAIN] = Cam;
-	Cam = CreateObj<CameraDebug>("GameDebugCam", eObjectTag::E_OBJ_TAG_CAM);
-	m_pCam[eCamType::E_CAM_TYPE_GAME_DEBUG] = Cam;
+
 }
 
 void SceneBase::uninit()

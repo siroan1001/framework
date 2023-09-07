@@ -27,6 +27,7 @@ void BG::Draw()
 	Sprite::SetProjection(proj);
 	Sprite::SetSize(m_Size);
 	Sprite::SetTexture(m_pTex);
+	Sprite::SetColor(m_Color);
 	Sprite::SetVertexShader(m_pVS);
 	Sprite::SetPixelShader(m_pPS);
 	Sprite::SetUVPos(m_uvPos);

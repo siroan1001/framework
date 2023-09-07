@@ -20,6 +20,7 @@ public:
 	void SetUVPos(DirectX::XMFLOAT2 uvpos) { m_uvPos = uvpos; }
 	void SetUVSize(DirectX::XMFLOAT2 uvsize) { m_uvSize = uvsize; }
 	void SetTexture(Texture* tex) { m_pTex = tex; }
+	void SetColor(DirectX::XMFLOAT4 color) { m_Color = color; }
 
 	Texture* GetTex() { return m_pTex; }
 	DirectX::XMFLOAT2 GetPos() { return m_Pos; }
@@ -39,5 +40,6 @@ protected:
 	float m_Rot;
 	DirectX::XMFLOAT2 m_uvPos;
 	DirectX::XMFLOAT2 m_uvSize;
+	DirectX::XMFLOAT4 m_Color;
 };
 

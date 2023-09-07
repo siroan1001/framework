@@ -6,28 +6,28 @@
 #include "Geometory.h"
 #include "Timer.h"
 #include <time.h>
+#include "Fade.h"
+#include "CameraGameMain.h"
+#include "CameraDebug.h"
 
+#include "SceneTitile.h"
 #include "SceneGame.h"
 
 #include "ShaderManager.h"
 #include "ModelManager.h"
 
-//--- 定数定義
-enum SceneKind
-{
-	SCENE_GAME,
-	SCENE_MAX
-};
+SceneRoot::SceneKind SceneRoot::m_index; 
+SceneRoot::SceneKind SceneRoot::m_nextindex;
 
 void SceneRoot::ChangeScene()
 {
 	switch (m_index)
 	{
 	default:
-	case SCENE_GAME: AddSubScene<SceneGame>();
+	case SCENE_TITLE: AddSubScene<SceneTitle>(); break;
+	case SCENE_GAME: AddSubScene<SceneGame>(); break;
 	}
 }
-
 
 //--- 構造体
 // @brief シーン情報保存
@@ -61,11 +61,24 @@ void SceneRoot::Init()
 
 	//全シーンで共通して使うものを作成
 
+	// カメラの作成
+	CameraBase* Cam = CreateObj<CameraGameMain>("GameCam", eObjectTag::E_OBJ_TAG_CAM);
+	Cam->SetPos(DirectX::XMFLOAT3(5.5f, 4.0f, 5.5f));
+	Cam->SetLook(DirectX::XMFLOAT3(-1.5f, 0.0f, -1.5f));
+	Cam->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_pCam[eCamType::E_CAM_TYPE_GAME_MAIN] = Cam;
+	Cam = CreateObj<CameraDebug>("GameDebugCam", eObjectTag::E_OBJ_TAG_CAM);
+	m_pCam[eCamType::E_CAM_TYPE_GAME_DEBUG] = Cam;
+
 	// ライトの作成
 	MoveLight* pLight = CreateObj<MoveLight>("Light", eObjectTag::E_OBJ_TAG_LIGHT);
 	pLight->SetRot(setting.lightRadXZ, setting.lightRadY);
 	pLight->SetHSV(setting.lightH, setting.lightSV);
 	pLight->UpdateParam();
+
+	// フェードの作成
+	Fade* pFade = CreateObj<Fade>("Fade", eObjectTag::E_OBJ_TAG_SPRITE);
+	pFade->SetPos(DirectX::XMFLOAT2(640.0f, 360.0f));
 
 	ShaderManager& ShaderMana = ShaderManager::GetInstance();
 	ModelManager& ModelMana = ModelManager::GetInstance();
@@ -75,63 +88,42 @@ void SceneRoot::Init()
 	SceneBase::init();
 
 	// シーンの作成
-	m_index = setting.index;
+	m_index = SCENE_GAME;
+	m_nextindex = m_index;
 	ChangeScene();
 }
 
 void SceneRoot::Uninit()
 {
 	SceneBase::uninit();
-
-	//CameraBase* pCamera = GetObj<CameraBase>("Camera");
-	//MoveLight* pLight = GetObj<MoveLight>("Light");
-	//ViewSetting setting =
-	//{
-	//	pCamera->GetPos(),
-	//	pCamera->GetLook(),
-	//	pCamera->GetUp(),
-	//	pLight->GetRotXZ(), pLight->GetRotY(),
-	//	pLight->GetH(), pLight->GetSV(),
-	//	m_index
-	//};
-	//FILE* fp;
-	//fopen_s(&fp, SettingFileName, "wb");
-	//if (fp)
-	//{
-	//	fwrite(&setting, sizeof(ViewSetting), 1, fp);
-	//	fclose(fp);
-	//}
 }
 
 void SceneRoot::Update(float tick)
 {
 	CameraBase* pCamera = GetObj<CameraBase>("Camera");
 	LightBase* pLight = GetObj<LightBase>("Light");
+	Fade* pFade = GetObj<Fade>("Fade");
 
-	//// SHIFTキーが押されてれば、シーンの切り替え処理
-	int idx = m_index;
-
-	if (idx != m_index)
+	if (m_nextindex != m_index)
 	{
-		m_index = idx;
-		RemoveSubScene();
-		ChangeScene();
+		pFade->StartFade();
 	}
 
-	m_pCam[m_CamType]->Update();
+	pFade->Update();
 
-	// カメラ初期化
-	if (IsKeyTrigger('R'))
+	if (pFade->GetFadeState() == Fade::FADE_END)
 	{
-		pCamera->SetPos(DirectX::XMFLOAT3(0.0f, 1.0f, -5.0f));
-		pCamera->SetLook(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
-		pCamera->SetUp(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f));
+		m_index = m_nextindex;
+		RemoveSubScene();
+		ChangeScene();
+		pFade->EndFade();
 	}
 }
 void SceneRoot::Draw()
 {
 	CameraBase* pCamera = GetCamera();
 	LightBase* pLight = GetObj<LightBase>("Light");
+	Fade* pFade = GetObj<Fade>("Fade");
 
 	DirectX::XMFLOAT4X4 fmat;
 	DirectX::XMStoreFloat4x4(&fmat, DirectX::XMMatrixIdentity());
@@ -163,4 +155,10 @@ void SceneRoot::Draw()
 	// オブジェクト描画
 	pCamera->Draw();
 	pLight->Draw();
+	pFade->Draw();
+}
+
+void SceneRoot::SetNextScene(SceneKind kind)
+{
+	m_nextindex = kind;
 }
