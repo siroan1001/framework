@@ -44,8 +44,10 @@ private:
 
 	void GameEnd();
 
-private:
+public:
 	const static char* m_Name[Player::PlayerNum::E_PLAYER_NUM_MAX];
+
+private:
 	static Player::PlayerNum m_PlayerTurn;
 	static Action m_Action;
 	static Action m_NextAction;

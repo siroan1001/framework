@@ -52,7 +52,7 @@ void SceneGame::Init()
 	m_NextAction = m_Action;
 	m_MoveNum = 0;
 	m_PlayerChangeFlag = false;
-	m_Turn = 1;
+	m_Turn = 9;
 	m_End = false;
 
 	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
@@ -286,5 +286,8 @@ void SceneGame::ChengeAction()
 void SceneGame::GameEnd()
 {
 	m_pGameEndUI->SetActive(true);
-	m_pGameEndUI->SetWLSprite(true);
+	int p1 = m_pPlayer[Player::E_PLAYER_NUM_1]->GetPoint();
+	int p2 = m_pPlayer[Player::E_PLAYER_NUM_2]->GetPoint();
+	if(p1 > p2)		m_pGameEndUI->SetWLSprite(true);
+	else		m_pGameEndUI->SetWLSprite(false);
 }

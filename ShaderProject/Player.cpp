@@ -223,7 +223,7 @@ void Player::StopedPlayer()
 	int Lv = stage->GetLavel();
 	if (targetPNum == m_PlayerNum)
 	{//自分のステージだった場合（レベル上げ処理）
-		if (Lv > 3)
+		if (Lv < 3)
 		{
 			stage->LevelUpStage();
 		}
@@ -242,8 +242,39 @@ void Player::StopedPlayer()
 	}
 	else
 	{//他の人のステージだった場合（ダメージ処理）
-
+		Player* player = SceneGame::GetObj<Player>(SceneGame::m_Name[targetPNum]);
+		switch (Lv)
+		{
+		case 1:
+			AddMoney(-200);
+			player->AddMoney(200);
+			break;
+		case 2:
+			AddMoney(-300);
+			player->AddMoney(300);
+			break;
+		case 3:
+			AddMoney(-500);
+			player->AddMoney(500);
+			break;
+		default:
+			break;
+		}
 	}
+}
+
+int Player::GetPoint()
+{
+	int result = 0;
+	for (int* num : m_HaveStageNum)
+	{
+		StageObject* stage = SceneGame::GetObj<Stage>("Stage")->GetStageObj(DirectX::XMINT2(num[0], num[1]));
+		int Lv = stage->GetLavel();
+		result += Lv;
+	}
+	result += m_Money / 500;
+
+	return 0;
 }
 
 void Player::Reset()

@@ -24,6 +24,7 @@ public:
 
 	bool GetAIFlag() { return m_AIFlag; }
 	int GetMoney() { return m_Money; }
+	int GetPoint();
 
 	void Reset();
 
