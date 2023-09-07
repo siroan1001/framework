@@ -47,11 +47,13 @@ void Fade::Update()
 
 void Fade::StartFade()
 {
+	if (m_State != FADE_STOP)	return;
 	m_State = FADE_IN;
 }
 
 void Fade::EndFade()
 {
+	if (m_State != FADE_END)	return;
 	m_State = FADE_OUT;
 }
 
