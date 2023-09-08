@@ -4,6 +4,7 @@
 #include "TextUI.h"
 #include "UIBase.h"
 #include <vector>
+#include "CursorUI.h"
 
 class MenuUI : public UIBase
 {

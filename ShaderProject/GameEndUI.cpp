@@ -1,6 +1,7 @@
 #include "GameEndUI.h"
 #include "GameUI.h"
 #include "TextUI.h"
+#include "CursorUI.h"
 
 GameEndUI::GameEndUI()
 {
@@ -17,6 +18,7 @@ GameEndUI::GameEndUI()
 	sp->CreateTex("Assets/Texture/ResultInfo.png");
 	sp->SetPos(DirectX::XMFLOAT2(0.0f, 150.0f));
 	sp->SetSize(DirectX::XMFLOAT2(377.0f, 67.0f));
+
 	
 	m_Use = false;
 }

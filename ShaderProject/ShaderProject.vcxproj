@@ -206,6 +206,7 @@
     <ClCompile Include="CameraBase.cpp" />
     <ClCompile Include="CameraDebug.cpp" />
     <ClCompile Include="CameraGameMain.cpp" />
+    <ClCompile Include="CursorUI.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="CameraBase.h" />
     <ClInclude Include="CameraDebug.h" />
     <ClInclude Include="CameraGameMain.h" />
+    <ClInclude Include="CursorUI.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="DirectX.h" />

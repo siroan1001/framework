@@ -189,6 +189,7 @@
     <ClCompile Include="Billboard.cpp">
       <Filter>GameObject\UI</Filter>
     </ClCompile>
+    <ClCompile Include="CursorUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -315,6 +316,7 @@
     <ClInclude Include="Billboard.h">
       <Filter>GameObject\UI</Filter>
     </ClInclude>
+    <ClInclude Include="CursorUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShaderProject.rc">
