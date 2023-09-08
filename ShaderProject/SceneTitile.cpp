@@ -1,16 +1,15 @@
 #include "SceneTitile.h"
 #include "Input.h"
 #include "SceneRoot.h"
+#include "Startup.h"
 
-GameUI* SceneTitle::m_TitleBG; 
+TitleUI* SceneTitle::m_TitleBG; 
 TitleInfoUI* SceneTitle::m_InfoUI;
 
 void SceneTitle::Init()
 {
-	m_TitleBG = CreateObj<GameUI>("TitleBG", eObjectTag::E_OBJ_TAG_SPRITE);
-	m_TitleBG->CreateTex("Assets/Texture/title.png");
+	m_TitleBG = CreateObj<TitleUI>("TitleBG", eObjectTag::E_OBJ_TAG_SPRITE);
 	m_TitleBG->SetPos(DirectX::XMFLOAT2(640.0f, 360.0f));
-	m_TitleBG->SetSize(DirectX::XMFLOAT2(1280.0f, 720.0f));
 	m_InfoUI = CreateObj<TitleInfoUI>("InfoUI", eObjectTag::E_OBJ_TAG_SPRITE);
 	m_InfoUI->SetPos(DirectX::XMFLOAT2(640.0f, 360.0f));
 	m_InfoUI->SetActive(false);
@@ -23,22 +22,34 @@ void SceneTitle::Uninit()
 
 void SceneTitle::Update(float tick)
 {
-	if (IsKeyPress('I'))
-	{
-		m_InfoUI->SetActive(true);
-	}
-	if (IsKeyPress('K'))
-	{
-		m_InfoUI->SetActive(false);
-		m_InfoUI->ResetPage();
-	}
-
+	m_TitleBG->Update();
 	m_InfoUI->Update();
 
 	if (IsKeyTrigger('L') && !m_InfoUI->GetActive())
 	{
-		SceneRoot::PlayMusic("Assets/Music/SE/決定ボタンを押す1.wav", false);
-		SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_GAME);
+		switch (m_TitleBG->GetTitleState())
+		{
+		case TitleUI::TitleState::E_TITLE_STATE_START:
+			SceneRoot::PlayMusic("Assets/Music/SE/決定ボタンを押す1.wav", false);
+			SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_GAME);
+			break;
+		case TitleUI::TitleState::E_TITLE_STATE_INFO:
+			SceneRoot::PlayMusic("Assets/Music/SE/決定ボタンを押す1.wav", false);
+			m_InfoUI->SetActive(true);
+			break;
+		case TitleUI::TitleState::E_TITLE_STATE_END:
+			SceneRoot::PlayMusic("Assets/Music/SE/決定ボタンを押す1.wav", false);
+			GameEnd();
+			break;
+		default:
+			break;
+		}
+	}
+	if (IsKeyPress('K') && m_InfoUI->GetActive())
+	{
+		SceneRoot::PlayMusic("Assets/Music/SE/botan_b16.wav", false);
+		m_InfoUI->SetActive(false);
+		m_InfoUI->ResetPage();
 	}
 }
 

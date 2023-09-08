@@ -3,6 +3,7 @@
 #include "GameUI.h"
 #include "TextUI.h"
 #include "TitleInfoUI.h"
+#include "TitleUI.h"
 
 class SceneTitle : public SceneBase
 {
@@ -13,7 +14,7 @@ public:
 	void Draw();
 
 private:
-	static GameUI* m_TitleBG;
+	static TitleUI* m_TitleBG;
 	static TitleInfoUI* m_InfoUI;
 	bool m_InfoFlag;
 };

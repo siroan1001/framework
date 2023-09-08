@@ -116,8 +116,8 @@ void SceneGame::Uninit()
 }
 void SceneGame::Update(float tick)
 {
-	//if (IsKeyTrigger(VK_RETURN))
-	//	SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_TITLE);
+	if (IsKeyTrigger(VK_SPACE))
+		SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_TITLE);
 
 	DirectX::XMFLOAT3 playerpos;
 	playerpos = m_pPlayer[Player::E_PLAYER_NUM_1]->GetPosition();

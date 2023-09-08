@@ -241,6 +241,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TitleInfoUI.cpp" />
+    <ClCompile Include="TitleUI.cpp" />
     <ClCompile Include="TurnUI.cpp" />
     <ClCompile Include="UIBase.cpp" />
   </ItemGroup>
@@ -283,10 +284,12 @@
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageObject.h" />
+    <ClInclude Include="Startup.h" />
     <ClInclude Include="TextUI.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TitleInfoUI.h" />
+    <ClInclude Include="TitleUI.h" />
     <ClInclude Include="TurnUI.h" />
     <ClInclude Include="UIBase.h" />
   </ItemGroup>

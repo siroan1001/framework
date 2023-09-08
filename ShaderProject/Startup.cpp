@@ -3,14 +3,16 @@
 #include "Main.h"
 #include <stdio.h>
 #include <crtdbg.h>
-
+#include "Startup.h"
 
 // timeGetTime周りの使用
 #pragma comment(lib, "winmm.lib")
 
+// グローバル変数
+bool g_End;
+
 //--- プロトタイプ宣言
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
 
 // エントリポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -67,13 +69,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return 0;
 	}
 
+	g_End = false;
+
 	//--- FPS制御
 	timeBeginPeriod(1);
 	DWORD countStartTime = timeGetTime();
 	DWORD preExecTime = countStartTime;
 
 	//--- ウィンドウの管理
-	while (1)
+	while (!g_End)
 	{
 		if (PeekMessage(&message, NULL, 0, 0, PM_NOREMOVE))
 		{
@@ -119,4 +123,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+void GameEnd()
+{
+	g_End = true;
 }

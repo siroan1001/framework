@@ -195,6 +195,9 @@
     <ClCompile Include="audio.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="TitleUI.cpp">
+      <Filter>GameObject\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -326,6 +329,12 @@
     </ClInclude>
     <ClInclude Include="audio.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleUI.h">
+      <Filter>GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Startup.h">
+      <Filter>Startup</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
