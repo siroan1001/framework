@@ -37,6 +37,7 @@ void SceneTitle::Update(float tick)
 
 	if (IsKeyTrigger('L') && !m_InfoUI->GetActive())
 	{
+		SceneRoot::PlayMusic("Assets/Music/SE/Œˆ’èƒ{ƒ^ƒ“‚ð‰Ÿ‚·1.wav", false);
 		SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_GAME);
 	}
 }

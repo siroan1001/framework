@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "SceneGame.h"
 #include "Timer.h"
+#include "SceneRoot.h"
 
 Dice::Dice() : m_Num(0), m_RotFlag(true)
 {
@@ -19,6 +20,8 @@ void Dice::Update()
 	
 	bool AIflag = SceneGame::GetObj<Player>(SceneGame::GetPlayerName())->GetAIFlag();
 
+	
+
 	if (!AIflag)
 	{
 		if (m_RotFlag)
@@ -31,11 +34,13 @@ void Dice::Update()
 
 			if (IsKeyTrigger('L'))
 			{//サイコロをたたく
+				SceneRoot::PlayMusic("Assets/Music/SE/決定ボタンを押す13.wav", false);
 				NumRot();
 			}
 
 			if (IsKeyTrigger('K'))
 			{//メニューに戻る
+				SceneRoot::PlayMusic("Assets/Music/SE/botan_b16.wav", false);
 				SceneGame::SetNextAction(SceneGame::Action::E_ACTION_MENU);
 			}
 		}
@@ -52,6 +57,7 @@ void Dice::Update()
 
 			if (Timer::IsTimeElapsed())
 			{//サイコロをたたく
+				SceneRoot::PlayMusic("Assets/Music/SE/決定ボタンを押す13.wav", false);
 				NumRot();
 			}
 		}

@@ -57,6 +57,7 @@ private:
 	static bool m_PlayerChangeFlag;
 	static int m_Turn;
 	static bool m_End;
+	static bool m_DiceRoll;
 
 private:
 	class Player* m_pPlayer[Player::PlayerNum::E_PLAYER_NUM_MAX];

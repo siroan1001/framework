@@ -28,7 +28,8 @@ int SceneGame::m_MoveNum;
 int SceneGame::m_MoveNumMax;
 bool SceneGame::m_PlayerChangeFlag;
 int SceneGame::m_Turn;
-bool SceneGame::m_End;
+bool SceneGame::m_End; 
+bool SceneGame::m_DiceRoll;
 
 void SceneGame::Init()
 {
@@ -52,8 +53,9 @@ void SceneGame::Init()
 	m_NextAction = m_Action;
 	m_MoveNum = 0;
 	m_PlayerChangeFlag = false;
-	m_Turn = 5;
+	m_Turn = 9;
 	m_End = false;
+	m_DiceRoll = false;
 
 	m_pMenuUI = CreateObj<MenuUI>("MenuUI", eObjectTag::E_OBJ_TAG_SPRITE);
 	m_pMenuUI->SetPos(DirectX::XMFLOAT2(220.0f, 180.0f));
@@ -129,6 +131,7 @@ void SceneGame::Update(float tick)
 	{
 		if (IsKeyPress('L'))
 		{
+			SceneRoot::PlayMusic("Assets/Music/SE/Œˆ’èƒ{ƒ^ƒ“‚ð‰Ÿ‚·1.wav", true);
 			SceneRoot::SetNextScene(SceneRoot::SCENE_TITLE);
 		}
 		return;
@@ -222,6 +225,11 @@ void SceneGame::ActionMenu()
 
 void SceneGame::ActionRoll()
 {
+	//if (!m_DiceRoll)
+	//{
+	//	SceneRoot::PlayMusic("Assets/Music/SE/DiceRoll.wav", true);
+	//	m_DiceRoll = true;
+	//}
 	GetObj<Dice>("Dice")->Update();
 	if (Timer::IsTimeElapsed())		
 		m_NextAction = Action::E_ACTION_MOVE;

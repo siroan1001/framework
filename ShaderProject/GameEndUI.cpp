@@ -2,6 +2,7 @@
 #include "GameUI.h"
 #include "TextUI.h"
 #include "CursorUI.h"
+#include "SceneRoot.h"
 
 GameEndUI::GameEndUI()
 {
@@ -19,7 +20,6 @@ GameEndUI::GameEndUI()
 	sp->SetPos(DirectX::XMFLOAT2(0.0f, 150.0f));
 	sp->SetSize(DirectX::XMFLOAT2(377.0f, 67.0f));
 
-	
 	m_Use = false;
 }
 
@@ -29,10 +29,12 @@ void GameEndUI::SetWLSprite(bool flag)
 
 	if (flag)
 	{
+		SceneRoot::PlayMusic("Assets/Music/SE/‚«‚ç‚«‚ç‹P‚­3.wav", true);
 		sp->CreateTex("Assets/Texture/win.png");
 	}
 	else
 	{
+		SceneRoot::PlayMusic("Assets/Music/SE/â–].wav", true);
 		sp->CreateTex("Assets/Texture/lose.png");
 	}
 }

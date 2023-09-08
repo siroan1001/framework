@@ -5,6 +5,7 @@
 #include "StageObject.h"
 #include "Input.h"
 #include "Timer.h"
+#include "SceneRoot.h"
 
 static Player::PlayerNum g_PlayerNum = Player::PlayerNum::E_PLAYER_NUM_1;
 
@@ -104,10 +105,10 @@ void Player::Update()
 					}
 					break;
 				}
-
+				SceneRoot::PlayMusic("Assets/Music/SE/Motion-Pop29-1.wav", false);
 				m_PosInt = posint;
 			}
-
+			
 			SetPosition(m_PosInt);
 		}
 		else
@@ -172,7 +173,7 @@ void Player::Update()
 			}
 
 			m_PosInt = posint;
-
+			SceneRoot::PlayMusic("Assets/Music/SE/Motion-Pop29-1.wav", false);
 			SetPosition(m_PosInt);
 			SceneGame::ChangeMoveNum(-1);
 		}

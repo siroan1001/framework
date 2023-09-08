@@ -2,6 +2,7 @@
 #include "ShaderManager.h"
 #include "Input.h"
 #include "SceneGame.h"
+#include "SceneRoot.h"
 
 MenuUI::MenuUI()
 {
@@ -26,34 +27,10 @@ void MenuUI::Update()
 
 	GetUI<CursorUI>("Cursor")->Update();
 
-	//GameUI* Cursor = GetUI<GameUI>("Cursor");
-
-	//if (m_MoveFlag)
-	//{
-	//	m_CurentMove += m_maxMove / 10.0f;
-	//	if (m_CurentMove <= m_maxMove)
-	//	{
-	//		m_CurentMove = m_maxMove;
-	//		m_MoveFlag = false;
-	//	}
-	//}
-	//else
-	//{
-	//	m_CurentMove -= m_maxMove / 10.0f;
-	//	if (m_CurentMove >= 0.0f)
-	//	{
-	//		m_CurentMove = 0.0f;
-	//		m_MoveFlag = true;
-	//	}
-	//}		
-	//DirectX::XMFLOAT2 pos;
-	//pos.x = GetPos().x - 105.0f - m_CurentMove;
-	//pos.y = GetPos().y;
-	//Cursor->SetPos(pos);
-
 	if (IsKeyTrigger('L'))
 	{//Œˆ’è
 		if(m_Kind == E_MENU_KIND_DICE)	
+			SceneRoot::PlayMusic("Assets/Music/SE/Œˆ’èƒ{ƒ^ƒ“‚ð‰Ÿ‚·1.wav", false);
 			SceneGame::SetNextAction(SceneGame::Action::E_ACTION_ROLL);
 	}
 }

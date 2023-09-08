@@ -5,7 +5,7 @@ CursorUI::CursorUI()
 	CreateTex("Assets/Texture/yazirusi.png");
 	SetSize(DirectX::XMFLOAT2(25.0f, 25.0f));
 
-	m_maxMove = -2.0f;
+	m_maxMove = 2.0f;
 	m_CurentMove = 0.0f;
 	m_AnimeFrame = 10.0f;
 	m_MoveFlag = true;
