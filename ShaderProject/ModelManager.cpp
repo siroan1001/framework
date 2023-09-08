@@ -30,7 +30,7 @@ ModelManager::ModelManager()
 	m_pModelList[ModelKind::E_MODEL_KIND_STAGE_BLUE_LV1]->Load("Assets/Model/Stage3.0/Blue/Lv1/StageBlueLv1.fbx");
 	m_pModelList[ModelKind::E_MODEL_KIND_STAGE_BLUE_LV2]->Load("Assets/Model/Stage3.0/Blue/Lv2/StageBlueLv2.fbx");
 	m_pModelList[ModelKind::E_MODEL_KIND_STAGE_BLUE_LV3]->Load("Assets/Model/Stage3.0/Blue/Lv3/StageBlueLv3.fbx");
-	m_pModelList[ModelKind::E_MODEL_KIND_DICE]->Load("Assets/Model/dice/dice.fbx");
+	m_pModelList[ModelKind::E_MODEL_KIND_DICE]->Load("Assets/Model/dice2.0/dice.fbx");
 }
 
 ModelManager::~ModelManager()
