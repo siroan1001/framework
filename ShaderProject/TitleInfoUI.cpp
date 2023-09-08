@@ -2,6 +2,7 @@
 #include "GameUI.h"
 #include "Input.h"
 #include "CursorUI.h"
+#include "SceneRoot.h"
 
 TitleInfoUI::TitleInfoUI() : m_CurentNum(0)
 {
@@ -65,6 +66,7 @@ void TitleInfoUI::Update()
 
 void TitleInfoUI::NextPage(int num)
 {
+	int hoge = m_CurentNum;
 	m_CurentNum += num;
 	if (m_CurentNum < 0)
 	{
@@ -74,7 +76,12 @@ void TitleInfoUI::NextPage(int num)
 	{
 		m_CurentNum = 3;
 	}
-	GetUI<GameUI>("Info")->CreateTex(m_pTexList[m_CurentNum]);
+	if (hoge != m_CurentNum)
+	{
+		SceneRoot::PlayMusic("Assets/Music/SE/se_08_page_para.wav", false);
+		GetUI<GameUI>("Info")->CreateTex(m_pTexList[m_CurentNum]);
+	}
+	
 }
 
 void TitleInfoUI::ResetPage()

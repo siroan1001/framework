@@ -9,6 +9,7 @@
 #include "Fade.h"
 #include "CameraGameMain.h"
 #include "CameraDebug.h"
+#include "audio.h"
 
 #include "SceneTitile.h"
 #include "SceneGame.h"
@@ -85,6 +86,12 @@ void SceneRoot::Init()
 
 	Timer::Init();
 
+	Audio::InitMaster();
+
+	Audio* AudioMane = CreateObj<Audio>("Audio" ,eObjectTag::E_OBJ_TAG_MAX);
+	AudioMane->Load("Assets/Music/BGM/bgm.wav");
+	AudioMane->Play(true);
+
 	SceneBase::init();
 
 	// ÉVÅ[ÉìÇÃçÏê¨
@@ -96,6 +103,8 @@ void SceneRoot::Init()
 void SceneRoot::Uninit()
 {
 	SceneBase::uninit();
+
+	Audio::UninitMaster();
 }
 
 void SceneRoot::Update(float tick)
@@ -161,4 +170,11 @@ void SceneRoot::Draw()
 void SceneRoot::SetNextScene(SceneKind kind)
 {
 	m_nextindex = kind;
+}
+
+void SceneRoot::PlayMusic(const char * file, bool loop)
+{
+	Audio* AudioMane = GetObj<Audio>("Audio");
+	AudioMane->Load(file);
+	AudioMane->Play(loop);
 }

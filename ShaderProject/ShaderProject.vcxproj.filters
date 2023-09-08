@@ -189,7 +189,12 @@
     <ClCompile Include="Billboard.cpp">
       <Filter>GameObject\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CursorUI.cpp" />
+    <ClCompile Include="CursorUI.cpp">
+      <Filter>GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="audio.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -316,7 +321,12 @@
     <ClInclude Include="Billboard.h">
       <Filter>GameObject\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CursorUI.h" />
+    <ClInclude Include="CursorUI.h">
+      <Filter>GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="audio.h">
+      <Filter>System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShaderProject.rc">

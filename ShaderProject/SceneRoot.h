@@ -21,6 +21,8 @@ public:
 
 	static void SetNextScene(SceneKind kind);
 
+	static void PlayMusic(const char* file, bool loop);
+
 private:
 	void ChangeScene();
 
