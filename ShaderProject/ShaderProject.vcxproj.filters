@@ -183,6 +183,12 @@
     <ClCompile Include="SceneTitile.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="TitleInfoUI.cpp">
+      <Filter>GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Billboard.cpp">
+      <Filter>GameObject\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h">
@@ -302,6 +308,12 @@
     </ClInclude>
     <ClInclude Include="SceneTitile.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleInfoUI.h">
+      <Filter>GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Billboard.h">
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

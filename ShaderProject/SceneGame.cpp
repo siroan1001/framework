@@ -92,6 +92,21 @@ void SceneGame::Init()
 	m_pGameEndUI = CreateObj<GameEndUI>("GameEndUI", eObjectTag::E_OBJ_TAG_SPRITE);
 	m_pGameEndUI->SetPos(DirectX::XMFLOAT2(640.0f, 360.0f));
 
+	DirectX::XMFLOAT3 playerpos;
+	m_pP1NameUI = CreateObj<Billboard>("P1NameUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pP1NameUI->CreateTex("Assets/Texture/p1name.png");
+	playerpos = m_pPlayer[Player::E_PLAYER_NUM_1]->GetPosition();
+	playerpos.y += 1.25f;
+	m_pP1NameUI->SetPos(playerpos);
+	m_pP1NameUI->SetSize(DirectX::XMFLOAT2(1.0f, 0.27f));
+
+	m_pP2NameUI = CreateObj<Billboard>("P2NameUI", eObjectTag::E_OBJ_TAG_SPRITE);
+	m_pP2NameUI->CreateTex("Assets/Texture/p2name.png");
+	playerpos = m_pPlayer[Player::E_PLAYER_NUM_2]->GetPosition();
+	playerpos.y += 1.25f;
+	m_pP2NameUI->SetPos(playerpos);
+	m_pP2NameUI->SetSize(DirectX::XMFLOAT2(1.0f, 0.27f));
+
 	ChengeAction();
 }
 void SceneGame::Uninit()
@@ -99,8 +114,16 @@ void SceneGame::Uninit()
 }
 void SceneGame::Update(float tick)
 {
-	if (IsKeyTrigger(VK_RETURN))
-		SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_TITLE);
+	//if (IsKeyTrigger(VK_RETURN))
+	//	SceneRoot::SetNextScene(SceneRoot::SceneKind::SCENE_TITLE);
+
+	DirectX::XMFLOAT3 playerpos;
+	playerpos = m_pPlayer[Player::E_PLAYER_NUM_1]->GetPosition();
+	playerpos.y += 1.25f;
+	m_pP1NameUI->SetPos(playerpos);
+	playerpos = m_pPlayer[Player::E_PLAYER_NUM_2]->GetPosition();
+	playerpos.y += 1.25f;
+	m_pP2NameUI->SetPos(playerpos);
 
 	if (m_End)
 	{
@@ -161,6 +184,8 @@ void SceneGame::Draw()
 	m_pPlayer2UI->Draw();
 	m_pTurnUI->Draw();
 	m_pGameEndUI->Draw();
+	m_pP1NameUI->Draw();
+	m_pP2NameUI->Draw();
 }
 
 void SceneGame::SetNextAction(Action action)

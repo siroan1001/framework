@@ -120,7 +120,7 @@ void Player::Update()
 	}// !プレイヤーの動き
 	else
 	{//　CPUの動き
-		if (!Timer::IsUsed())	Timer::StartTimer(0.5f);
+		if (!Timer::IsUsed())	Timer::StartTimer(0.3f);
 
 		DirectX::XMINT2 posint = m_PosInt;
 

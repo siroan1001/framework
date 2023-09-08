@@ -8,6 +8,7 @@
 #include "BG.h"
 #include "PlayerUI.h"
 #include "TurnUI.h"
+#include "Billboard.h"
 
 class SceneGame : public SceneBase
 {
@@ -68,4 +69,6 @@ private:
 	class PlayerUI* m_pPlayer2UI;
 	class TurnUI* m_pTurnUI;
 	class GameEndUI* m_pGameEndUI;
+	class Billboard* m_pP1NameUI;
+	class Billboard* m_pP2NameUI;
 };

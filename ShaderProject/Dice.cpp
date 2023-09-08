@@ -42,7 +42,7 @@ void Dice::Update()
 	}
 	else
 	{
-		if (!Timer::IsUsed())	Timer::StartTimer(1.0f);
+		if (!Timer::IsUsed())	Timer::StartTimer(0.6f);
 		if (m_RotFlag)
 		{
 			m_Rot.x += 5.0f;
