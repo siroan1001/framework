@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#define APP_TITLE "SP31 Shader"
+#define APP_TITLE "NH_AT13B_07_iwatakouki"
 
 // âÊñ ÉTÉCÉY
 #define SCREEN_WIDTH (1280)
